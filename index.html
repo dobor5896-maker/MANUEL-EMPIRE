@@ -6,32 +6,77 @@
   <meta name="theme-color" content="#ffffff">
   <title>MANUEL EMPIRE</title>
   <style>
-    :root { --gold: #b89452; --ink: #24211c; }
+    :root { --gold: #b89452; --gold-dark: #96743a; --ink: #24211c; --paper: #fff; --soft: #f7f5f0; }
     * { box-sizing: border-box; }
     html, body { min-height: 100%; }
-    body { margin: 0; background: #fff; color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
     .brand {
-      position: absolute; top: 34px; left: 5.2vw; margin: 0;
+      position: absolute; top: 34px; left: 5.2vw; margin: 0; z-index: 6;
       color: var(--ink); font-family: Georgia, 'Times New Roman', serif;
       font-size: clamp(18px, 2vw, 25px); font-weight: 600; letter-spacing: .16em; line-height: 1;
     }
     .side-nav {
       position: fixed; left: 5.1vw; top: 50%; transform: translateY(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 27px; z-index: 5;
+      display: flex; flex-direction: column; align-items: center; gap: 27px; z-index: 10;
     }
     .nav-link {
       display: grid; place-items: center; width: 42px; height: 42px; padding: 0;
       color: var(--gold); background: transparent; border: 0; border-radius: 0;
       text-decoration: none; transition: color .2s ease, transform .2s ease;
     }
-    .nav-link:hover, .nav-link:focus-visible { color: #8e6d32; transform: translateX(3px); outline: none; }
+    .nav-link:hover, .nav-link:focus-visible { color: var(--gold-dark); transform: translateX(3px); outline: none; }
     .nav-link svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
-    @media (max-width: 600px) {
+
+    .hero {
+      position: relative; min-height: 720px; height: 100svh; max-height: 980px;
+      display: flex; align-items: center; overflow: hidden; isolation: isolate;
+      padding: 130px 7vw 70px 15vw; background: linear-gradient(110deg, #fff 0%, #fff 48%, #f8f6f1 100%);
+    }
+    .hero-copy { position: relative; z-index: 2; width: min(56%, 650px); padding-bottom: 12px; }
+    .eyebrow { display: flex; align-items: center; gap: 13px; margin: 0 0 26px; color: var(--gold-dark); font-size: 11px; font-weight: 700; letter-spacing: .34em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .hero h2 {
+      max-width: 720px; margin: 0; font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(58px, 8.1vw, 118px); font-weight: 500; letter-spacing: -.065em;
+      line-height: .91; text-transform: uppercase;
+    }
+    .hero h2 span { color: var(--gold); font-style: italic; font-weight: 400; }
+    .hero-description { max-width: 340px; margin: 30px 0 28px; color: #6d685f; font-size: 14px; line-height: 1.9; letter-spacing: .025em; }
+    .hero-cta {
+      display: inline-flex; align-items: center; justify-content: center; gap: 28px;
+      min-height: 50px; padding: 0 23px; background: var(--gold); color: #fff;
+      border: 1px solid var(--gold); text-decoration: none; font-size: 10px;
+      font-weight: 700; letter-spacing: .17em; text-transform: uppercase; transition: .2s ease;
+    }
+    .hero-cta:hover { background: var(--gold-dark); border-color: var(--gold-dark); }
+    .hero-cta span { font-size: 17px; line-height: 1; }
+    .hero-image-wrap {
+      position: absolute; z-index: 1; right: 5vw; bottom: 0; top: 11%;
+      width: 53%; display: flex; align-items: flex-end; justify-content: center;
+      pointer-events: none;
+    }
+    .hero-image {
+      width: 100%; height: 100%; object-fit: contain; object-position: center bottom;
+      mix-blend-mode: multiply; filter: grayscale(100%); 
+    }
+    .hero-index { position: absolute; right: 7vw; bottom: 48px; z-index: 2; color: var(--gold-dark); font-size: 10px; letter-spacing: .22em; writing-mode: vertical-rl; }
+    .hero-index::after { content: ''; display: inline-block; width: 1px; height: 42px; margin-top: 14px; background: var(--gold); }
+
+    @media (max-width: 700px) {
       .brand { top: 25px; left: 24px; font-size: 16px; }
       .side-nav { left: 18px; gap: 20px; }
       .nav-link { width: 38px; height: 38px; }
       .nav-link svg { width: 21px; height: 21px; }
+      .hero { min-height: 690px; height: 100svh; padding: 112px 24px 300px 76px; align-items: flex-start; }
+      .hero-copy { width: 100%; padding: 22px 0 0; }
+      .eyebrow { font-size: 9px; letter-spacing: .24em; margin-bottom: 20px; }
+      .hero h2 { font-size: clamp(48px, 13vw, 76px); }
+      .hero-description { max-width: 270px; margin: 22px 0; font-size: 12px; line-height: 1.7; }
+      .hero-cta { min-height: 45px; padding: 0 16px; gap: 16px; font-size: 9px; }
+      .hero-image-wrap { top: auto; right: -2%; bottom: 0; width: 88%; height: 48%; }
+      .hero-index { right: 18px; bottom: 24px; font-size: 8px; }
     }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
   </style>
 </head>
 <body>
@@ -43,5 +88,20 @@
     <a class="nav-link" href="#product" aria-label="Product" title="Product"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></a>
     <a class="nav-link" href="#cart" aria-label="Cart" title="Cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 11.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></a>
   </nav>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">The Manuel Empire Edit</p>
+        <h2 id="hero-title">Wear your<br><span>presence.</span></h2>
+        <p class="hero-description">Style that reflects who you are. Discover pieces made for confidence, individuality and everyday expression.</p>
+        <a class="hero-cta" href="#product">Explore the collection <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-image-wrap" aria-hidden="true">
+        <img class="hero-image" src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=85" alt="">
+      </div>
+      <div class="hero-index">01 / MANUEL EMPIRE</div>
+    </section>
+  </main>
 </body>
 </html>
