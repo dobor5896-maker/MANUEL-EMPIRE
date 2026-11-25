@@ -154,6 +154,74 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 @keyframes me-soft-out{to{opacity:.82;filter:blur(2px)}}
 @keyframes me-soft-in{from{opacity:.82;filter:blur(2px)}to{opacity:1;filter:blur(0)}}
 
+
+/* MANUEL EMPIRE — near-invisible optical glass; side navigation stays plain */
+.site-header{
+ background:rgba(255,255,255,.018) !important;
+ border:0 !important;outline:0 !important;
+ box-shadow:0 5px 24px rgba(20,18,14,.025),inset 0 1px 0 rgba(255,255,255,.12) !important;
+ -webkit-backdrop-filter:blur(22px) saturate(145%) !important;
+ backdrop-filter:blur(22px) saturate(145%) !important;
+ isolation:isolate;overflow:hidden;
+}
+.site-header:before{
+ content:"";position:absolute;inset:-20% -5%;z-index:0;pointer-events:none;
+ background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.22),transparent 62%),radial-gradient(ellipse at 8% 50%,rgba(255,255,255,.07),transparent 42%);
+}
+.site-header:after{
+ content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+ background:linear-gradient(108deg,transparent 30%,rgba(255,255,255,.12) 48%,rgba(255,255,255,.025) 53%,transparent 68%);
+ transform:translateX(-120%);animation:me-lens-glide 17s ease-in-out infinite;
+}
+/* The five side icons are deliberately plain: no capsule, bubbles or glass */
+.side-nav{
+ background:transparent !important;border:0 !important;outline:0 !important;
+ box-shadow:none !important;
+ -webkit-backdrop-filter:none !important;backdrop-filter:none !important;
+ overflow:visible !important;isolation:auto !important;
+}
+.side-nav:before,.side-nav:after{content:none !important;display:none !important}
+.nav-link{
+ background:transparent !important;border:0 !important;outline:0 !important;
+ box-shadow:none !important;border-radius:0 !important;
+ -webkit-backdrop-filter:none !important;backdrop-filter:none !important;
+ transition:color .3s ease,transform .35s cubic-bezier(.2,.8,.2,1) !important;
+}
+.nav-link:hover,.nav-link:focus-visible,.nav-link:active{
+ background:transparent !important;box-shadow:none !important;
+ transform:translateX(2px) !important;
+}
+.nav-link svg{filter:none !important}
+/* Other calls to action: almost invisible glass, with no drawn outline */
+.primary-link,.category a,.section-heading a{
+ background:rgba(255,255,255,.025) !important;
+ border:0 !important;
+ box-shadow:0 5px 18px rgba(20,18,14,.035),inset 0 1px 0 rgba(255,255,255,.22) !important;
+ -webkit-backdrop-filter:blur(18px) saturate(145%) !important;
+ backdrop-filter:blur(18px) saturate(145%) !important;
+ transition:transform .35s ease,background .35s ease,box-shadow .35s ease !important;
+}
+.primary-link:hover,.category a:hover,.section-heading a:hover{
+ background:rgba(255,255,255,.075) !important;
+ box-shadow:0 8px 22px rgba(20,18,14,.055),inset 0 1px 0 rgba(255,255,255,.30) !important;
+ transform:translateY(-2px);
+}
+.hero .primary-link{
+ background:transparent !important;box-shadow:none !important;
+ -webkit-backdrop-filter:none !important;backdrop-filter:none !important;
+ border:0 !important;border-bottom:1px solid #d7b574 !important;
+}
+.hero .primary-link:hover{background:transparent !important;box-shadow:none !important}
+.brand,.header-note{position:relative;z-index:1}
+@keyframes me-lens-glide{
+ 0%,70%,100%{transform:translateX(-120%)}
+ 84%{transform:translateX(120%)}
+}
+@media(max-width:700px){
+ .site-header{-webkit-backdrop-filter:blur(18px) saturate(140%) !important;backdrop-filter:blur(18px) saturate(140%) !important}
+}
+@media(prefers-reduced-motion:reduce){.site-header:after{animation:none}}
+
 </style>
 </head>
 <body>
