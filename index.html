@@ -238,32 +238,50 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 @media(prefers-reduced-motion:reduce){.site-header:after{animation:none}}
 
 
-/* Ten-frame editorial wheel: images orbit in a circle as the visitor scrolls */
+/* Circular collection stage: central brand story with oversized orbiting frames */
 .season-wheel{position:relative;height:1200vh;background:#f1eee8;color:#171613;overflow:clip}
-.wheel-sticky{position:sticky;top:0;height:100svh;min-height:620px;overflow:hidden;display:grid;grid-template-columns:46% 54%;align-items:center}
-.wheel-copy{position:absolute;z-index:3;left:4.5vw;top:50%;transform:translateY(-50%);width:35%;max-width:480px;padding:0}
-.wheel-kicker{margin:0 0 18px;color:#98743a;font-size:10px;font-weight:700;letter-spacing:.2em}
-.wheel-copy h2{margin:0 0 18px;font-size:clamp(42px,5.5vw,76px);line-height:.9;letter-spacing:-.06em;font-weight:600}
-.wheel-copy>p:last-child{max-width:285px;margin:0;color:#625e56;font-size:14px;line-height:1.7}
-.wheel-window{position:absolute;right:0;top:0;width:54%;height:100%;overflow:hidden;clip-path:none !important;mask-image:none !important;-webkit-mask-image:none !important}
+.wheel-sticky{position:sticky;top:0;height:100svh;min-height:640px;overflow:hidden}
+.orbit-center{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);width:min(48vw,590px);max-height:90svh;overflow:auto;text-align:center;padding:clamp(12px,2vw,26px);scrollbar-width:none}
+.orbit-center::-webkit-scrollbar{display:none}
+.orbit-kicker,.wheel-kicker{margin:0 0 12px;color:#98743a;font-size:clamp(7px,.7vw,10px);font-weight:700;letter-spacing:.18em}
+.orbit-center h1{margin:0 0 14px;font-size:clamp(25px,3.4vw,48px);line-height:.94;letter-spacing:-.055em;font-weight:600}
+.orbit-shop{display:inline-block;color:#171613;text-decoration:none;font-size:10px;font-weight:700;letter-spacing:.18em;border-bottom:1px solid #98743a;padding:0 0 5px}
+.orbit-divider{width:34px;height:1px;background:#c9b99e;margin:15px auto}
+.orbit-collection{margin:0;color:#766b5b;font-size:9px;line-height:1.6;letter-spacing:.12em}
+.orbit-collection strong{color:#171613;font-size:12px;letter-spacing:.18em}
+.orbit-categories{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:13px auto 0;max-width:430px}
+.orbit-categories a{display:flex;flex-direction:column;align-items:center;gap:4px;color:#171613;text-decoration:none}
+.orbit-categories strong{font-size:clamp(14px,1.5vw,20px);letter-spacing:.12em}
+.orbit-categories span{font-size:clamp(8px,.75vw,10px);color:#625e56;line-height:1.4}
+.orbit-categories em{font-style:normal;font-size:8px;font-weight:700;letter-spacing:.12em;color:#98743a;margin-top:3px}
+.orbit-center .wheel-kicker{margin-bottom:7px}
+.orbit-center h2{margin:0 0 7px;font-size:clamp(25px,3vw,40px);line-height:.9;letter-spacing:-.05em}
+.orbit-description{max-width:300px;margin:0 auto;color:#625e56;font-size:clamp(9px,.85vw,12px);line-height:1.5}
+.wheel-window{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .wheel-track{position:absolute;inset:0;width:100%;height:100%;will-change:transform}
-.wheel-frame{position:absolute;top:50%;left:50%;display:block;width:clamp(76px,9vw,126px);height:clamp(104px,13vw,174px);margin:0 !important;overflow:hidden;background:#d8d0c4;border-radius:16px;clip-path:none;will-change:transform}
+.wheel-frame{position:absolute;top:50%;left:50%;display:block;width:clamp(132px,15vw,220px);height:clamp(178px,21vw,300px);margin:0!important;overflow:hidden;background:#d8d0c4;border-radius:18px;will-change:transform}
 .wheel-frame img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.82)}
-.wheel-frame figcaption{position:absolute;right:9px;bottom:9px;color:#fff;font-size:8px;letter-spacing:.16em;text-shadow:0 1px 8px #0008}
-.wheel-index{position:absolute;z-index:4;bottom:28px;left:9vw;color:#a18b69;font-size:9px;letter-spacing:.2em}
+.wheel-frame figcaption{position:absolute;right:10px;bottom:10px;color:#fff;font-size:8px;letter-spacing:.16em;text-shadow:0 1px 8px #0008}
 @media(max-width:700px){
  .season-wheel{height:1000vh}
- .wheel-sticky{min-height:600px;grid-template-columns:1fr;align-items:center}
- .wheel-copy{left:5vw;top:50%;transform:translateY(-50%);width:38%;max-width:none;padding:0;min-height:0}
- .wheel-kicker{font-size:7px;letter-spacing:.12em;margin-bottom:12px}
- .wheel-copy h2{font-size:clamp(34px,9vw,48px);margin-bottom:12px;line-height:.9}
- .wheel-copy>p:last-child{font-size:10px;line-height:1.55;max-width:100%}
- .wheel-window{top:0;width:64%;height:100%;clip-path:none !important;mask-image:none !important;-webkit-mask-image:none !important}
- .wheel-frame{width:clamp(48px,14vw,66px);height:clamp(68px,19vw,92px);border-radius:10px}
- .wheel-frame figcaption{right:5px;bottom:5px;font-size:6px}
- .wheel-index{left:68px;bottom:16px;font-size:8px}
+ .wheel-sticky{min-height:620px}
+ .orbit-center{width:68vw;max-height:86svh;padding:8px 4px}
+ .orbit-kicker,.wheel-kicker{font-size:6px;letter-spacing:.12em;margin-bottom:8px}
+ .orbit-center h1{font-size:clamp(23px,6.2vw,34px);margin-bottom:9px}
+ .orbit-shop{font-size:8px}
+ .orbit-divider{margin:10px auto;width:26px}
+ .orbit-collection{font-size:7px}
+ .orbit-collection strong{font-size:10px}
+ .orbit-categories{gap:7px;margin-top:9px}
+ .orbit-categories strong{font-size:13px}
+ .orbit-categories span{font-size:7px}
+ .orbit-categories em{font-size:6px}
+ .orbit-center h2{font-size:clamp(22px,6vw,32px)}
+ .orbit-description{font-size:8px;max-width:220px}
+ .wheel-frame{width:clamp(104px,30vw,150px);height:clamp(144px,41vw,205px);border-radius:13px}
+ .wheel-frame figcaption{font-size:6px;right:7px;bottom:7px}
 }
-@media(prefers-reduced-motion:reduce){.wheel-frame{transition:none !important}}
+@media(prefers-reduced-motion:reduce){.wheel-frame{transition:none!important}}
 </style>
 </head>
 <body>
@@ -275,32 +293,26 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 <a class="nav-link" href="#product" aria-label="Product" title="Product"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></a>
 <a class="nav-link" href="#cart" aria-label="Cart" title="Cart"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.1 11.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></a>
 </nav>
-<main id="home">
-<section class="hero">
-<div class="hero-copy"><p class="kicker">MANUEL EMPIRE · WEAR YOUR IDENTITY</p><h2>DRESS LIKE<br>YOU <span>MEAN IT.</span></h2><div class="hero-actions"><a class="primary-link" href="collection.html">Shop now</a></div></div>
-<img class="hero-image" src="Homepage%20image.jpg" alt="Fashion model in a contemporary outfit">
-<div class="hero-caption">New collection<br>MANUEL EMPIRE</div>
-</section>
-<section class="category-band" id="collection">
-<article class="category"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Men's fashion"><div><h3>MEN</h3><p>Elevated everyday essentials.</p><a href="collection.html">Shop men →</a></div></article>
-<article class="category"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Women's fashion"><div><h3>WOMEN</h3><p>Effortless style, every day.</p><a href="collection.html">Shop women →</a></div></article>
-
-</section>
-<section class="season-wheel" id="about" aria-label="New Vibes fashion lookbook">
+<main id="home">\n<section class="season-wheel" id="about" aria-label="MANUEL EMPIRE circular fashion collection">
   <div class="wheel-sticky">
-    <div class="wheel-copy"><p class="wheel-kicker">MANUEL EMPIRE · NEW EDIT</p><h2>NEW<br>VIBES.</h2><p>Discover pieces made to bring a fresh perspective to your everyday style.</p></div>
-    <div class="wheel-window" aria-label="Ten fashion image frames scrolling upward"><div class="wheel-track"><figure class="wheel-frame wheel-frame-1"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 1" loading="lazy"><figcaption>LOOK 01</figcaption></figure><figure class="wheel-frame wheel-frame-2"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 2" loading="lazy"><figcaption>LOOK 02</figcaption></figure><figure class="wheel-frame wheel-frame-3"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 3" loading="lazy"><figcaption>LOOK 03</figcaption></figure><figure class="wheel-frame wheel-frame-4"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 4" loading="lazy"><figcaption>LOOK 04</figcaption></figure><figure class="wheel-frame wheel-frame-5"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 5" loading="lazy"><figcaption>LOOK 05</figcaption></figure><figure class="wheel-frame wheel-frame-6"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 6" loading="lazy"><figcaption>LOOK 06</figcaption></figure><figure class="wheel-frame wheel-frame-7"><img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 7" loading="lazy"><figcaption>LOOK 07</figcaption></figure><figure class="wheel-frame wheel-frame-8"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 8" loading="lazy"><figcaption>LOOK 08</figcaption></figure><figure class="wheel-frame wheel-frame-9"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 9" loading="lazy"><figcaption>LOOK 09</figcaption></figure><figure class="wheel-frame wheel-frame-10"><img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 10" loading="lazy"><figcaption>LOOK 10</figcaption></figure></div></div>
-    <span class="wheel-index" aria-hidden="true">01 — 10</span>
+    <div class="orbit-center">
+      <p class="orbit-kicker">MANUEL EMPIRE · WEAR YOUR IDENTITY</p>
+      <h1>DRESS LIKE<br>YOU MEAN IT.</h1>
+      <a class="orbit-shop" href="collection.html">SHOP NOW</a>
+      <div class="orbit-divider"></div>
+      <p class="orbit-collection">NEW COLLECTION<br><strong>MANUEL EMPIRE</strong></p>
+      <div class="orbit-categories">
+        <a href="collection.html"><strong>MEN</strong><span>Elevated everyday essentials.</span><em>SHOP MEN →</em></a>
+        <a href="collection.html"><strong>WOMEN</strong><span>Effortless style, every day.</span><em>SHOP WOMEN →</em></a>
+      </div>
+      <div class="orbit-divider"></div>
+      <p class="wheel-kicker">MANUEL EMPIRE · NEW EDIT</p>
+      <h2>NEW VIBES.</h2>
+      <p class="orbit-description">Discover pieces made to bring a fresh perspective to your everyday style.</p>
+    </div>
+    <div class="wheel-window" aria-label="Fashion images orbiting the collection"><div class="wheel-track"><figure class="wheel-frame"><img src="Homepage%20image.jpg" alt="Fashion model in a contemporary outfit"><figcaption>NEW COLLECTION</figcaption></figure><figure class="wheel-frame wheel-frame-1"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 1" loading="lazy"><figcaption>LOOK 01</figcaption></figure><figure class="wheel-frame wheel-frame-2"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 2" loading="lazy"><figcaption>LOOK 02</figcaption></figure><figure class="wheel-frame wheel-frame-3"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 3" loading="lazy"><figcaption>LOOK 03</figcaption></figure><figure class="wheel-frame wheel-frame-4"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 4" loading="lazy"><figcaption>LOOK 04</figcaption></figure><figure class="wheel-frame wheel-frame-5"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 5" loading="lazy"><figcaption>LOOK 05</figcaption></figure><figure class="wheel-frame wheel-frame-6"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 6" loading="lazy"><figcaption>LOOK 06</figcaption></figure><figure class="wheel-frame wheel-frame-7"><img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 7" loading="lazy"><figcaption>LOOK 07</figcaption></figure><figure class="wheel-frame wheel-frame-8"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 8" loading="lazy"><figcaption>LOOK 08</figcaption></figure><figure class="wheel-frame wheel-frame-9"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 9" loading="lazy"><figcaption>LOOK 09</figcaption></figure><figure class="wheel-frame wheel-frame-10"><img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 10" loading="lazy"><figcaption>LOOK 10</figcaption></figure></div></div>
   </div>
-</section>
-<section class="benefits" id="service">
-<div class="benefit"><svg viewBox="0 0 24 24"><path d="M2 7h13v11H2zM15 11h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg><div><strong>Fast delivery</strong><span>Quick and safe delivery</span></div></div>
-<div class="benefit"><svg viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10M8 4.2l9 5"/></svg><div><strong>Easy returns</strong><span>A simpler return experience</span></div></div>
-<div class="benefit"><svg viewBox="0 0 24 24"><path d="M12 2 15 4l4-.2.8 3.8L22 11l-2 3 .2 4-3.8.8L12 22l-3-2-4 .2-.8-3.8L2 13l2-3-.2-4 3.8-.8z"/><path d="m8 12 2.5 2.5L16 9"/></svg><div><strong>Quality assured</strong><span>Considered style and quality</span></div></div>
-<div class="benefit"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="12" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v4"/></svg><div><strong>Secure payment</strong><span>Checkout with confidence</span></div></div>
-</section>
-
-</main>
+</section>\n</main>
 <script>
 (() => {
  const section=document.querySelector('.season-wheel');
@@ -315,8 +327,8 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
    const rotation=progress*720;
    const mobile=window.matchMedia('(max-width:700px)').matches;
    const radius=mobile
-     ? Math.min(window.innerWidth*0.205, window.innerHeight*0.245)
-     : Math.min(window.innerWidth*0.205, window.innerHeight*0.31);
+     ? Math.min(window.innerWidth*0.47,window.innerHeight*0.39)
+     : Math.min(window.innerWidth*0.39,window.innerHeight*0.43);
    frames.forEach((frame,index)=>{
      const angle=rotation+index*(360/frames.length);
      frame.style.transform=`translate(-50%,-50%) rotate(${angle}deg) translateX(${radius}px) rotate(${-angle}deg)`;
