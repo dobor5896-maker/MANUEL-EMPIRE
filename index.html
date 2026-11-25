@@ -19,7 +19,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
 .nav-link svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
 .hero{height:min(760px,calc(100svh - 82px));min-height:620px;position:relative;overflow:hidden;background:#171613;display:flex;align-items:center;padding:60px 7vw 55px 8.5vw}
 .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.68) 0%,rgba(0,0,0,.32) 48%,rgba(0,0,0,.08) 100%);z-index:1}
-.hero-wordmark{position:absolute;z-index:1;left:7.5%;top:42%;transform:translateY(-50%);font-family:Arial,Helvetica,sans-serif;font-size:clamp(100px,19vw,270px);font-weight:800;letter-spacing:-.09em;line-height:.8;color:rgba(255,255,255,.16);white-space:nowrap;pointer-events:none}
+
 .hero-image{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;mix-blend-mode:normal;filter:none}
 .hero-copy{position:relative;z-index:2;width:min(520px,48%);align-self:center;margin-top:45px;color:#fff}
 .kicker{margin:0 0 18px;color:#e2c58b;font-size:10px;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
@@ -60,11 +60,13 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
 @keyframes soft-enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .primary-link,.text-link,.category a,.section-heading a{transition:all .25s ease}
 .primary-link:hover{background:var(--gold-deep);transform:translateY(-2px)}
+.hero .primary-link{min-height:0;padding:0 0 6px;background:transparent;color:#fff;border:0;border-bottom:1px solid #d7b574}
+.hero .primary-link:hover{background:transparent;color:#e2c58b;transform:translateY(-2px)}
 @media(max-width:700px){
  .site-header{height:68px;padding:0 18px 0 62px}.brand{font-size:16px;letter-spacing:.12em}.header-note{font-size:8px;letter-spacing:.08em}
  .side-nav{left:9px;gap:17px}.nav-link{width:36px;height:36px}.nav-link svg{width:20px;height:20px}
  .hero{height:650px;min-height:650px;padding:58px 22px 260px 68px;align-items:flex-start}
- .hero-wordmark{left:2%;top:58%;font-size:25vw;letter-spacing:-.1em}
+ 
  .hero-image{inset:0;width:100%;height:100%;object-position:center}
  .hero-copy{width:100%;max-width:420px;margin-top:0}.kicker{font-size:8px;letter-spacing:.22em}.hero-copy h2{font-size:31px}.hero-copy p{font-size:11px;max-width:230px}
  .hero-actions{gap:14px;margin-top:18px}.primary-link{min-height:39px;padding:0 14px;font-size:8px}.text-link{font-size:8px}
@@ -90,8 +92,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
 </nav>
 <main id="home">
 <section class="hero">
-<div class="hero-wordmark" aria-hidden="true">MANUEL</div>
-<div class="hero-copy"><p class="kicker">MANUEL EMPIRE · WEAR YOUR IDENTITY</p><h2>DRESS LIKE<br>YOU <span>MEAN IT.</span></h2><p>Your presence should speak before you do. Clothing designed for people who express confidence, individuality and presence.</p><div class="hero-actions"><a class="primary-link" href="collection.html">Shop now</a><a class="text-link" href="collection.html">Explore the collection</a></div></div>
+<div class="hero-copy"><p class="kicker">MANUEL EMPIRE · WEAR YOUR IDENTITY</p><h2>DRESS LIKE<br>YOU <span>MEAN IT.</span></h2><div class="hero-actions"><a class="primary-link" href="collection.html">Shop now</a></div></div>
 <img class="hero-image" src="Homepage%20image.jpg" alt="Fashion model in a contemporary outfit">
 <div class="hero-caption">New collection<br>MANUEL EMPIRE</div>
 </section>
