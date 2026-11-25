@@ -236,6 +236,8 @@ document.addEventListener("click",event=>{
 });
 document.addEventListener("DOMContentLoaded",()=>{
  meUpdateCartCount();meRenderShop();meRenderCart();
+ const requestedCategory=new URLSearchParams(location.search).get("category");
+ if(requestedCategory && ["men","women"].includes(requestedCategory)){const selector=document.querySelector("[data-shop-filter]");if(selector){selector.value=requestedCategory;meRenderShop();}}
  document.querySelector("[data-shop-filter]")?.addEventListener("change",meRenderShop);
  document.querySelector("[data-shop-type]")?.addEventListener("change",meRenderShop);
  document.querySelector("[data-shop-search]")?.addEventListener("input",meRenderShop);
