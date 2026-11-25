@@ -171,7 +171,7 @@ const meAddToCart = (productId,size,color) => {
 };
 const meProductCard = product => `
 <article class="shop-card" data-category="${product.category.toLowerCase()}" data-name="${product.name.toLowerCase()}">
-  <a class="shop-image" href="#product-${product.id}" aria-label="View ${product.name}"><img src="${product.image}" alt="${product.name}" loading="lazy"><span class="image-tag">MANUEL EDIT</span></a>
+  <div class="shop-image"><img src="${product.image}" alt="${product.name}" loading="lazy"><span class="image-tag">MANUEL EDIT</span></div>
   <div class="shop-card-info"><div><p class="shop-category">${product.category} · ${product.type}</p><h3>${product.name}</h3><p class="shop-price">Price on request</p></div>
   <details class="quick-add"><summary>Choose options <span>＋</span></summary>
     <label>Size<select class="option-size">${product.sizes.map(size=>`<option>${size}</option>`).join("")}</select></label>
