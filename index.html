@@ -362,14 +362,25 @@ html,body,body *{font-family:"Fabric Grotesk",Arial,sans-serif !important}
   }
 }
 </style>
+<style>
+/* Side navigation category pop-out */
+.category-dim{position:fixed;inset:0;z-index:35;border:0;padding:0;background:rgba(12,11,9,.30);opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s ease;cursor:pointer}
+.category-popout{position:fixed;left:78px;z-index:45;display:flex;flex-direction:column;gap:4px;min-width:142px;padding:8px;background:rgba(255,255,255,.96);border:1px solid rgba(197,162,101,.4);box-shadow:0 12px 35px rgba(0,0,0,.14);opacity:0;visibility:hidden;transform:translateX(-8px);transition:opacity .28s ease,transform .28s ease,visibility .28s ease}
+.category-popout a{display:block;padding:13px 15px;color:#171613;text-decoration:none;font-size:10px;font-weight:700;letter-spacing:.18em}
+.category-popout a:hover{background:#f2ecdf;color:#98743a}
+body.categories-open .category-dim{opacity:1;visibility:visible}
+body.categories-open .category-popout{opacity:1;visibility:visible;transform:translateX(0)}
+body.categories-open main,body.categories-open .site-header,body.categories-open .collection-note,body.categories-open .collection-footer{filter:blur(1.5px);transition:filter .28s ease}
+@media(max-width:700px){.category-popout{left:66px;min-width:130px}.category-popout a{padding:12px;font-size:9px}}
+</style>
 </head>
 <body>
 <header class="site-header"><h1 class="brand">MANUEL EMPIRE</h1></header>
 <nav class="side-nav" aria-label="Main navigation">
-<a class="nav-link" href="#home" aria-label="Home" title="Home"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9M9 20v-7h6v7"/></svg></a>
-<a class="nav-link" href="#about" aria-label="About" title="About"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></a>
+<a class="nav-link" href="index.html" aria-label="Home" title="Home"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9M9 20v-7h6v7"/></svg></a>
+<a class="nav-link" href="announcements.html" aria-label="Announcements" title="Announcements"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></a>
 <a class="nav-link" href="collection.html" aria-label="Bag" title="Bag"><svg viewBox="0 0 24 24"><path d="M4 7h16v13H4zM8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M4 12h16M10 12v2h4v-2"/></svg></a>
-<a class="nav-link" href="#product" aria-label="Product" title="Product"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></a>
+<a class="nav-link" href="#" aria-label="Browse categories" title="Categories" data-category-toggle><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></a>
 <a class="nav-link" href="cart.html" aria-label="Cart" title="Cart"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.1 11.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></a>
 </nav>
 <main id="home">
@@ -422,5 +433,6 @@ html,body,body *{font-family:"Fabric Grotesk",Arial,sans-serif !important}
 
 </main>
 
+<script src="nav.js"></script>
 </body>
 </html>
