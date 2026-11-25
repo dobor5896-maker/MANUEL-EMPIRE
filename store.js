@@ -183,8 +183,9 @@ const meProductCard = product => `
 const meRenderShop = () => {
   const grid=document.querySelector("[data-shop-grid]"); if(!grid)return;
   const filter=document.querySelector("[data-shop-filter]")?.value||"all";
+  const type=document.querySelector("[data-shop-type]")?.value||"all";
   const query=(document.querySelector("[data-shop-search]")?.value||"").trim().toLowerCase();
-  const shown=ME_PRODUCTS.filter(p=>(filter==="all"||p.category.toLowerCase()===filter)&&(!query||(p.name+" "+p.category+" "+p.type).toLowerCase().includes(query)));
+  const shown=ME_PRODUCTS.filter(p=>(filter==="all"||p.category.toLowerCase()===filter)&&(type==="all"||p.type.toLowerCase()===type)&&(!query||(p.name+" "+p.category+" "+p.type).toLowerCase().includes(query)));
   grid.innerHTML=shown.map(meProductCard).join("")||'<p class="empty-shop">No pieces match that search. Try another term.</p>';
 };
 const meRenderCart = () => {
@@ -211,6 +212,7 @@ document.addEventListener("click",event=>{
 document.addEventListener("DOMContentLoaded",()=>{
  meUpdateCartCount();meRenderShop();meRenderCart();
  document.querySelector("[data-shop-filter]")?.addEventListener("change",meRenderShop);
+ document.querySelector("[data-shop-type]")?.addEventListener("change",meRenderShop);
  document.querySelector("[data-shop-search]")?.addEventListener("input",meRenderShop);
  const form=document.querySelector("[data-order-form]");
  form?.addEventListener("submit",async event=>{
