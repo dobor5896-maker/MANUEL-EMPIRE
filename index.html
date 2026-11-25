@@ -322,12 +322,43 @@ html,body,body *{font-family:"Fabric Grotesk",Arial,sans-serif !important}
   font-weight:850;
   text-shadow:0 2px 16px rgba(0,0,0,.38);
 }
+/* Make the brand statement unmistakable over the photograph */
+.brand-story:before{
+  background:linear-gradient(90deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.28) 52%,rgba(0,0,0,.10) 100%);
+}
+.brand-story .story-copy{width:min(760px,76%);padding:0}
+.brand-story h2{
+  display:inline-block;
+  max-width:100%;
+  padding:22px 26px 24px;
+  background:rgba(8,8,8,.48);
+  border-left:4px solid #d7b574;
+  border-radius:2px;
+  font-size:clamp(46px,6.8vw,92px);
+  line-height:.98;
+  letter-spacing:-.045em;
+  text-shadow:0 3px 18px rgba(0,0,0,.72);
+}
+.brand-story h2 span{color:#e2c17f!important}
+.brand-story h2 strong{color:#fff!important}
 @media(max-width:700px){
+  .brand-story{min-height:680px;padding:88px 18px 70px 64px}
   .brand-story:before{
-    background:linear-gradient(180deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.15) 48%,rgba(0,0,0,.08) 100%);
+    background:linear-gradient(180deg,rgba(0,0,0,.38) 0%,rgba(0,0,0,.28) 58%,rgba(0,0,0,.14) 100%);
+  }
+  .brand-story .story-copy{width:100%;padding:0}
+  .brand-story h2{
+    display:block;
+    width:100%;
+    padding:18px 15px 20px;
+    font-size:clamp(34px,9vw,52px);
+    line-height:1.02;
+    letter-spacing:-.04em;
+    border-left-width:3px;
+    background:rgba(5,5,5,.58);
   }
   .brand-story h2 span,.brand-story h2 strong{
-    text-shadow:0 2px 14px rgba(0,0,0,.38);
+    text-shadow:0 2px 16px rgba(0,0,0,.75);
   }
 }
 </style>
