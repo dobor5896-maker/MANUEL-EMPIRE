@@ -17,17 +17,18 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
 .nav-link{display:grid;place-items:center;width:42px;height:42px;padding:0;color:var(--gold);background:transparent;border:0;border-radius:0;text-decoration:none;transition:color .2s,transform .2s}
 .nav-link:hover,.nav-link:focus-visible{color:var(--gold-deep);transform:translateX(3px);outline:none}
 .nav-link svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
-.hero{height:min(700px,calc(100svh - 112px));min-height:570px;position:relative;overflow:hidden;background:linear-gradient(110deg,#f7f6f2 0%,#f3f1eb 100%);display:flex;align-items:center;padding:60px 7vw 55px 8.5vw}
-.hero-wordmark{position:absolute;z-index:0;left:7.5%;top:42%;transform:translateY(-50%);font-family:Arial,Helvetica,sans-serif;font-size:clamp(100px,19vw,270px);font-weight:800;letter-spacing:-.09em;line-height:.8;color:#171613;white-space:nowrap;pointer-events:none}
-.hero-image{position:absolute;z-index:1;right:14%;bottom:0;height:94%;width:43%;object-fit:contain;object-position:center bottom;mix-blend-mode:multiply;filter:grayscale(100%)}
-.hero-copy{position:relative;z-index:2;width:31%;align-self:center;margin-top:45px}
-.kicker{margin:0 0 18px;color:var(--gold-deep);font-size:10px;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
-.hero-copy h2{margin:0 0 14px;font-family:Georgia,'Times New Roman',serif;font-size:clamp(26px,3.2vw,44px);font-weight:500;line-height:1.1}
-.hero-copy p{max-width:245px;color:#625e56;font-size:12px;line-height:1.8}
+.hero{height:min(760px,calc(100svh - 82px));min-height:620px;position:relative;overflow:hidden;background:#171613;display:flex;align-items:center;padding:60px 7vw 55px 8.5vw}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.68) 0%,rgba(0,0,0,.32) 48%,rgba(0,0,0,.08) 100%);z-index:1}
+.hero-wordmark{position:absolute;z-index:1;left:7.5%;top:42%;transform:translateY(-50%);font-family:Arial,Helvetica,sans-serif;font-size:clamp(100px,19vw,270px);font-weight:800;letter-spacing:-.09em;line-height:.8;color:rgba(255,255,255,.16);white-space:nowrap;pointer-events:none}
+.hero-image{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;mix-blend-mode:normal;filter:none}
+.hero-copy{position:relative;z-index:2;width:min(520px,48%);align-self:center;margin-top:45px;color:#fff}
+.kicker{margin:0 0 18px;color:#e2c58b;font-size:10px;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
+.hero-copy h2{font-family:Arial,Helvetica,sans-serif;font-size:clamp(35px,4.1vw,58px);font-weight:800;letter-spacing:-.055em;line-height:.98;text-transform:uppercase;color:#fff}
+.hero-copy p{max-width:300px;color:rgba(255,255,255,.88);font-size:12px;line-height:1.8}
 .hero-actions{display:flex;align-items:center;gap:24px;margin-top:26px;flex-wrap:wrap}
 .primary-link{display:inline-flex;align-items:center;justify-content:center;min-height:43px;padding:0 23px;background:var(--gold);color:#fff;text-decoration:none;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-.text-link{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:5px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.hero-caption{position:absolute;z-index:2;right:6.5%;bottom:55px;color:var(--gold-deep);font-size:10px;line-height:2;letter-spacing:.25em;text-transform:uppercase}
+.text-link{color:#fff;text-decoration:none;border-bottom:1px solid #d7b574;padding-bottom:5px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.hero-caption{position:absolute;z-index:2;right:6.5%;bottom:55px;color:#f0d7a5;font-size:10px;line-height:2;letter-spacing:.25em;text-transform:uppercase}
 .category-band{background:#171613;color:#fff;padding:30px 6vw 30px 8vw;display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
 .category{display:flex;align-items:center;gap:20px;min-width:0}
 .category img{width:92px;height:116px;object-fit:cover;filter:grayscale(100%)}
@@ -54,7 +55,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
 .product p{margin:0;color:var(--gold-deep);font-size:10px}
 .glass-panel{background:rgba(255,255,255,.58);border:1px solid rgba(184,148,82,.24);box-shadow:0 12px 38px rgba(35,29,18,.06);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 .hero-copy h2{font-family:Arial,Helvetica,sans-serif;font-size:clamp(35px,4.1vw,58px);font-weight:800;letter-spacing:-.055em;line-height:.98;text-transform:uppercase}
-.hero-copy h2 span{color:var(--gold);font-style:normal}
+.hero-copy h2 span{color:#d7b574;font-style:normal}
 .hero,.category-band,.season,.benefits,.products{animation:soft-enter .8s ease both}
 @keyframes soft-enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .primary-link,.text-link,.category a,.section-heading a{transition:all .25s ease}
@@ -63,9 +64,9 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
  .site-header{height:68px;padding:0 18px 0 62px}.brand{font-size:16px;letter-spacing:.12em}.header-note{font-size:8px;letter-spacing:.08em}
  .side-nav{left:9px;gap:17px}.nav-link{width:36px;height:36px}.nav-link svg{width:20px;height:20px}
  .hero{height:650px;min-height:650px;padding:58px 22px 260px 68px;align-items:flex-start}
- .hero-wordmark{left:5%;top:57%;font-size:25vw;letter-spacing:-.1em}
- .hero-image{right:0;width:76%;height:55%;height:55%;object-position:center bottom}
- .hero-copy{width:100%;margin-top:0}.kicker{font-size:8px;letter-spacing:.22em}.hero-copy h2{font-size:31px}.hero-copy p{font-size:11px;max-width:230px}
+ .hero-wordmark{left:2%;top:58%;font-size:25vw;letter-spacing:-.1em}
+ .hero-image{inset:0;width:100%;height:100%;object-position:center}
+ .hero-copy{width:100%;max-width:420px;margin-top:0}.kicker{font-size:8px;letter-spacing:.22em}.hero-copy h2{font-size:31px}.hero-copy p{font-size:11px;max-width:230px}
  .hero-actions{gap:14px;margin-top:18px}.primary-link{min-height:39px;padding:0 14px;font-size:8px}.text-link{font-size:8px}
  .hero-caption{right:13px;bottom:22px;font-size:8px}
  .category-band{grid-template-columns:1fr;gap:22px;padding:25px 22px 25px 68px}
@@ -91,7 +92,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
 <section class="hero">
 <div class="hero-wordmark" aria-hidden="true">MANUEL</div>
 <div class="hero-copy"><p class="kicker">MANUEL EMPIRE · WEAR YOUR IDENTITY</p><h2>DRESS LIKE<br>YOU <span>MEAN IT.</span></h2><p>Your presence should speak before you do. Clothing designed for people who express confidence, individuality and presence.</p><div class="hero-actions"><a class="primary-link" href="collection.html">Shop now</a><a class="text-link" href="collection.html">Explore the collection</a></div></div>
-<img class="hero-image" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1300&q=85" alt="Fashion model in a contemporary outfit">
+<img class="hero-image" src="Homepage%20image.jpg" alt="Fashion model in a contemporary outfit">
 <div class="hero-caption">New collection<br>MANUEL EMPIRE</div>
 </section>
 <section class="category-band" id="collection">
