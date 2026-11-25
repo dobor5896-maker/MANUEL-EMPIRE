@@ -238,6 +238,53 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 @media(prefers-reduced-motion:reduce){.site-header:after{animation:none}}
 
 
+
+/* Storefront additions */
+.brand-story{padding:86px 9vw 88px 12vw;display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center;background:#f5f3ee}
+.brand-story .eyebrow,.editorial-strip .eyebrow{color:var(--gold-deep);font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+.brand-story h2{max-width:520px;margin:15px 0 18px;font-family:Georgia,serif;font-size:clamp(34px,4.2vw,58px);font-weight:500;line-height:1.02;letter-spacing:-.04em}
+.brand-story p{max-width:430px;color:#625e56;font-size:13px;line-height:1.9}
+.story-mark{min-height:300px;display:flex;align-items:center;justify-content:center;position:relative;background:#e8e2d7;overflow:hidden}
+.story-mark:before{content:"";position:absolute;width:68%;aspect-ratio:1;border:1px solid rgba(152,116,58,.5);border-radius:50%}
+.story-mark span{position:relative;color:#98743a;font-family:Georgia,serif;font-size:clamp(25px,4vw,48px);letter-spacing:.12em;text-align:center}
+.featured{padding:82px 7vw 88px 9vw;background:#fff}
+.featured-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}
+.featured-head .eyebrow{margin:0 0 10px;color:var(--gold-deep);font-size:9px;font-weight:700;letter-spacing:.22em}
+.featured-head h2{margin:0;font-family:Georgia,serif;font-size:clamp(30px,4vw,46px);font-weight:500;letter-spacing:-.035em}
+.featured-head>p{max-width:260px;margin:0;color:var(--muted);font-size:11px;line-height:1.7}
+.look-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.look-card{min-width:0}
+.look-card img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--ivory);filter:saturate(.82);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.look-card a{display:block;overflow:hidden;text-decoration:none;color:inherit}
+.look-card a:hover img{transform:scale(1.035)}
+.look-card h3{margin:14px 0 5px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.look-card p{margin:0;color:var(--muted);font-size:10px;line-height:1.6}
+.look-card .look-link{display:inline-block;margin-top:10px;color:var(--gold-deep);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #c8ad7c;padding-bottom:4px}
+.editorial-strip{padding:70px 9vw 70px 12vw;background:#171613;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:30px}
+.editorial-strip h2{max-width:660px;margin:12px 0 0;font-family:Georgia,serif;font-size:clamp(28px,4vw,48px);font-weight:400;line-height:1.1}
+.editorial-strip .eyebrow{color:#d7b574}
+.editorial-strip a{flex:0 0 auto;color:#f0d7a5;text-decoration:none;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid #b89452;padding-bottom:7px}
+.site-footer{padding:50px 7vw 28px 9vw;background:#f5f3ee;color:#171613}
+.footer-top{display:flex;justify-content:space-between;gap:30px;align-items:start;padding-bottom:38px;border-bottom:1px solid rgba(152,116,58,.22)}
+.footer-brand{font-family:Georgia,serif;font-size:20px;letter-spacing:.14em}
+.footer-tagline{max-width:250px;margin:12px 0 0;color:#77736b;font-size:11px;line-height:1.7}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{color:#514c43;text-decoration:none;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.footer-bottom{display:flex;justify-content:space-between;gap:15px;padding-top:20px;color:#898276;font-size:9px;letter-spacing:.08em}
+@media(max-width:700px){
+ .brand-story{padding:65px 22px 65px 68px;grid-template-columns:1fr;gap:26px}
+ .story-mark{min-height:210px}
+ .featured{padding:62px 16px 65px 68px}
+ .featured-head{display:block}.featured-head>p{margin-top:12px}
+ .look-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
+ .look-card h3{font-size:9px}.look-card p{font-size:9px}
+ .editorial-strip{padding:55px 20px 55px 68px;display:block}
+ .editorial-strip a{display:inline-block;margin-top:22px}
+ .site-footer{padding:42px 18px 24px 68px}
+ .footer-top{display:block}.footer-links{margin-top:25px;gap:16px}
+ .footer-bottom{display:block;line-height:1.8}
+}
+
 </style>
 </head>
 <body>
@@ -267,6 +314,39 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 <div class="benefit"><svg viewBox="0 0 24 24"><path d="M12 2 15 4l4-.2.8 3.8L22 11l-2 3 .2 4-3.8.8L12 22l-3-2-4 .2-.8-3.8L2 13l2-3-.2-4 3.8-.8z"/><path d="m8 12 2.5 2.5L16 9"/></svg><div><strong>Quality assured</strong><span>Considered style and quality</span></div></div>
 <div class="benefit"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="12" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v4"/></svg><div><strong>Secure payment</strong><span>Checkout with confidence</span></div></div>
 </section>
+
+<section class="brand-story" id="about">
+  <div>
+    <p class="eyebrow">The Manuel Empire point of view</p>
+    <h2>Style is how you introduce yourself.</h2>
+    <p>MANUEL EMPIRE is for people who know that what they wear is part of how they move through the world. We bring together confident design, considered details and everyday versatility — so your clothes feel like an expression of you.</p>
+    <p>Not made to follow every trend. Made to help you wear your identity.</p>
+  </div>
+  <div class="story-mark" aria-label="Manuel Empire brand statement"><span>WEAR<br>YOUR<br>IDENTITY</span></div>
+</section>
+<section class="featured" id="product">
+  <div class="featured-head">
+    <div><p class="eyebrow">A closer look</p><h2>Made to make a statement.</h2></div>
+    <p>Explore the style direction of MANUEL EMPIRE. Discover the collection and find the pieces that feel like you.</p>
+  </div>
+  <div class="look-grid">
+    <article class="look-card"><a href="collection.html"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85" alt="Clean everyday T-shirt styling" loading="lazy"></a><h3>The everyday edit</h3><p>Easy essentials. Strong presence.</p><a class="look-link" href="collection.html">Explore the look</a></article>
+    <article class="look-card"><a href="collection.html"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85" alt="Modern streetwear styling" loading="lazy"></a><h3>Street, refined</h3><p>Contemporary style with character.</p><a class="look-link" href="collection.html">Explore the look</a></article>
+    <article class="look-card"><a href="collection.html"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85" alt="Curated neutral fashion outfit" loading="lazy"></a><h3>The neutral story</h3><p>Quiet tones. Confident details.</p><a class="look-link" href="collection.html">Explore the look</a></article>
+    <article class="look-card"><a href="collection.html"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=85" alt="Effortless contemporary fashion" loading="lazy"></a><h3>Everyday presence</h3><p>Looks that move with you.</p><a class="look-link" href="collection.html">Explore the look</a></article>
+  </div>
+</section>
+<section class="editorial-strip">
+  <div><p class="eyebrow">MANUEL EMPIRE · WEAR YOUR IDENTITY</p><h2>Dress with intention. Show up as yourself.</h2></div>
+  <a href="collection.html">Discover the collection</a>
+</section>
+<footer class="site-footer" id="cart">
+  <div class="footer-top">
+    <div><div class="footer-brand">MANUEL EMPIRE</div><p class="footer-tagline">Confident clothing. Considered style. Wear your identity.</p></div>
+    <nav class="footer-links" aria-label="Footer navigation"><a href="#home">Home</a><a href="#about">Our story</a><a href="#product">Featured looks</a><a href="collection.html">Shop collection</a></nav>
+  </div>
+  <div class="footer-bottom"><span>© 2026 MANUEL EMPIRE. All rights reserved.</span><span>WEAR YOUR IDENTITY.</span></div>
+</footer>
 
 </main>
 
