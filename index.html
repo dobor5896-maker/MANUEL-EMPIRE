@@ -10,7 +10,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
-.site-header{height:82px;display:flex;align-items:center;justify-content:center;padding:0 5vw;background:rgba(255,255,255,.1);position:fixed;top:0;left:0;width:100%;z-index:30;border:0;backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);isolation:isolate}
+.site-header{height:82px;display:flex;align-items:center;justify-content:center;padding:0 5vw;background:rgba(255,255,255,.1);position:fixed;top:0;left:0;width:100%;z-index:30;border:0;box-shadow:none;backdrop-filter:blur(32px) saturate(200%);-webkit-backdrop-filter:blur(32px) saturate(200%);isolation:isolate}
 .brand{margin:0;color:#fff;font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:600;letter-spacing:.16em;white-space:nowrap;text-align:center;text-shadow:0 1px 12px rgba(0,0,0,.28)}
 .header-note{color:#615c52;font-size:10px;letter-spacing:.18em;text-transform:uppercase}
 .side-nav{position:fixed;left:2.8vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:24px;z-index:20}
@@ -29,11 +29,11 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
 .primary-link{display:inline-flex;align-items:center;justify-content:center;min-height:43px;padding:0 23px;background:var(--gold);color:#fff;text-decoration:none;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .text-link{color:#fff;text-decoration:none;border-bottom:1px solid #d7b574;padding-bottom:5px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 .hero-caption{position:absolute;z-index:2;right:6.5%;bottom:55px;color:#f0d7a5;font-size:10px;line-height:2;letter-spacing:.25em;text-transform:uppercase}
-.category-band{background:#171613;color:#fff;padding:30px 6vw 30px 8vw;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:25px}
-.category{display:flex;align-items:center;gap:20px;min-width:0}
-.category img{width:92px;height:116px;object-fit:cover;filter:grayscale(100%)}
-.category h3{margin:0 0 10px;font-size:14px;font-weight:500;letter-spacing:.12em}
-.category p{margin:0 0 12px;color:#d5d0c7;font-size:10px;line-height:1.6}
+.category-band{background:#171613;color:#fff;padding:24px 7vw 24px 9vw;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.category{display:flex;align-items:center;gap:15px;min-width:0}
+.category img{width:78px;height:98px;object-fit:cover;filter:grayscale(100%)}
+.category h3{margin:0 0 8px;font-size:13px;font-weight:500;letter-spacing:.12em}
+.category p{margin:0 0 10px;color:#d5d0c7;font-size:9px;line-height:1.55}
 .category a{color:#e4c98e;text-decoration:none;font-size:9px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid #a98a52;padding-bottom:4px}
 .season{min-height:355px;position:relative;overflow:hidden;background:#eeece6;display:flex;align-items:center;padding:55px 8.5vw}
 .season-copy{position:relative;z-index:2;max-width:280px}
@@ -71,8 +71,8 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
  .hero-copy{width:100%;max-width:420px;margin-top:0}.kicker{font-size:8px;letter-spacing:.22em}.hero-copy h2{font-size:31px}.hero-copy p{font-size:11px;max-width:230px}
  .hero-actions{gap:14px;margin-top:18px}.primary-link{min-height:39px;padding:0 14px;font-size:8px}.text-link{font-size:8px}
  .hero-caption{right:13px;bottom:22px;font-size:8px}
- .category-band{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:22px 12px 22px 54px}
- .category{flex-direction:column;align-items:center;gap:10px;text-align:center}.category img{width:100%;max-width:120px;height:105px}.category h3{font-size:12px}.category p{font-size:9px;margin-bottom:9px}.category a{font-size:8px}
+ .category-band{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:18px 12px 18px 54px}
+ .category{flex-direction:column;align-items:center;gap:10px;text-align:center}.category img{width:100%;max-width:100px;height:88px}.category h3{font-size:11px}.category p{font-size:8px;margin-bottom:8px}.category a{font-size:8px}
  .season{min-height:390px;padding:38px 20px 220px 68px;align-items:flex-start}
  .season-copy h2{font-size:45px}.season-image{right:0;width:80%;height:57%}
  .benefits{grid-template-columns:repeat(2,1fr);gap:22px;padding:25px 18px 25px 68px}
