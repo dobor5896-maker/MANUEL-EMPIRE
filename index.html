@@ -54,6 +54,21 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
 .product img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(100%);background:var(--ivory)}
 .product h3{margin:12px 0 5px;font-size:11px;font-weight:500;letter-spacing:.04em}
 .product p{margin:0;color:var(--gold-deep);font-size:10px}
+.glass-panel{background:rgba(255,255,255,.58);border:1px solid rgba(184,148,82,.24);box-shadow:0 12px 38px rgba(35,29,18,.06);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.journey{padding:34px 6vw 38px 7.5vw;background:linear-gradient(120deg,#fff,#f8f6f1);border-top:1px solid #eee8dc;border-bottom:1px solid #eee8dc}
+.journey-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.journey-step{min-height:126px;padding:19px 15px;position:relative;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+.journey-step:hover{transform:translateY(-5px);border-color:rgba(184,148,82,.55);box-shadow:0 18px 40px rgba(35,29,18,.1)}
+.journey-number{display:block;color:var(--gold-deep);font-size:9px;letter-spacing:.2em;margin-bottom:13px}
+.journey-step h3{margin:0 0 8px;font-size:11px;letter-spacing:.12em}
+.journey-step p{margin:0;color:#716b61;font-size:10px;line-height:1.6}
+.hero-copy h2{font-family:Arial,Helvetica,sans-serif;font-size:clamp(35px,4.1vw,58px);font-weight:800;letter-spacing:-.055em;line-height:.98;text-transform:uppercase}
+.hero-copy h2 span{color:var(--gold);font-style:normal}
+.hero,.category-band,.season,.benefits,.products{animation:soft-enter .8s ease both}
+@keyframes soft-enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.primary-link,.text-link,.category a,.section-heading a{transition:all .25s ease}
+.primary-link:hover{background:var(--gold-deep);transform:translateY(-2px)}
+@media(max-width:700px){.journey{padding:25px 16px 28px 68px}.journey-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.journey-step{min-height:112px;padding:15px 12px}.journey-step:last-child{grid-column:1/-1}.hero-copy h2{font-size:36px}}
 @media(max-width:700px){
  .topline{height:27px;padding:0 14px 0 62px;font-size:7px;letter-spacing:.06em}
  .site-header{height:68px;padding:0 18px 0 62px}.brand{font-size:16px;letter-spacing:.12em}.header-note{font-size:8px;letter-spacing:.08em}
@@ -86,11 +101,18 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
 </nav>
 <main id="home">
 <section class="hero">
-<div class="hero-wordmark" aria-hidden="true">ME</div>
-<div class="hero-copy"><p class="kicker">The new expression of style</p><h2>Style that<br>moves <span style="color:var(--gold);font-style:italic">with you.</span></h2><p>Discover pieces that express your confidence, individuality and presence.</p><div class="hero-actions"><a class="primary-link" href="#product">Shop now</a><a class="text-link" href="#collection">Explore the collection</a></div></div>
+<div class="hero-wordmark" aria-hidden="true">MANUEL</div>
+<div class="hero-copy"><p class="kicker">MANUEL EMPIRE · WEAR YOUR IDENTITY</p><h2>DRESS LIKE<br>YOU <span>MEAN IT.</span></h2><p>Your presence should speak before you do. Clothing designed for people who express confidence, individuality and presence.</p><div class="hero-actions"><a class="primary-link" href="#product">Shop now</a><a class="text-link" href="#collection">Explore the collection</a></div></div>
 <img class="hero-image" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1300&q=85" alt="Fashion model in a contemporary outfit">
 <div class="hero-caption">New collection<br>MANUEL EMPIRE</div>
 </section>
+<section class="journey" aria-label="The MANUEL EMPIRE experience"><div class="journey-grid">
+<article class="journey-step glass-panel"><span class="journey-number">01 / IDENTITY</span><h3>BRAND</h3><p>Capture attention and communicate identity.</p></article>
+<article class="journey-step glass-panel"><span class="journey-number">02 / DISCOVERY</span><h3>COLLECTION</h3><p>Discover clothing and explore styles.</p></article>
+<article class="journey-step glass-panel"><span class="journey-number">03 / DETAIL</span><h3>PRODUCT</h3><p>Understand fit, quality and styling.</p></article>
+<article class="journey-step glass-panel"><span class="journey-number">04 / FEELING</span><h3>CONFIDENCE</h3><p>Imagine yourself wearing it.</p></article>
+<article class="journey-step glass-panel"><span class="journey-number">05 / ACTION</span><h3>PURCHASE</h3><p>Order easily and confidently.</p></article>
+</div></section>
 <section class="category-band" id="collection">
 <article class="category"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Men's fashion"><div><h3>MEN</h3><p>Elevated everyday essentials.</p><a href="#product">Shop men →</a></div></article>
 <article class="category"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Women's fashion"><div><h3>WOMEN</h3><p>Effortless style, every day.</p><a href="#product">Shop women →</a></div></article>
@@ -103,7 +125,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
 <div class="benefit"><svg viewBox="0 0 24 24"><path d="M12 2 15 4l4-.2.8 3.8L22 11l-2 3 .2 4-3.8.8L12 22l-3-2-4 .2-.8-3.8L2 13l2-3-.2-4 3.8-.8z"/><path d="m8 12 2.5 2.5L16 9"/></svg><div><strong>Quality assured</strong><span>Considered style and quality</span></div></div>
 <div class="benefit"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="12" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v4"/></svg><div><strong>Secure payment</strong><span>Checkout with confidence</span></div></div>
 </section>
-<section class="products" id="product"><div class="section-heading"><h2>Best of Manuel Empire</h2><a href="#product">View all</a></div><div class="product-grid">
+<section class="products" id="product"><div class="section-heading"><h2>Discover the collection</h2><a href="#product">View all</a></div><div class="product-grid">
 <article class="product"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80" alt="Minimal dark T-shirt"><h3>Everyday Essential Tee</h3><p>Discover the collection</p></article>
 <article class="product"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80" alt="Contemporary streetwear look"><h3>Modern Streetwear</h3><p>Discover the collection</p></article>
 <article class="product"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Neutral fashion outfit"><h3>Signature Neutral</h3><p>Discover the collection</p></article>
