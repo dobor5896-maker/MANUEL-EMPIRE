@@ -23,3 +23,56 @@
 /* Fabric Grotesk brand typography — provide the licensed WOFF2 file at the path below */
 @font-face{font-family:"Fabric Grotesk";src:url("FabricGrotesk-Variable.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
 html,body,body *{font-family:"Fabric Grotesk",Arial,sans-serif !important}
+
+
+/* COLLECTION ROOM — black, white and champagne gold editorial frames */
+:root{--gold:#c5a265;--gold-deep:#98743a;--ink:#11110f;--ivory:#f7f6f2}
+body{background:#fff;color:#11110f}
+.store-intro{background:#11110f;color:#fff;padding-top:68px;padding-bottom:48px}
+.store-intro .eyebrow{color:#d7b574;letter-spacing:.25em}
+.store-intro h2{color:#fff;font-family:"Fabric Grotesk",Arial,sans-serif!important;font-weight:650;letter-spacing:-.045em}
+.store-intro>p:last-child{color:rgba(255,255,255,.72);max-width:480px}
+.store-toolbar{background:#fff;padding-top:25px;padding-bottom:25px;border-bottom:1px solid #eee9df}
+.store-filters select,.store-search{border:1px solid #ded7ca;background:#fff;color:#171613;border-radius:0;min-height:43px}
+.store-filters select:focus,.store-search:focus{border-color:#b89452;outline:1px solid rgba(184,148,82,.22)}
+.gold-button{background:#b89452;color:#11110f;border:1px solid #b89452;border-radius:0;min-height:44px;font-weight:700;letter-spacing:.12em;transition:background .25s,color .25s,transform .25s}
+.gold-button:hover{background:#11110f;border-color:#11110f;color:#fff;transform:translateY(-1px)}
+.store-grid{background:#fff;padding-top:34px;gap:28px 20px}
+.shop-card{background:#fff;border:1px solid #e9e4da;padding:0 0 18px;transition:border-color .25s,box-shadow .25s}
+.shop-card:hover{border-color:#c5a265;box-shadow:0 12px 28px rgba(20,17,12,.07)}
+.shop-image{background:#f1efe9;margin:8px 8px 0}
+.shop-image img{aspect-ratio:4/5;object-fit:cover;filter:none}
+.image-tag{left:10px;top:10px;background:rgba(17,17,15,.88);color:#e4c98f;font-size:8px;letter-spacing:.16em;padding:8px 10px}
+.shop-card-info{display:block;padding:0 14px;margin-top:14px}
+.shop-category{color:#98743a;font-size:8px;letter-spacing:.16em;font-weight:700}
+.shop-card h3{color:#11110f;font-size:13px;line-height:1.35;font-weight:650;letter-spacing:.015em}
+.shop-price{color:#7b756b;font-size:10px;margin-top:6px}
+.shop-description{padding:0 14px;margin:9px 0 13px;color:#77736b;font-size:10px;line-height:1.65;min-height:33px}
+.product-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 14px}
+.product-options label{display:block;color:#766b59;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.product-options select{display:block;width:100%;height:36px;margin-top:6px;padding:0 8px;border:1px solid #e5dfd4;background:#fff;color:#171613;font:inherit;font-size:10px;border-radius:0}
+.product-options select:focus{outline:1px solid #c5a265;border-color:#c5a265}
+.shop-card .add-to-bag{display:flex;width:calc(100% - 28px);margin:13px 14px 0;justify-content:space-between;padding:0 14px}
+.shop-card .add-to-bag span{font-size:16px;font-weight:400}
+.empty-shop{color:#77736b}
+.store-notice{background:#11110f;border-left:3px solid #c5a265;color:#fff}
+@media(max-width:900px){.store-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 14px}}
+@media(max-width:700px){
+ .store-intro{padding:48px 18px 34px 68px}
+ .store-intro h2{font-size:36px}
+ .store-toolbar{padding:18px 15px 18px 68px}
+ .store-filters{width:100%}
+ .store-filters select{flex:1;min-width:0}
+ .store-search{width:100%}
+ .store-grid{padding:22px 12px 50px 62px;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 9px}
+ .shop-card{padding-bottom:12px}
+ .shop-image{margin:6px 6px 0}
+ .shop-card-info{padding:0 9px;margin-top:11px}
+ .shop-card h3{font-size:11px}
+ .shop-description{padding:0 9px;margin:8px 0 10px;font-size:9px;min-height:0}
+ .product-options{padding:0 9px;gap:6px}
+ .product-options label{font-size:7px;letter-spacing:.08em}
+ .product-options select{height:33px;padding:0 5px;font-size:9px}
+ .shop-card .add-to-bag{width:calc(100% - 18px);margin:10px 9px 0;min-height:39px;padding:0 9px;font-size:8px;letter-spacing:.08em}
+ .image-tag{font-size:7px;padding:6px 7px}
+}
