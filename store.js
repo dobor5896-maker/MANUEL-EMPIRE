@@ -171,14 +171,23 @@ const meAddToCart = (productId,size,color) => {
 };
 const meProductCard = product => `
 <article class="shop-card" data-category="${product.category.toLowerCase()}" data-name="${product.name.toLowerCase()}">
-  <div class="shop-image"><img src="${product.image}" alt="${product.name}" loading="lazy"><span class="image-tag">MANUEL EDIT</span></div>
-  <div class="shop-card-info"><div><p class="shop-category">${product.category} · ${product.type}</p><h3>${product.name}</h3><p class="shop-price">Price on request</p></div>
-  <details class="quick-add"><summary>Choose options <span>＋</span></summary>
-    <label>Size<select class="option-size">${product.sizes.map(size=>`<option>${size}</option>`).join("")}</select></label>
-    <label>Colour<select class="option-color">${product.colors.map(color=>`<option>${color}</option>`).join("")}</select></label>
-    <button type="button" class="gold-button add-to-bag" data-id="${product.id}">Add to bag</button>
-  </details></div>
-  <p class="shop-description">${product.description}</p>
+  <div class="shop-image">
+    <img src="${product.image}" alt="${product.name}" loading="lazy">
+    <span class="image-tag">MANUEL EMPIRE</span>
+  </div>
+  <div class="shop-card-info">
+    <div class="shop-card-heading">
+      <p class="shop-category">${product.category} / ${product.type}</p>
+      <h3>${product.name}</h3>
+      <p class="shop-price">Price on request</p>
+    </div>
+    <p class="shop-description">${product.description}</p>
+    <div class="product-options">
+      <label>Size<select class="option-size">${product.sizes.map(size=>`<option>${size}</option>`).join("")}</select></label>
+      <label>Colour<select class="option-color">${product.colors.map(color=>`<option>${color}</option>`).join("")}</select></label>
+    </div>
+    <button type="button" class="gold-button add-to-bag" data-id="${product.id}">Add to bag <span aria-hidden="true">＋</span></button>
+  </div>
 </article>`;
 const meRenderShop = () => {
   const grid=document.querySelector("[data-shop-grid]"); if(!grid)return;
