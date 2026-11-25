@@ -174,6 +174,7 @@ const meProductCard = product => `
   <div class="shop-image">
     <img src="${product.image}" alt="${product.name}" loading="lazy">
     <span class="image-tag">MANUEL EMPIRE</span>
+    <button class="wishlist-button" type="button" data-wishlist="${product.id}" aria-label="Add ${product.name} to wishlist" aria-pressed="false">♡</button>
   </div>
   <div class="shop-card-info">
     <div class="shop-card-heading">
@@ -210,7 +211,22 @@ const meOrderText = (details) => {
  const lines=cart.map(item=>{const p=ME_PRODUCTS.find(product=>product.id===item.id);return p?`${p.name} | Size ${item.size} | ${item.color} | Qty ${item.qty}`:"";}).filter(Boolean);
  return ["MANUEL EMPIRE — ORDER REQUEST","",...lines,"","Customer: "+details.name,"Phone: "+details.phone,"Delivery address: "+details.address,details.note?"Note: "+details.note:"","Please confirm availability, final prices and delivery details."].filter(Boolean).join("\n");
 };
+const ME_WISHLIST_KEY = "manuel-empire-wishlist-v1";
+const meReadWishlist = () => { try{return JSON.parse(localStorage.getItem(ME_WISHLIST_KEY)||"[]");}catch{return [];} };
+const meToggleWishlist = (id,button) => {
+ const saved=meReadWishlist(), exists=saved.includes(id);
+ const next=exists?saved.filter(item=>item!==id):[...saved,id];
+ localStorage.setItem(ME_WISHLIST_KEY,JSON.stringify(next));
+ button.classList.toggle("is-saved",!exists);
+ button.setAttribute("aria-pressed",String(!exists));
+ button.textContent=!exists?"♥":"♡";
+};
 document.addEventListener("click",event=>{
+ const heart=event.target.closest("[data-wishlist]");
+ if(heart){meToggleWishlist(heart.dataset.wishlist,heart);return;}
+ const house=event.target.closest("[data-house-filter]");
+ if(house){const filter=document.querySelector("[data-shop-filter]");if(filter){filter.value=house.dataset.houseFilter;meRenderShop();}}
+
  const add=event.target.closest(".add-to-bag");
  if(add){const card=add.closest(".shop-card");meAddToCart(add.dataset.id,card.querySelector(".option-size").value,card.querySelector(".option-color").value);}
  const qty=event.target.closest("[data-qty]");
@@ -223,6 +239,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  document.querySelector("[data-shop-filter]")?.addEventListener("change",meRenderShop);
  document.querySelector("[data-shop-type]")?.addEventListener("change",meRenderShop);
  document.querySelector("[data-shop-search]")?.addEventListener("input",meRenderShop);
+ document.querySelectorAll("[data-wishlist]").forEach(button=>{const saved=meReadWishlist().includes(button.dataset.wishlist);button.classList.toggle("is-saved",saved);button.setAttribute("aria-pressed",String(saved));button.textContent=saved?"♥":"♡";});
  const form=document.querySelector("[data-order-form]");
  form?.addEventListener("submit",async event=>{
    event.preventDefault();if(!meReadCart().length)return;
