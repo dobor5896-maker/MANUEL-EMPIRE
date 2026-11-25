@@ -238,32 +238,6 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 @media(prefers-reduced-motion:reduce){.site-header:after{animation:none}}
 
 
-/* Ten-frame editorial wheel: images orbit in a circle as the visitor scrolls */
-.season-wheel{position:relative;height:1200vh;background:#f1eee8;color:#171613;overflow:clip}
-.wheel-sticky{position:sticky;top:0;height:100svh;min-height:620px;overflow:hidden;display:grid;grid-template-columns:46% 54%;align-items:center}
-.wheel-copy{position:absolute;z-index:3;left:4.5vw;top:50%;transform:translateY(-50%);width:35%;max-width:480px;padding:0}
-.wheel-kicker{margin:0 0 18px;color:#98743a;font-size:10px;font-weight:700;letter-spacing:.2em}
-.wheel-copy h2{margin:0 0 18px;font-size:clamp(42px,5.5vw,76px);line-height:.9;letter-spacing:-.06em;font-weight:600}
-.wheel-copy>p:last-child{max-width:285px;margin:0;color:#625e56;font-size:14px;line-height:1.7}
-.wheel-window{position:absolute;right:0;top:0;width:54%;height:100%;overflow:hidden;clip-path:none !important;mask-image:none !important;-webkit-mask-image:none !important}
-.wheel-track{position:absolute;inset:0;width:100%;height:100%;will-change:transform}
-.wheel-frame{position:absolute;top:50%;left:50%;display:block;width:clamp(76px,9vw,126px);height:clamp(104px,13vw,174px);margin:0 !important;overflow:hidden;background:#d8d0c4;border-radius:16px;clip-path:none;will-change:transform}
-.wheel-frame img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.82)}
-.wheel-frame figcaption{position:absolute;right:9px;bottom:9px;color:#fff;font-size:8px;letter-spacing:.16em;text-shadow:0 1px 8px #0008}
-.wheel-index{position:absolute;z-index:4;bottom:28px;left:9vw;color:#a18b69;font-size:9px;letter-spacing:.2em}
-@media(max-width:700px){
- .season-wheel{height:1000vh}
- .wheel-sticky{min-height:600px;grid-template-columns:1fr;align-items:center}
- .wheel-copy{left:5vw;top:50%;transform:translateY(-50%);width:38%;max-width:none;padding:0;min-height:0}
- .wheel-kicker{font-size:7px;letter-spacing:.12em;margin-bottom:12px}
- .wheel-copy h2{font-size:clamp(34px,9vw,48px);margin-bottom:12px;line-height:.9}
- .wheel-copy>p:last-child{font-size:10px;line-height:1.55;max-width:100%}
- .wheel-window{top:0;width:64%;height:100%;clip-path:none !important;mask-image:none !important;-webkit-mask-image:none !important}
- .wheel-frame{width:clamp(48px,14vw,66px);height:clamp(68px,19vw,92px);border-radius:10px}
- .wheel-frame figcaption{right:5px;bottom:5px;font-size:6px}
- .wheel-index{left:68px;bottom:16px;font-size:8px}
-}
-@media(prefers-reduced-motion:reduce){.wheel-frame{transition:none !important}}
 </style>
 </head>
 <body>
@@ -286,13 +260,7 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 <article class="category"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Women's fashion"><div><h3>WOMEN</h3><p>Effortless style, every day.</p><a href="collection.html">Shop women →</a></div></article>
 
 </section>
-<section class="season-wheel" id="about" aria-label="New Vibes fashion lookbook">
-  <div class="wheel-sticky">
-    <div class="wheel-copy"><p class="wheel-kicker">MANUEL EMPIRE · NEW EDIT</p><h2>NEW<br>VIBES.</h2><p>Discover pieces made to bring a fresh perspective to your everyday style.</p></div>
-    <div class="wheel-window" aria-label="Ten fashion image frames scrolling upward"><div class="wheel-track"><figure class="wheel-frame wheel-frame-1"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 1" loading="lazy"><figcaption>LOOK 01</figcaption></figure><figure class="wheel-frame wheel-frame-2"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 2" loading="lazy"><figcaption>LOOK 02</figcaption></figure><figure class="wheel-frame wheel-frame-3"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 3" loading="lazy"><figcaption>LOOK 03</figcaption></figure><figure class="wheel-frame wheel-frame-4"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 4" loading="lazy"><figcaption>LOOK 04</figcaption></figure><figure class="wheel-frame wheel-frame-5"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 5" loading="lazy"><figcaption>LOOK 05</figcaption></figure><figure class="wheel-frame wheel-frame-6"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 6" loading="lazy"><figcaption>LOOK 06</figcaption></figure><figure class="wheel-frame wheel-frame-7"><img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 7" loading="lazy"><figcaption>LOOK 07</figcaption></figure><figure class="wheel-frame wheel-frame-8"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 8" loading="lazy"><figcaption>LOOK 08</figcaption></figure><figure class="wheel-frame wheel-frame-9"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 9" loading="lazy"><figcaption>LOOK 09</figcaption></figure><figure class="wheel-frame wheel-frame-10"><img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=85" alt="Fashion placeholder frame 10" loading="lazy"><figcaption>LOOK 10</figcaption></figure></div></div>
-    <span class="wheel-index" aria-hidden="true">01 — 10</span>
-  </div>
-</section>
+
 <section class="benefits" id="service">
 <div class="benefit"><svg viewBox="0 0 24 24"><path d="M2 7h13v11H2zM15 11h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg><div><strong>Fast delivery</strong><span>Quick and safe delivery</span></div></div>
 <div class="benefit"><svg viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10M8 4.2l9 5"/></svg><div><strong>Easy returns</strong><span>A simpler return experience</span></div></div>
@@ -301,33 +269,6 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 </section>
 
 </main>
-<script>
-(() => {
- const section=document.querySelector('.season-wheel');
- const track=section?.querySelector('.wheel-track');
- if(!section || !track || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
- const frames=[...track.querySelectorAll('.wheel-frame')];
- let ticking=false;
- const update=()=>{
-   const rect=section.getBoundingClientRect();
-   const travel=section.offsetHeight-window.innerHeight;
-   const progress=Math.max(0,Math.min(1,-rect.top/Math.max(1,travel)));
-   const rotation=progress*720;
-   const mobile=window.matchMedia('(max-width:700px)').matches;
-   const radius=mobile
-     ? Math.min(window.innerWidth*0.205, window.innerHeight*0.245)
-     : Math.min(window.innerWidth*0.205, window.innerHeight*0.31);
-   frames.forEach((frame,index)=>{
-     const angle=rotation+index*(360/frames.length);
-     frame.style.transform=`translate(-50%,-50%) rotate(${angle}deg) translateX(${radius}px) rotate(${-angle}deg)`;
-   });
-   ticking=false;
- };
- const onScroll=()=>{if(!ticking){requestAnimationFrame(update);ticking=true;}};
- window.addEventListener('scroll',onScroll,{passive:true});
- window.addEventListener('resize',update);
- update();
-})();
-</script>
+
 </body>
 </html>
