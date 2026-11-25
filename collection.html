@@ -105,28 +105,35 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 @keyframes me-soft-in{from{opacity:.82;filter:blur(2px)}to{opacity:1;filter:blur(0)}}
 
 
-/* MANUEL EMPIRE — ultra-clear optical glass; navigation icons remain bare */
+/* MANUEL EMPIRE — visible, 80%-transparent Liquid Glass; side icons stay bare */
 .site-header{
-  background:rgba(255,255,255,.20) !important;
+  position:relative;
+  background:linear-gradient(135deg,rgba(255,255,255,.23),rgba(255,255,255,.12) 38%,rgba(255,255,255,.18) 72%,rgba(255,255,255,.10)) !important;
   border:0 !important;outline:0 !important;
-  box-shadow:none !important;
-  -webkit-backdrop-filter:blur(8px) saturate(1.55) contrast(1.035) !important;
-  backdrop-filter:blur(8px) saturate(1.55) contrast(1.035) !important;
+  box-shadow:0 10px 32px rgba(25,20,12,.055),inset 0 1px 0 rgba(255,255,255,.48),inset 0 -1px 0 rgba(255,255,255,.13) !important;
+  -webkit-backdrop-filter:blur(15px) saturate(1.85) contrast(1.06) !important;
+  backdrop-filter:blur(15px) saturate(1.85) contrast(1.06) !important;
   isolation:isolate;overflow:hidden;
 }
-.site-header:before{content:none !important;display:none !important}
+.site-header:before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 48% 125% at 18% -55%,rgba(255,255,255,.58),transparent 72%),
+    radial-gradient(ellipse 55% 115% at 82% -75%,rgba(255,255,255,.30),transparent 70%),
+    linear-gradient(180deg,rgba(255,255,255,.19),transparent 48%,rgba(255,255,255,.045));
+}
 .site-header:after{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 58% 85% at 50% -38%,rgba(255,255,255,.105),transparent 76%),
-    linear-gradient(112deg,transparent 36%,rgba(255,255,255,.035) 49%,transparent 62%);
-  opacity:.72;
-  animation:me-clear-glint 19s ease-in-out infinite;
+    linear-gradient(108deg,transparent 22%,rgba(255,255,255,.02) 38%,rgba(255,255,255,.38) 49%,rgba(255,255,255,.06) 54%,transparent 70%),
+    radial-gradient(ellipse 38% 70% at 50% 0%,rgba(255,255,255,.20),transparent 78%);
+  opacity:.9;transform:translateX(-105%);
+  animation:me-liquid-reflection 12s cubic-bezier(.4,0,.2,1) infinite;
 }
-/* Side navigation is intentionally untouched: icons only, no glass surface */
+/* Side navigation is deliberately plain: five original icons, no glass */
 .side-nav{
   background:transparent !important;border:0 !important;outline:0 !important;
-  box-shadow:none !important;padding-top:14px;padding-bottom:14px;
+  box-shadow:none !important;
   -webkit-backdrop-filter:none !important;backdrop-filter:none !important;
   overflow:visible !important;isolation:auto !important;
 }
@@ -142,33 +149,36 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
   transform:translateX(2px) !important;
 }
 .nav-link svg{filter:none !important}
-/* Calls to action stay visually light; no filled pills or drawn borders */
+/* Other action buttons get a clear, softly glossy glass finish */
 .primary-link,.category a,.section-heading a{
-  background:transparent !important;border:0 !important;
-  box-shadow:none !important;
-  -webkit-backdrop-filter:none !important;backdrop-filter:none !important;
-  transition:opacity .3s ease,transform .35s ease !important;
+  background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.10)) !important;
+  border:0 !important;border-radius:999px;
+  box-shadow:0 7px 22px rgba(25,20,12,.055),inset 0 1px 0 rgba(255,255,255,.50),inset 0 -1px 0 rgba(255,255,255,.12) !important;
+  -webkit-backdrop-filter:blur(13px) saturate(1.75) !important;
+  backdrop-filter:blur(13px) saturate(1.75) !important;
+  transition:transform .35s ease,box-shadow .35s ease,background .35s ease !important;
 }
 .primary-link:hover,.category a:hover,.section-heading a:hover{
-  background:transparent !important;box-shadow:none !important;
-  transform:translateY(-1px);
+  background:linear-gradient(135deg,rgba(255,255,255,.30),rgba(255,255,255,.14)) !important;
+  box-shadow:0 10px 26px rgba(25,20,12,.075),inset 0 1px 0 rgba(255,255,255,.62) !important;
+  transform:translateY(-2px);
 }
 .hero .primary-link{
-  background:transparent !important;box-shadow:none !important;
+  background:transparent !important;box-shadow:none !important;border-radius:0;
   -webkit-backdrop-filter:none !important;backdrop-filter:none !important;
   border:0 !important;border-bottom:1px solid #d7b574 !important;
 }
 .hero .primary-link:hover{background:transparent !important;box-shadow:none !important}
 .brand,.header-note{position:relative;z-index:1}
-@keyframes me-clear-glint{
-  0%,76%,100%{opacity:.35;transform:translateX(-1%)}
-  88%{opacity:.8;transform:translateX(1%)}
+@keyframes me-liquid-reflection{
+  0%,62%,100%{transform:translateX(-105%)}
+  82%{transform:translateX(105%)}
 }
 @media(max-width:700px){
   .site-header{
-    background:rgba(255,255,255,.20) !important;
-    -webkit-backdrop-filter:blur(6px) saturate(1.45) contrast(1.025) !important;
-    backdrop-filter:blur(6px) saturate(1.45) contrast(1.025) !important;
+    background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.12) 55%,rgba(255,255,255,.18)) !important;
+    -webkit-backdrop-filter:blur(12px) saturate(1.7) contrast(1.04) !important;
+    backdrop-filter:blur(12px) saturate(1.7) contrast(1.04) !important;
   }
 }
 @media(prefers-reduced-motion:reduce){.site-header:after{animation:none}}
