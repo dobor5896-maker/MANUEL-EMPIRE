@@ -79,6 +79,52 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helveti
  .benefit{gap:9px}.benefit svg{width:24px;height:24px}.benefit strong{font-size:8px}.benefit span{font-size:8px}
  .products{padding:35px 16px 45px 68px}.section-heading h2{font-size:15px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:17px 12px}
 }
+
+/* Premium liquid-glass surfaces: light, depth and soft optical reflections */
+.site-header{
+  background:linear-gradient(180deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.055) 48%,rgba(255,255,255,.025) 100%) !important;
+  border:0 !important;outline:0 !important;
+  box-shadow:0 10px 34px rgba(18,15,10,.055) !important;
+  -webkit-backdrop-filter:blur(30px) saturate(175%) contrast(1.04) !important;
+  backdrop-filter:blur(30px) saturate(175%) contrast(1.04) !important;
+}
+.site-header:before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 50% -55%,rgba(255,255,255,.72),transparent 68%),linear-gradient(100deg,transparent 12%,rgba(255,255,255,.12) 48%,transparent 84%);
+  opacity:.9;
+}
+.site-header:after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:linear-gradient(112deg,transparent 22%,rgba(255,255,255,.20) 48%,transparent 70%);
+  transform:translateX(-110%);animation:liquid-sheen 11s ease-in-out infinite;
+}
+.side-nav{
+  border:0 !important;outline:0 !important;
+  background:linear-gradient(145deg,rgba(255,255,255,.32) 0%,rgba(255,255,255,.13) 38%,rgba(255,255,255,.075) 72%,rgba(255,255,255,.19) 100%) !important;
+  box-shadow:0 18px 42px rgba(22,18,12,.19),0 4px 12px rgba(22,18,12,.08),inset 0 10px 22px rgba(255,255,255,.19),inset 0 -12px 22px rgba(184,148,82,.075) !important;
+  -webkit-backdrop-filter:blur(26px) saturate(190%) contrast(1.08) !important;
+  backdrop-filter:blur(26px) saturate(190%) contrast(1.08) !important;
+}
+.side-nav:before{
+  content:"";position:absolute;inset:0;border-radius:inherit;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse at 28% 0%,rgba(255,255,255,.58),transparent 42%),linear-gradient(115deg,rgba(255,255,255,.20),transparent 42%,rgba(230,204,155,.10) 78%,rgba(255,255,255,.13));
+}
+.side-nav:after{
+  content:"";position:absolute;top:8px;bottom:8px;left:3px;width:2px;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.62) 18%,rgba(255,255,255,.13) 76%,transparent);
+  filter:blur(.5px);
+}
+.nav-link{background:transparent !important;box-shadow:none !important;transition:transform .35s cubic-bezier(.2,.8,.2,1),color .3s,background .3s !important}
+.nav-link:hover,.nav-link:focus-visible{
+  background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.56),rgba(255,255,255,.13) 62%,rgba(184,148,82,.08)) !important;
+  box-shadow:0 5px 16px rgba(20,17,12,.10),inset 0 5px 10px rgba(255,255,255,.24) !important;
+  transform:scale(1.07) !important;outline:0 !important;
+}
+@keyframes liquid-sheen{0%,58%,100%{transform:translateX(-110%)}72%{transform:translateX(110%)}}
+@media(max-width:700px){
+ .site-header{-webkit-backdrop-filter:blur(26px) saturate(175%) !important;backdrop-filter:blur(26px) saturate(175%) !important}
+ .side-nav{-webkit-backdrop-filter:blur(24px) saturate(185%) !important;backdrop-filter:blur(24px) saturate(185%) !important}
+}
 </style>
 </head>
 <body>
