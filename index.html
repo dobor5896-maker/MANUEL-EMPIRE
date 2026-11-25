@@ -308,6 +308,28 @@ html,body,body *{font-family:"Fabric Grotesk",Arial,sans-serif !important}
  .brand-story .story-mark{min-height:100%;aspect-ratio:auto}
 }
 
+
+/* Brand-story heading contrast: champagne gold + white over a gentle dark image wash */
+.brand-story:before{
+  background:linear-gradient(90deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.16) 42%,rgba(0,0,0,.10) 72%,rgba(0,0,0,.06) 100%);
+}
+.brand-story h2 span{
+  color:#d7b574 !important;
+  text-shadow:0 2px 14px rgba(0,0,0,.30);
+}
+.brand-story h2 strong{
+  color:#fff !important;
+  font-weight:850;
+  text-shadow:0 2px 16px rgba(0,0,0,.38);
+}
+@media(max-width:700px){
+  .brand-story:before{
+    background:linear-gradient(180deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.15) 48%,rgba(0,0,0,.08) 100%);
+  }
+  .brand-story h2 span,.brand-story h2 strong{
+    text-shadow:0 2px 14px rgba(0,0,0,.38);
+  }
+}
 </style>
 </head>
 <body>
