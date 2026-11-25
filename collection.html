@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<title>Discover the Collection | MANUEL EMPIRE</title>
+<style>
+:root{--gold:#b89452;--gold-deep:#98743a;--ink:#171613;--paper:#fff;--ivory:#f5f3ee;--muted:#77736b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+.site-header{height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw 0 7.5vw;background:#fff;border-bottom:1px solid #eeeae2}
+.brand{margin:0;color:var(--ink);font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:600;letter-spacing:.16em}
+.header-note{color:#615c52;font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+.side-nav{position:fixed;left:2.8vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:24px;z-index:20}
+.nav-link{display:grid;place-items:center;width:42px;height:42px;color:var(--gold);background:transparent;text-decoration:none;transition:color .2s,transform .2s}
+.nav-link:hover{color:var(--gold-deep);transform:translateX(3px)}
+.nav-link svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.page-intro{padding:75px 7.5vw 35px 8vw}
+.kicker{margin:0 0 14px;color:var(--gold-deep);font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase}
+.page-intro h2{margin:0;font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-.055em;text-transform:uppercase}
+.page-intro p{color:var(--muted);font-size:13px;line-height:1.8;max-width:440px}
+.products{padding:25px 6vw 75px 7.5vw}
+.section-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px}
+.section-heading h2{margin:0;font-size:19px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.section-heading a{color:var(--ink);font-size:9px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:5px}
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.product img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(100%);background:var(--ivory)}
+.product h3{margin:12px 0 5px;font-size:11px;font-weight:500;letter-spacing:.04em}
+.product p{margin:0;color:var(--gold-deep);font-size:10px}
+@media(max-width:700px){.site-header{height:68px;padding:0 18px 0 62px}.brand{font-size:16px;letter-spacing:.12em}.header-note{font-size:8px}.side-nav{left:9px;gap:17px}.nav-link{width:36px;height:36px}.nav-link svg{width:20px;height:20px}.page-intro{padding:55px 18px 25px 68px}.page-intro h2{font-size:36px}.products{padding:25px 16px 45px 68px}.section-heading h2{font-size:15px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:17px 12px}}
+</style>
+</head>
+<body>
+<header class="site-header"><h1 class="brand">MANUEL EMPIRE</h1><div class="header-note">Confidence in every detail</div></header>
+<nav class="side-nav" aria-label="Main navigation">
+<a class="nav-link" href="index.html#home" aria-label="Home" title="Home"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9M9 20v-7h6v7"/></svg></a>
+<a class="nav-link" href="index.html#about" aria-label="About" title="About"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></a>
+<a class="nav-link" href="index.html#service" aria-label="Service" title="Service"><svg viewBox="0 0 24 24"><path d="M4 7h16v13H4zM8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M4 12h16M10 12v2h4v-2"/></svg></a>
+<a class="nav-link" href="collection.html" aria-label="Product" title="Product"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></a>
+<a class="nav-link" href="collection.html" aria-label="Cart" title="Cart"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.1 11.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></a>
+</nav>
+<main>
+<div class="page-intro"><p class="kicker">MANUEL EMPIRE · WEAR YOUR IDENTITY</p><h2>Discover the Collection</h2><p>Explore pieces made to express confidence, individuality and presence.</p></div>
+<section class="products" id="collection"><div class="section-heading"><h2>Discover the collection</h2><a href="#product">The collection</a></div><div class="product-grid">
+<article class="product"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80" alt="Minimal dark T-shirt"><h3>Everyday Essential Tee</h3><p>Discover the collection</p></article>
+<article class="product"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80" alt="Contemporary streetwear look"><h3>Modern Streetwear</h3><p>Discover the collection</p></article>
+<article class="product"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Neutral fashion outfit"><h3>Signature Neutral</h3><p>Discover the collection</p></article>
+<article class="product"><img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=600&q=80" alt="Classic casual outfit"><h3>Classic Daily Wear</h3><p>Discover the collection</p></article>
+</div></section>
+</main>
+</body>
+</html>
