@@ -76,3 +76,56 @@ body{background:#fff;color:#11110f}
  .shop-card .add-to-bag{width:calc(100% - 18px);margin:10px 9px 0;min-height:39px;padding:0 9px;font-size:8px;letter-spacing:.08em}
  .image-tag{font-size:7px;padding:6px 7px}
 }
+
+
+/* Spacious editorial collection layout inspired by the supplied reference */
+.store-intro{background:#fff;color:#111;padding:82px 20px 55px;text-align:center}
+.store-intro .eyebrow{font-size:9px;letter-spacing:.24em;color:#a98549}
+.store-intro h2{font-family:"Fabric Grotesk",Arial,sans-serif!important;font-size:clamp(34px,5vw,54px);font-weight:800;letter-spacing:.08em;color:#111;margin:12px 0 0}
+.store-intro>p:last-child{margin:12px auto 0;color:#777;font-size:12px}
+.store-toolbar{max-width:1440px;margin:0 auto;padding:12px 4vw 24px;border:0}
+.store-grid{max-width:1440px;margin:0 auto;padding:18px 3vw 105px;grid-template-columns:repeat(3,minmax(0,1fr));gap:66px 26px}
+.shop-card{border:0!important;background:#fff!important;padding:0 0 8px!important;box-shadow:none!important}
+.shop-card:hover{border:0!important;box-shadow:none!important}
+.shop-image{position:relative;margin:0;background:#f5f5f3}
+.shop-image img{aspect-ratio:1/1.12;object-fit:contain;padding:5%;mix-blend-mode:multiply}
+.image-tag{display:none}
+.wishlist-button{position:absolute;right:16px;top:14px;width:40px;height:40px;border:0;background:transparent;color:#111;font-size:30px;line-height:1;cursor:pointer}
+.wishlist-button.is-saved{color:#b89452}
+.shop-card-info{padding:0 2px!important;margin-top:19px!important}
+.shop-card-info>div:first-child{display:block}
+.shop-category{font-size:8px;letter-spacing:.16em}
+.shop-card h3{font-size:14px;font-weight:700;letter-spacing:.035em;text-transform:uppercase}
+.shop-price{font-size:10px;margin-top:7px}
+.shop-description{padding:0 2px;margin:9px 0 14px;min-height:0;font-size:10px}
+.product-options{padding:0 2px;max-width:340px}
+.shop-card .add-to-bag{width:100%;max-width:340px;margin:13px 2px 0}
+.discover-house{background:#f5f5f3;padding:86px 3vw 100px}
+.discover-house h2{text-align:center;margin:0 0 58px;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:.07em}
+.house-grid{max-width:1440px;margin:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.house-card{position:relative;display:block;overflow:hidden;background:#eae8e2;color:#fff;text-decoration:none}
+.house-card img{display:block;width:100%;aspect-ratio:1/1.15;object-fit:cover;transition:transform .6s ease}
+.house-card:hover img{transform:scale(1.035)}
+.house-card span{position:absolute;left:0;right:0;bottom:0;padding:28px 16px 18px;background:linear-gradient(transparent,rgba(0,0,0,.58));font-size:12px;font-weight:700;letter-spacing:.16em;text-align:center}
+.collection-note{margin-top:0}
+@media(max-width:900px){.store-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 18px}}
+@media(max-width:700px){
+ .store-intro{padding:64px 16px 34px 58px}
+ .store-intro h2{font-size:32px;letter-spacing:.055em}
+ .store-intro>p:last-child{font-size:10px}
+ .store-toolbar{padding:12px 14px 18px 62px}
+ .store-grid{padding:12px 13px 68px 62px;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 12px}
+ .shop-image img{aspect-ratio:1/1.08;padding:4%}
+ .wishlist-button{right:7px;top:7px;width:32px;height:32px;font-size:25px}
+ .shop-card-info{margin-top:13px!important}
+ .shop-card h3{font-size:10px;line-height:1.45}
+ .shop-description{font-size:9px;margin:7px 0 10px}
+ .product-options{gap:6px}
+ .product-options select{height:32px;font-size:9px}
+ .shop-card .add-to-bag{min-height:37px;font-size:8px}
+ .discover-house{padding:58px 13px 65px 62px}
+ .discover-house h2{font-size:25px;margin-bottom:30px}
+ .house-grid{grid-template-columns:1fr;gap:16px}
+ .house-card img{aspect-ratio:1.5/1}
+ .house-card span{font-size:10px}
+}
