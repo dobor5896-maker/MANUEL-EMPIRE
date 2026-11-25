@@ -291,7 +291,7 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 @font-face{font-family:"Fabric Grotesk";src:url("FabricGrotesk-Variable.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
 html,body,body *{font-family:"Fabric Grotesk",Arial,sans-serif !important}
 .brand-story{position:relative;display:flex;align-items:center;min-height:min(820px,92vh);padding:100px 9vw 100px 12vw;overflow:hidden;background:#e9e5dc}
-.brand-story:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.82) 36%,rgba(255,255,255,.28) 66%,rgba(255,255,255,.06) 100%)}
+.brand-story:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.08) 36%,rgba(0,0,0,.04) 66%,rgba(0,0,0,.02) 100%)}
 .brand-story .story-copy{position:relative;z-index:2;width:min(650px,58%);padding:28px 0}
 .brand-story .eyebrow{color:#171613;font-weight:700}
 .brand-story h2{max-width:680px;margin:20px 0 0;font-size:clamp(42px,6.2vw,88px);font-weight:850;line-height:.94;letter-spacing:-.055em;text-transform:uppercase}
@@ -302,7 +302,7 @@ html,body,body *{font-family:"Fabric Grotesk",Arial,sans-serif !important}
 .brand-story .story-mark img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 @media(max-width:700px){
  .brand-story{min-height:680px;padding:90px 22px 75px 68px;align-items:flex-start}
- .brand-story:before{background:linear-gradient(180deg,rgba(255,255,255,.91) 0%,rgba(255,255,255,.72) 42%,rgba(255,255,255,.18) 100%)}
+ .brand-story:before{background:linear-gradient(180deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.07) 42%,rgba(0,0,0,.02) 100%)}
  .brand-story .story-copy{width:100%;padding:12px 0}
  .brand-story h2{font-size:clamp(38px,10vw,58px);line-height:.98}
  .brand-story .story-mark{min-height:100%;aspect-ratio:auto}
@@ -331,12 +331,7 @@ html,body,body *{font-family:"Fabric Grotesk",Arial,sans-serif !important}
 
 </section>
 
-<section class="benefits" id="service">
-<div class="benefit"><svg viewBox="0 0 24 24"><path d="M2 7h13v11H2zM15 11h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg><div><strong>Delivery information</strong><span>Options confirmed with your order</span></div></div>
-<div class="benefit"><svg viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10M8 4.2l9 5"/></svg><div><strong>Returns & exchanges</strong><span>Ask us about the applicable terms</span></div></div>
-<div class="benefit"><svg viewBox="0 0 24 24"><path d="M12 2 15 4l4-.2.8 3.8L22 11l-2 3 .2 4-3.8.8L12 22l-3-2-4 .2-.8-3.8L2 13l2-3-.2-4 3.8-.8z"/><path d="m8 12 2.5 2.5L16 9"/></svg><div><strong>Considered design</strong><span>Clothing with a point of view</span></div></div>
-<div class="benefit"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="12" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v4"/></svg><div><strong>Payment details</strong><span>Confirmed before payment is made</span></div></div>
-</section>
+
 
 <section class="brand-story" id="about">
   <div class="story-copy">
@@ -360,6 +355,12 @@ html,body,body *{font-family:"Fabric Grotesk",Arial,sans-serif !important}
 <section class="editorial-strip">
   <div><p class="eyebrow">MANUEL EMPIRE · WEAR YOUR IDENTITY</p><h2>Dress with intention. Show up as yourself.</h2></div>
   <a href="collection.html">Discover the collection</a>
+</section>
+<section class="benefits" id="service">
+<div class="benefit"><svg viewBox="0 0 24 24"><path d="M2 7h13v11H2zM15 11h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg><div><strong>Delivery information</strong><span>Options confirmed with your order</span></div></div>
+<div class="benefit"><svg viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10M8 4.2l9 5"/></svg><div><strong>Returns & exchanges</strong><span>Ask us about the applicable terms</span></div></div>
+<div class="benefit"><svg viewBox="0 0 24 24"><path d="M12 2 15 4l4-.2.8 3.8L22 11l-2 3 .2 4-3.8.8L12 22l-3-2-4 .2-.8-3.8L2 13l2-3-.2-4 3.8-.8z"/><path d="m8 12 2.5 2.5L16 9"/></svg><div><strong>Considered design</strong><span>Clothing with a point of view</span></div></div>
+<div class="benefit"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="12" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v4"/></svg><div><strong>Payment details</strong><span>Confirmed before payment is made</span></div></div>
 </section>
 <footer class="site-footer" id="cart">
   <div class="footer-top">
