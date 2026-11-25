@@ -238,7 +238,7 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 @media(prefers-reduced-motion:reduce){.site-header:after{animation:none}}
 
 
-/* Ten-frame editorial wheel: scroll drives the image ribbon upward */
+/* Ten-frame editorial wheel: images orbit in a circle as the visitor scrolls */
 .season-wheel{position:relative;height:1200vh;background:#f1eee8;color:#171613;overflow:clip}
 .wheel-sticky{position:sticky;top:0;height:100svh;min-height:620px;overflow:hidden;display:grid;grid-template-columns:46% 54%;align-items:center}
 .wheel-copy{position:absolute;z-index:3;left:4.5vw;top:50%;transform:translateY(-50%);width:35%;max-width:480px;padding:0}
@@ -246,13 +246,10 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
 .wheel-copy h2{margin:0 0 18px;font-size:clamp(42px,5.5vw,76px);line-height:.9;letter-spacing:-.06em;font-weight:600}
 .wheel-copy>p:last-child{max-width:285px;margin:0;color:#625e56;font-size:14px;line-height:1.7}
 .wheel-window{position:absolute;right:0;top:0;width:54%;height:100%;overflow:hidden;clip-path:none !important;mask-image:none !important;-webkit-mask-image:none !important}
-.wheel-track{position:absolute;top:26vh;left:9%;width:86%;display:flex;flex-direction:column;gap:7vh;transform:translate3d(0,calc(var(--wheel-offset,0px) * -1),0);will-change:transform}
-.wheel-frame{position:relative;display:block;flex:0 0 40vh;width:100%;margin:0 !important;overflow:hidden;background:#d8d0c4;transform:none !important;border-radius:24px;clip-path:none}
-.wheel-frame:nth-child(even){width:100%;margin-left:0 !important;transform:none !important}
-.wheel-frame img{width:100%;height:100%;object-fit:cover;display:block}
-.wheel-frame figcaption{right:22px;bottom:18px}
+.wheel-track{position:absolute;inset:0;width:100%;height:100%;will-change:transform}
+.wheel-frame{position:absolute;top:50%;left:50%;display:block;width:clamp(76px,9vw,126px);height:clamp(104px,13vw,174px);margin:0 !important;overflow:hidden;background:#d8d0c4;border-radius:16px;clip-path:none;will-change:transform}
 .wheel-frame img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.82)}
-.wheel-frame figcaption{position:absolute;right:18px;bottom:16px;color:#fff;font-size:9px;letter-spacing:.22em;text-shadow:0 1px 8px #0008}
+.wheel-frame figcaption{position:absolute;right:9px;bottom:9px;color:#fff;font-size:8px;letter-spacing:.16em;text-shadow:0 1px 8px #0008}
 .wheel-index{position:absolute;z-index:4;bottom:28px;left:9vw;color:#a18b69;font-size:9px;letter-spacing:.2em}
 @media(max-width:700px){
  .season-wheel{height:1000vh}
@@ -261,14 +258,12 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
  .wheel-kicker{font-size:7px;letter-spacing:.12em;margin-bottom:12px}
  .wheel-copy h2{font-size:clamp(34px,9vw,48px);margin-bottom:12px;line-height:.9}
  .wheel-copy>p:last-child{font-size:10px;line-height:1.55;max-width:100%}
- .wheel-window{top:0;width:82%;height:100%;clip-path:none !important;mask-image:none !important;-webkit-mask-image:none !important}
- .wheel-track{top:12vh;left:12%;width:84%;gap:5vh;transform:translate3d(0,calc(var(--wheel-offset,0px) * -1),0)}
- .wheel-frame{flex-basis:34vh;border-radius:18px;clip-path:none}
+ .wheel-window{top:0;width:64%;height:100%;clip-path:none !important;mask-image:none !important;-webkit-mask-image:none !important}
+ .wheel-frame{width:clamp(48px,14vw,66px);height:clamp(68px,19vw,92px);border-radius:10px}
+ .wheel-frame figcaption{right:5px;bottom:5px;font-size:6px}
  .wheel-index{left:68px;bottom:16px;font-size:8px}
 }
-@media(prefers-reduced-motion:reduce){.wheel-track{transform:none !important}}
-
-
+@media(prefers-reduced-motion:reduce){.wheel-frame{transition:none !important}}
 </style>
 </head>
 <body>
@@ -311,17 +306,21 @@ html{scroll-behavior:smooth;scroll-padding-top:88px}
  const section=document.querySelector('.season-wheel');
  const track=section?.querySelector('.wheel-track');
  if(!section || !track || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
- const original=[...track.children];
- original.forEach(node=>track.appendChild(node.cloneNode(true)));
- original.forEach(node=>track.appendChild(node.cloneNode(true)));
+ const frames=[...track.querySelectorAll('.wheel-frame')];
  let ticking=false;
  const update=()=>{
    const rect=section.getBoundingClientRect();
    const travel=section.offsetHeight-window.innerHeight;
    const progress=Math.max(0,Math.min(1,-rect.top/Math.max(1,travel)));
-   const cycleHeight=track.scrollHeight/3;
-   const offset=(progress*cycleHeight*3)%cycleHeight;
-   section.style.setProperty('--wheel-offset',offset.toFixed(2)+'px');
+   const rotation=progress*720;
+   const mobile=window.matchMedia('(max-width:700px)').matches;
+   const radius=mobile
+     ? Math.min(window.innerWidth*0.205, window.innerHeight*0.245)
+     : Math.min(window.innerWidth*0.205, window.innerHeight*0.31);
+   frames.forEach((frame,index)=>{
+     const angle=rotation+index*(360/frames.length);
+     frame.style.transform=`translate(-50%,-50%) rotate(${angle}deg) translateX(${radius}px) rotate(${-angle}deg)`;
+   });
    ticking=false;
  };
  const onScroll=()=>{if(!ticking){requestAnimationFrame(update);ticking=true;}};
