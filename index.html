@@ -423,6 +423,10 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
 .hero-image-b.is-visible{opacity:1}
 .hero-image-a.is-hidden{opacity:0}
 @media(prefers-reduced-motion:reduce){.hero-image{transition:none!important}}
+
+/* Hide the brand kicker only while the second hero image is showing */
+.hero-copy .kicker{transition:opacity .35s ease,visibility .35s ease}
+.hero-copy .kicker.is-hidden{opacity:0;visibility:hidden}
 </style>
 </head>
 <body>
@@ -487,11 +491,13 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
 (()=>{
  const first=document.querySelector('.hero-image-a');
  const second=document.querySelector('.hero-image-b');
- if(!first||!second)return;
+ const kicker=document.querySelector('.hero-copy .kicker');
+ if(!first||!second||!kicker)return;
  let showingSecond=false;
  window.setInterval(()=>{
    showingSecond=!showingSecond;
    first.classList.toggle('is-hidden',showingSecond);
+   kicker.classList.toggle('is-hidden',showingSecond);
    second.classList.toggle('is-visible',showingSecond);
    second.setAttribute('aria-hidden',String(!showingSecond));
    first.setAttribute('aria-hidden',String(showingSecond));
