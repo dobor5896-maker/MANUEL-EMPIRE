@@ -1,5 +1,17 @@
 /* MANUEL EMPIRE category pop-out navigation */
 (()=>{
+ 
+ const style=document.createElement("style");
+ style.textContent=`
+ .category-popout{position:fixed;z-index:45;display:flex;flex-direction:row;align-items:flex-start;gap:18px;min-width:0;padding:0;background:transparent;border:0;box-shadow:none;opacity:0;visibility:hidden;transform:translateY(-9px);transition:opacity .28s ease,transform .28s ease,visibility .28s ease}
+ .category-popout .category-choice{display:flex;flex-direction:column;align-items:center;gap:7px;width:86px;padding:0;color:#171613;background:transparent;text-decoration:none;font-size:10px;font-weight:700;letter-spacing:.16em}
+ .category-popout .category-choice img{display:block;width:78px;height:88px;object-fit:cover;filter:grayscale(100%);border:1px solid rgba(197,162,101,.7)}
+ .category-popout .category-choice span{color:#d2b477;text-shadow:0 1px 5px rgba(0,0,0,.18)}
+ body.categories-open .category-popout{opacity:1;visibility:visible;transform:translateY(0)}
+ @media(max-width:700px){.category-popout{gap:12px}.category-popout .category-choice{width:72px;font-size:9px}.category-popout .category-choice img{width:66px;height:76px}}
+ `;
+ document.head.appendChild(style);
+
  const nav=document.querySelector(".side-nav");
  if(!nav)return;
  const links=[...nav.querySelectorAll(".nav-link")];
