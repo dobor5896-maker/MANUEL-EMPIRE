@@ -5,6 +5,7 @@ const ME_PRODUCTS = [
     "name": "Essential Heavyweight Tee",
     "category": "Men",
     "type": "Tops",
+    "section": "tshirt",
     "description": "A clean everyday silhouette with a confident, easy fit.",
     "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85",
     "colors": [
@@ -194,8 +195,9 @@ const meRenderShop = () => {
   const grid=document.querySelector("[data-shop-grid]"); if(!grid)return;
   const filter=document.querySelector("[data-shop-filter]")?.value||"all";
   const type=document.querySelector("[data-shop-type]")?.value||"all";
+  const section=grid.dataset.shopSection||"";
   const query=(document.querySelector("[data-shop-search]")?.value||"").trim().toLowerCase();
-  const shown=ME_PRODUCTS.filter(p=>(filter==="all"||p.category.toLowerCase()===filter)&&(type==="all"||p.type.toLowerCase()===type)&&(!query||(p.name+" "+p.category+" "+p.type).toLowerCase().includes(query)));
+  const shown=ME_PRODUCTS.filter(p=>(filter==="all"||p.category.toLowerCase()===filter)&&(type==="all"||p.type.toLowerCase()===type)&&(!section||p.section===section)&&(!query||(p.name+" "+p.category+" "+p.type).toLowerCase().includes(query)));
   grid.innerHTML=shown.map(meProductCard).join("")||'<p class="empty-shop">No pieces match that search. Try another term.</p>';
 };
 const meRenderCart = () => {
