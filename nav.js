@@ -25,14 +25,15 @@
  const panel=document.createElement("div");
  panel.className="category-popout";
  panel.setAttribute("aria-label","Choose a collection");
- panel.innerHTML='<a href="collection.html?category=men#shop">MEN</a><a href="collection.html?category=women#shop">WOMEN</a>';
+ panel.innerHTML='<a class="category-choice" href="collection.html?category=men#shop"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt=""><span>MEN</span></a><a class="category-choice" href="collection.html?category=women#shop"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt=""><span>WOMEN</span></a>';
  document.body.append(overlay,panel);
  const close=()=>{document.body.classList.remove("categories-open");trigger.setAttribute("aria-expanded","false");};
  const toggle=()=>{
   const open=!document.body.classList.contains("categories-open");
   if(open){
    const r=trigger.getBoundingClientRect();
-   panel.style.top=Math.max(12,Math.min(window.innerHeight-110,r.top-12))+"px";
+   panel.style.top=Math.min(window.innerHeight-130,r.bottom+10)+"px";
+   panel.style.left=Math.max(12,nav.getBoundingClientRect().left)+"px";
    document.body.classList.add("categories-open");
    trigger.setAttribute("aria-expanded","true");
   }else close();
@@ -42,4 +43,5 @@
  overlay.addEventListener("click",close);
  document.addEventListener("keydown",event=>{if(event.key==="Escape")close();});
  panel.addEventListener("click",event=>{if(event.target.closest("a"))close();});
+ window.addEventListener("resize",()=>{if(document.body.classList.contains("categories-open")){const r=trigger.getBoundingClientRect();panel.style.top=Math.min(window.innerHeight-130,r.bottom+10)+"px";panel.style.left=Math.max(12,nav.getBoundingClientRect().left)+"px";}});
 })();
