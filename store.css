@@ -129,3 +129,14 @@ body{background:#fff;color:#11110f}
  .house-card img{aspect-ratio:1.5/1}
  .house-card span{font-size:10px}
 }
+
+
+/* Navigation icons: champagne gold, clearly visible on white sections */
+.side-nav .nav-link,
+.side-nav .nav-link:hover,
+.side-nav .nav-link:focus-visible,
+.side-nav .nav-link:active{
+  color:#b89452 !important;
+  mix-blend-mode:normal !important;
+}
+.side-nav .nav-link svg{stroke:currentColor !important}
