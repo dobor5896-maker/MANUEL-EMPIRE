@@ -15,6 +15,13 @@ footer{padding:32px 8vw;background:#171613;color:#fff;font-size:9px;letter-spaci
 
 @font-face{font-family:"Fabric Grotesk";src:url("FabricGrotesk-Variable.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
 html,body,body *{font-family:"Fabric Grotesk",Arial,sans-serif !important}
+/* Keep page copy clear of the fixed left navigation dock. */
+.hero{padding-left:calc(10vw + 62px)}
+main{padding-left:calc(7vw + 62px)}
+@media(max-width:650px){
+ .hero{padding-left:78px!important;padding-right:22px!important}
+ main{padding-left:78px!important;padding-right:18px!important}
+}
 </style>
 </head>
 <body>
