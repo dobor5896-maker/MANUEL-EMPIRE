@@ -113,14 +113,17 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  .side-nav.me-liquid-dock .me-liquid-indicator{
    position:absolute;z-index:1;left:7px;top:7px;width:52px;height:52px;border-radius:50%;pointer-events:none;
    transform:translate3d(0,var(--me-indicator-y,0px),0) scale(1);transform-origin:center;
-   background:rgba(255,255,255,.025);
-   -webkit-backdrop-filter:blur(24px) saturate(130%);backdrop-filter:blur(24px) saturate(130%);
-   box-shadow:inset 0 1px 1px rgba(255,255,255,.22),inset 0 -1px 2px rgba(255,255,255,.035),0 2px 10px rgba(0,0,0,.08);
-   transition:transform .62s cubic-bezier(.22,1.25,.35,1);
+   background:rgba(255,255,255,.008);
+   -webkit-backdrop-filter:blur(30px) saturate(165%);backdrop-filter:blur(30px) saturate(165%);
+   box-shadow:inset 0 1px 1px rgba(255,255,255,.16),inset 0 -1px 2px rgba(255,255,255,.018),0 2px 9px rgba(0,0,0,.055);
+   transition:transform .58s cubic-bezier(.18,1.35,.32,1),width .32s ease,height .32s ease;
  }
- .side-nav.me-liquid-dock .me-liquid-indicator:before{content:"";position:absolute;inset:1px;border-radius:inherit;background:radial-gradient(ellipse at 35% 0%,rgba(255,255,255,.18),transparent 65%),linear-gradient(180deg,rgba(255,255,255,.055),transparent 62%);pointer-events:none}
+ .side-nav.me-liquid-dock .me-liquid-indicator:before{content:"";position:absolute;inset:1px;border-radius:inherit;background:radial-gradient(ellipse at 35% 0%,rgba(255,255,255,.13),transparent 65%),linear-gradient(180deg,rgba(255,255,255,.025),transparent 62%);pointer-events:none}
  .side-nav.me-liquid-dock .me-liquid-indicator:after{content:"";position:absolute;left:18%;right:18%;top:1px;height:1px;border-radius:50%;background:rgba(255,255,255,.22);filter:blur(.6px)}
- .side-nav.me-liquid-dock.me-liquid-moving .me-liquid-indicator{transform:translate3d(0,var(--me-indicator-y,0px),0) scale(1.12);transition:transform .48s cubic-bezier(.2,.9,.25,1.18)}
+ .side-nav.me-liquid-dock.me-liquid-moving .me-liquid-indicator{transform:translate3d(0,var(--me-indicator-y,0px),0) scale(1.12,.91);transition:transform .48s cubic-bezier(.2,.9,.25,1.18)}
+ .side-nav.me-liquid-dock.me-liquid-dragging .me-liquid-indicator{transform:translate3d(0,var(--me-indicator-y,0px),0) scale(1.08,.96);transition:transform .16s cubic-bezier(.2,.8,.2,1)}
+ .side-nav.me-liquid-dock{touch-action:pan-y}
+ .side-nav.me-liquid-dock .nav-link{touch-action:pan-y}
  body{padding-bottom:0!important}
  @media(max-width:480px){.side-nav.me-liquid-dock{left:8px!important;width:58px!important;min-height:290px!important;padding:6px 3px!important}.side-nav.me-liquid-dock .nav-link{width:48px!important;height:48px!important}.side-nav.me-liquid-dock .nav-link svg{width:22px!important;height:22px!important}.side-nav.me-liquid-dock .me-liquid-indicator{width:48px;height:48px;left:5px;top:6px}}
  @media(prefers-reduced-motion:reduce){.side-nav.me-liquid-dock .me-liquid-indicator{transition:none!important}}
@@ -134,27 +137,70 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
    if(file==="cart.html")return 4;
    return 0;
  };
- const moveIndicator=(index,animate=true)=>{
-   const item=links[index];if(!item)return;
-   const navRect=nav.getBoundingClientRect(),itemRect=item.getBoundingClientRect();
-   const y=itemRect.top-navRect.top+(itemRect.height-indicator.offsetHeight)/2;
-   if(!animate)indicator.style.transition="none";
-   indicator.style.setProperty("--me-indicator-y",y+"px");
-   if(!animate){requestAnimationFrame(()=>indicator.style.removeProperty("transition"));}
+ const itemY=index=>{
+   const item=links[index];if(!item)return 0;
+   const nr=nav.getBoundingClientRect(),ir=item.getBoundingClientRect();
+   return ir.top-nr.top+(ir.height-indicator.offsetHeight)/2;
  };
- let selected=activeIndex();
+ const moveIndicator=(index,animate=true)=>{
+   if(!links[index])return;
+   if(!animate){indicator.style.transition="none";}
+   indicator.style.setProperty("--me-indicator-y",itemY(index)+"px");
+   if(!animate)requestAnimationFrame(()=>indicator.style.removeProperty("transition"));
+ };
+ let selected=activeIndex(),dragging=false,dragMoved=false,downX=0,downY=0,dragIndex=selected,suppressClick=false;
+ const indexAt=(x,y)=>{
+   const el=document.elementFromPoint(x,y);
+   const link=el&&el.closest?el.closest(".nav-link"):null;
+   return link&&nav.contains(link)?links.indexOf(link):-1;
+ };
+ const goTo=index=>{
+   if(index<0||index>=links.length)return;
+   selected=index;nav.classList.add("me-liquid-moving");moveIndicator(index,true);
+   if(index===3){trigger.click();}
+   else{
+     const destination=links[index].getAttribute("href");
+     if(destination&&destination!=="#")window.location.assign(destination);
+   }
+   window.setTimeout(()=>nav.classList.remove("me-liquid-moving"),620);
+ };
  requestAnimationFrame(()=>moveIndicator(selected,false));
  links.forEach((link,index)=>{
    link.addEventListener("click",event=>{
+     if(suppressClick){event.preventDefault();event.stopImmediatePropagation();suppressClick=false;return;}
+     if(index===3)return;
      selected=index;nav.classList.add("me-liquid-moving");moveIndicator(index,true);
      const destination=link.getAttribute("href");
      if(destination&&destination!=="#"&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey){
        event.preventDefault();
-       window.setTimeout(()=>window.location.assign(destination),230);
+       window.setTimeout(()=>window.location.assign(destination),180);
      }
-     window.setTimeout(()=>nav.classList.remove("me-liquid-moving"),520);
+     window.setTimeout(()=>nav.classList.remove("me-liquid-moving"),560);
    });
  });
+ // Drag the active glass lens from one navigation icon to another.
+ nav.addEventListener("pointerdown",event=>{
+   const hit=event.target.closest(".nav-link");
+   if(!hit||event.button!==0)return;
+   dragging=true;dragMoved=false;dragIndex=links.indexOf(hit);downX=event.clientX;downY=event.clientY;
+   try{nav.setPointerCapture(event.pointerId);}catch(e){}
+ },{passive:true});
+ nav.addEventListener("pointermove",event=>{
+   if(!dragging)return;
+   const dx=event.clientX-downX,dy=event.clientY-downY;
+   if(Math.hypot(dx,dy)>7)dragMoved=true;
+   if(!dragMoved)return;
+   const idx=indexAt(event.clientX,event.clientY);
+   if(idx>=0){dragIndex=idx;indicator.style.setProperty("--me-indicator-y",itemY(idx)+"px");nav.classList.add("me-liquid-moving","me-liquid-dragging");}
+ },{passive:true});
+ const finishDrag=event=>{
+   if(!dragging)return;dragging=false;
+   nav.classList.remove("me-liquid-dragging");
+   if(dragMoved){suppressClick=true;goTo(dragIndex);window.setTimeout(()=>{suppressClick=false;},450);}
+   else moveIndicator(selected,true);
+ };
+ nav.addEventListener("pointerup",finishDrag);
+ nav.addEventListener("pointercancel",finishDrag);
  window.addEventListener("resize",()=>moveIndicator(selected,false));
  const trigger=links[3];
  trigger.removeAttribute("href");
