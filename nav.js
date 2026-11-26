@@ -120,7 +120,7 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  }
  .side-nav.me-liquid-dock .me-liquid-indicator:before{content:"";position:absolute;inset:1px;border-radius:inherit;background:radial-gradient(ellipse at 35% 0%,rgba(255,255,255,.4),transparent 62%),linear-gradient(180deg,rgba(255,255,255,.12),transparent 60%);pointer-events:none}
  .side-nav.me-liquid-dock .me-liquid-indicator:after{content:"";position:absolute;left:18%;right:18%;top:1px;height:1px;border-radius:50%;background:rgba(255,255,255,.72);filter:blur(.5px)}
- .side-nav.me-liquid-dock.me-liquid-moving .me-liquid-indicator{transition:transform .48s cubic-bezier(.2,.9,.25,1.18),width .38s ease}
+ .side-nav.me-liquid-dock.me-liquid-moving .me-liquid-indicator{transform:translate3d(var(--me-indicator-x,0px),0,0) scaleX(1.13);transition:transform .48s cubic-bezier(.2,.9,.25,1.18),width .38s ease}
  body{padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
  @media(min-width:900px){.side-nav.me-liquid-dock{bottom:24px!important}}
  @media(max-width:480px){.side-nav.me-liquid-dock{height:70px!important;width:calc(100vw - 28px)!important;bottom:calc(12px + env(safe-area-inset-bottom,0px))!important}.side-nav.me-liquid-dock .nav-link{height:56px!important}.side-nav.me-liquid-dock .nav-link svg{width:23px!important;height:23px!important}.side-nav.me-liquid-dock .me-liquid-indicator{height:56px;top:7px;left:7px;width:calc((100% - 14px)/5)}}
@@ -146,8 +146,13 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  let selected=activeIndex();
  requestAnimationFrame(()=>moveIndicator(selected,false));
  links.forEach((link,index)=>{
-   link.addEventListener("click",()=>{
+   link.addEventListener("click",event=>{
      selected=index;nav.classList.add("me-liquid-moving");moveIndicator(index,true);
+     const destination=link.getAttribute("href");
+     if(destination&&destination!=="#"&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey){
+       event.preventDefault();
+       window.setTimeout(()=>window.location.assign(destination),230);
+     }
      window.setTimeout(()=>nav.classList.remove("me-liquid-moving"),520);
    });
  });
