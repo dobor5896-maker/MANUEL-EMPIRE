@@ -89,6 +89,24 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
   .me-slide-thumb:before,.me-slide-thumb:after{display:none!important;content:none!important}
   .me-slide-thumb svg{stroke:#fff!important;filter:none!important}
   .me-slide-thumb:active{background:linear-gradient(145deg,#f4dca9,#cba45e)!important;box-shadow:0 2px 7px rgba(0,0,0,.24)!important}
+  /* Both the outer track and inner handle are transparent, colourless wet glass. */
+  .me-slide-track{
+    background:rgba(255,255,255,.012)!important;
+    border:1px solid rgba(255,255,255,.34)!important;
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.48),inset 0 -1px 1px rgba(255,255,255,.16),0 8px 24px rgba(0,0,0,.16)!important;
+    -webkit-backdrop-filter:blur(22px) saturate(185%) contrast(112%)!important;
+    backdrop-filter:blur(22px) saturate(185%) contrast(112%)!important;
+  }
+  .me-slide-thumb{
+    background:linear-gradient(145deg,rgba(255,255,255,.24),rgba(255,255,255,.055) 42%,rgba(255,255,255,.012) 72%,rgba(255,255,255,.13))!important;
+    border:1px solid rgba(255,255,255,.55)!important;
+    -webkit-backdrop-filter:blur(16px) saturate(195%) contrast(115%)!important;
+    backdrop-filter:blur(16px) saturate(195%) contrast(115%)!important;
+    box-shadow:inset 0 1px 2px rgba(255,255,255,.78),inset 0 -1px 2px rgba(255,255,255,.2),0 3px 12px rgba(0,0,0,.2),0 0 12px rgba(255,255,255,.1)!important;
+  }
+  .me-slide-thumb:before{display:block!important;content:""!important;background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.92),rgba(255,255,255,.22) 36%,transparent 76%)!important}
+  .me-slide-thumb:after{display:block!important;content:""!important;position:absolute!important;inset:2px!important;border-radius:50%!important;background:linear-gradient(115deg,transparent 26%,rgba(255,255,255,.15) 49%,transparent 68%)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.13)!important;pointer-events:none!important}
+  .me-slide-thumb svg{stroke:rgba(255,255,255,.96)!important}
   @media(prefers-reduced-motion:reduce){.me-welcome{transition:none}}
   `;
   document.head.appendChild(welcomeStyle);
@@ -180,6 +198,44 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  .side-nav.me-liquid-dock .nav-link svg{color:#d8b56d!important;stroke:#d8b56d!important;fill:none!important;filter:none!important}
  `;
  document.head.appendChild(cleanNavStyle);
+ // One combined support control at the bottom of the side navigation.
+ const supportButton=document.createElement("button");
+ supportButton.type="button";
+ supportButton.className="nav-link me-support-toggle";
+ supportButton.setAttribute("aria-label","Contact and customer care");
+ supportButton.setAttribute("aria-expanded","false");
+ supportButton.title="Support";
+ supportButton.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13v-2a8 8 0 0 1 16 0v2"/><path d="M4 12h3v6H6a2 2 0 0 1-2-2v-4Zm16 0h-3v6h1a2 2 0 0 0 2-2v-4ZM17 19a5 5 0 0 1-5 2"/></svg>';
+ const supportPanel=document.createElement("div");
+ supportPanel.className="me-support-panel";
+ supportPanel.innerHTML='<a href="contact.html">CONTACT</a><a href="customer-care.html">CUSTOMER CARE</a>';
+ const supportStyle=document.createElement("style");
+ supportStyle.textContent=`
+ .side-nav.me-liquid-dock .me-support-toggle{margin-top:16px!important;flex:0 0 44px!important}
+ .side-nav.me-liquid-dock .me-support-toggle svg{width:22px!important;height:22px!important;stroke:#d8b56d!important;fill:none!important;stroke-width:1.85!important}
+ .me-support-panel{position:fixed;z-index:1001;display:flex;flex-direction:column;gap:16px;min-width:166px;padding:15px 18px;background:rgba(8,8,8,.94);border:1px solid rgba(216,181,109,.28);box-shadow:0 12px 32px rgba(0,0,0,.22);opacity:0;visibility:hidden;transform:translateY(7px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease}
+ .me-support-panel.is-open{opacity:1;visibility:visible;transform:translateY(0)}
+ .me-support-panel a{color:#fff;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.16em;white-space:nowrap}
+ .me-support-panel a:hover,.me-support-panel a:focus-visible{color:#d8b56d;outline:none}
+ @media(max-width:480px){.me-support-panel{min-width:150px;padding:13px 14px}.me-support-panel a{font-size:10px}}
+ `;
+ document.head.appendChild(supportStyle);
+ nav.appendChild(supportButton);
+ document.body.appendChild(supportPanel);
+ const closeSupport=()=>{supportPanel.classList.remove("is-open");supportButton.setAttribute("aria-expanded","false");};
+ const toggleSupport=()=>{
+   const open=!supportPanel.classList.contains("is-open");
+   if(!open){closeSupport();return;}
+   const rect=supportButton.getBoundingClientRect();
+   supportPanel.style.left=Math.max(70,rect.right+12)+"px";
+   supportPanel.style.top=Math.min(window.innerHeight-100,Math.max(12,rect.top-8))+"px";
+   supportPanel.classList.add("is-open");
+   supportButton.setAttribute("aria-expanded","true");
+ };
+ supportButton.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();toggleSupport();});
+ document.addEventListener("click",event=>{if(!supportPanel.contains(event.target)&&!supportButton.contains(event.target))closeSupport();});
+ document.addEventListener("keydown",event=>{if(event.key==="Escape")closeSupport();});
+ window.addEventListener("resize",closeSupport);
  const trigger=links[3];
  trigger.removeAttribute("href");
  trigger.setAttribute("role","button");
