@@ -198,7 +198,7 @@ const meRenderShop = () => {
   const section=grid.dataset.shopSection||"";
   const query=(document.querySelector("[data-shop-search]")?.value||"").trim().toLowerCase();
   const shown=ME_PRODUCTS.filter(p=>(filter==="all"||p.category.toLowerCase()===filter)&&(type==="all"||p.type.toLowerCase()===type)&&(!section||p.section===section)&&(!query||(p.name+" "+p.category+" "+p.type).toLowerCase().includes(query)));
-  grid.innerHTML=shown.map(meProductCard).join("")||'<p class="empty-shop">No pieces match that search. Try another term.</p>';
+  grid.innerHTML=shown.map(meProductCard).join("")||(section?'<p class="empty-shop">No pieces have been added to this edit yet.</p>':'<p class="empty-shop">No pieces match that search. Try another term.</p>');
 };
 const meRenderCart = () => {
   const host=document.querySelector("[data-cart-items]"); if(!host)return;
