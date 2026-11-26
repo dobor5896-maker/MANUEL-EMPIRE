@@ -82,6 +82,76 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  links[1].href="announcements.html";
  links[1].setAttribute("aria-label","Announcements");
  links[1].title="Announcements";
+ 
+ // Floating, horizontally docked Liquid Glass navigation.
+ nav.classList.add("me-liquid-dock");
+ nav.setAttribute("aria-label","Main navigation");
+ const indicator=document.createElement("span");
+ indicator.className="me-liquid-indicator";
+ indicator.setAttribute("aria-hidden","true");
+ nav.prepend(indicator);
+ const dockStyle=document.createElement("style");
+ dockStyle.id="me-liquid-dock-style";
+ dockStyle.textContent=`
+ .side-nav.me-liquid-dock{
+   position:fixed!important;left:50%!important;right:auto!important;top:auto!important;bottom:calc(18px + env(safe-area-inset-bottom,0px))!important;
+   transform:translateX(-50%)!important;width:min(440px,calc(100vw - 34px))!important;height:76px!important;
+   padding:7px!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;align-items:center!important;justify-items:center!important;gap:0!important;
+   border:1px solid rgba(255,255,255,.22)!important;border-radius:999px!important;overflow:hidden!important;isolation:isolate!important;z-index:999!important;
+   background:rgba(255,255,255,.075)!important;
+   -webkit-backdrop-filter:blur(30px) saturate(175%)!important;backdrop-filter:blur(30px) saturate(175%)!important;
+   box-shadow:0 14px 42px rgba(0,0,0,.22),inset 0 1px 1px rgba(255,255,255,.36),inset 0 -1px 1px rgba(255,255,255,.08)!important;
+ }
+ .side-nav.me-liquid-dock:before{content:"";position:absolute;inset:1px;border-radius:inherit;pointer-events:none;z-index:0;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.018) 48%,rgba(255,255,255,.045));}
+ .side-nav.me-liquid-dock .nav-link{
+   position:relative!important;z-index:2!important;width:100%!important;height:60px!important;display:grid!important;place-items:center!important;
+   color:#fff!important;background:transparent!important;border:0!important;border-radius:50%!important;mix-blend-mode:difference!important;
+   transform:none!important;outline:none!important;-webkit-tap-highlight-color:transparent!important;
+ }
+ .side-nav.me-liquid-dock .nav-link svg{width:25px!important;height:25px!important;stroke:currentColor!important;fill:none!important;stroke-width:1.75!important}
+ .side-nav.me-liquid-dock .nav-link:active{transform:scale(.92)!important}
+ .side-nav.me-liquid-dock .me-liquid-indicator{
+   position:absolute;z-index:1;left:7px;top:8px;width:calc((100% - 14px)/5);height:60px;border-radius:999px;pointer-events:none;
+   transform:translate3d(var(--me-indicator-x,0px),0,0) scaleX(1);transform-origin:center;
+   background:rgba(255,255,255,.105);
+   -webkit-backdrop-filter:blur(20px) saturate(190%);backdrop-filter:blur(20px) saturate(190%);
+   box-shadow:inset 0 1px 1px rgba(255,255,255,.56),inset 0 -1px 2px rgba(255,255,255,.13),0 3px 14px rgba(0,0,0,.12);
+   transition:transform .62s cubic-bezier(.22,1.25,.35,1),width .45s cubic-bezier(.22,1.25,.35,1);
+ }
+ .side-nav.me-liquid-dock .me-liquid-indicator:before{content:"";position:absolute;inset:1px;border-radius:inherit;background:radial-gradient(ellipse at 35% 0%,rgba(255,255,255,.4),transparent 62%),linear-gradient(180deg,rgba(255,255,255,.12),transparent 60%);pointer-events:none}
+ .side-nav.me-liquid-dock .me-liquid-indicator:after{content:"";position:absolute;left:18%;right:18%;top:1px;height:1px;border-radius:50%;background:rgba(255,255,255,.72);filter:blur(.5px)}
+ .side-nav.me-liquid-dock.me-liquid-moving .me-liquid-indicator{transition:transform .48s cubic-bezier(.2,.9,.25,1.18),width .38s ease}
+ body{padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
+ @media(min-width:900px){.side-nav.me-liquid-dock{bottom:24px!important}}
+ @media(max-width:480px){.side-nav.me-liquid-dock{height:70px!important;width:calc(100vw - 28px)!important;bottom:calc(12px + env(safe-area-inset-bottom,0px))!important}.side-nav.me-liquid-dock .nav-link{height:56px!important}.side-nav.me-liquid-dock .nav-link svg{width:23px!important;height:23px!important}.side-nav.me-liquid-dock .me-liquid-indicator{height:56px;top:7px;left:7px;width:calc((100% - 14px)/5)}}
+ @media(prefers-reduced-motion:reduce){.side-nav.me-liquid-dock .me-liquid-indicator{transition:none!important}}
+ `;
+ document.head.appendChild(dockStyle);
+ const activeIndex=()=>{
+   const file=(location.pathname.split("/").pop()||"index.html").toLowerCase();
+   if(["tshirt.html","hoodies.html","joggers.html","full-frames.html","jean-short.html","armless.html"].includes(file))return 3;
+   if(file==="announcements.html")return 1;
+   if(file==="collection.html"||file==="all-products.html")return 2;
+   if(file==="cart.html")return 4;
+   return 0;
+ };
+ const moveIndicator=(index,animate=true)=>{
+   const item=links[index];if(!item)return;
+   const navRect=nav.getBoundingClientRect(),itemRect=item.getBoundingClientRect();
+   const x=itemRect.left-navRect.left+(itemRect.width-indicator.offsetWidth)/2;
+   if(!animate)indicator.style.transition="none";
+   indicator.style.setProperty("--me-indicator-x",x+"px");
+   if(!animate){requestAnimationFrame(()=>indicator.style.removeProperty("transition"));}
+ };
+ let selected=activeIndex();
+ requestAnimationFrame(()=>moveIndicator(selected,false));
+ links.forEach((link,index)=>{
+   link.addEventListener("click",()=>{
+     selected=index;nav.classList.add("me-liquid-moving");moveIndicator(index,true);
+     window.setTimeout(()=>nav.classList.remove("me-liquid-moving"),520);
+   });
+ });
+ window.addEventListener("resize",()=>moveIndicator(selected,false));
  const trigger=links[3];
  trigger.removeAttribute("href");
  trigger.setAttribute("role","button");
