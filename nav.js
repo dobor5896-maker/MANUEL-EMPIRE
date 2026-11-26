@@ -35,7 +35,6 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
   .me-slide-thumb:after{content:"";position:absolute;inset:4px;border-radius:50%;border:1px solid rgba(255,255,255,.34);box-shadow:inset 0 0 10px rgba(255,255,255,.14),0 0 12px rgba(255,255,255,.16);pointer-events:none}
   .me-slide-thumb svg{position:relative;z-index:2;width:21px;height:21px;fill:none;stroke:rgba(255,255,255,.92);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 1px 3px rgba(0,0,0,.65))}
   .me-slide-thumb:active{cursor:grabbing;box-shadow:inset 0 1.5px 2px rgba(255,255,255,.82),inset 0 -7px 12px rgba(255,255,255,.06),0 5px 20px rgba(0,0,0,.55)}
-  .me-slide-thumb:focus-visible{outline:2px solid rgba(255,255,255,.85);outline-offset:4px}
   .me-welcome-foot{margin-top:22px;color:rgba(255,255,255,.34);font-size:8px;letter-spacing:.24em;text-transform:uppercase}
   @media(prefers-reduced-motion:reduce){.me-welcome{transition:none}}
   `;
