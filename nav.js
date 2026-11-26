@@ -83,125 +83,35 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  links[1].setAttribute("aria-label","Announcements");
  links[1].title="Announcements";
  
- // Floating, horizontally docked Liquid Glass navigation.
+ // Fixed, minimal side navigation — no Liquid Glass surfaces or selection lens.
  nav.classList.add("me-liquid-dock");
  nav.setAttribute("aria-label","Main navigation");
- const indicator=document.createElement("span");
- indicator.className="me-liquid-indicator";
- indicator.setAttribute("aria-hidden","true");
- nav.prepend(indicator);
  const dockStyle=document.createElement("style");
  dockStyle.id="me-liquid-dock-style";
  dockStyle.textContent=`
  .side-nav.me-liquid-dock{
    position:fixed!important;left:12px!important;right:auto!important;top:50%!important;bottom:auto!important;
-   transform:translateY(-50%)!important;width:66px!important;height:auto!important;min-height:310px!important;
-   padding:7px 5px!important;display:grid!important;grid-template-columns:1fr!important;grid-template-rows:repeat(5,1fr)!important;align-items:center!important;justify-items:center!important;gap:3px!important;
-   border:1px solid rgba(255,255,255,.075)!important;border-radius:999px!important;overflow:hidden!important;isolation:isolate!important;z-index:999!important;
-   background:rgba(255,255,255,.012)!important;
-   -webkit-backdrop-filter:blur(32px) saturate(125%)!important;backdrop-filter:blur(32px) saturate(125%)!important;
-   box-shadow:0 8px 28px rgba(0,0,0,.12),inset 0 1px 1px rgba(255,255,255,.12),inset 0 -1px 1px rgba(255,255,255,.035)!important;
+   transform:translateY(-50%)!important;width:58px!important;height:auto!important;min-height:300px!important;
+   padding:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;
+   border:0!important;border-radius:0!important;overflow:visible!important;background:transparent!important;
+   -webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;z-index:999!important;
  }
- .side-nav.me-liquid-dock:before{content:"";position:absolute;inset:1px;border-radius:inherit;pointer-events:none;z-index:0;background:linear-gradient(110deg,rgba(255,255,255,.045),transparent 42%,rgba(255,255,255,.018));}
+ .side-nav.me-liquid-dock:before,.side-nav.me-liquid-dock:after{display:none!important;content:none!important}
  .side-nav.me-liquid-dock .nav-link{
-   position:relative!important;z-index:2!important;width:52px!important;height:52px!important;display:grid!important;place-items:center!important;
-   color:#d8b56d!important;background:transparent!important;border:0!important;border-radius:50%!important;mix-blend-mode:normal!important;
-   transform:none!important;outline:none!important;-webkit-tap-highlight-color:transparent!important;
+   position:relative!important;z-index:2!important;width:48px!important;height:48px!important;min-width:48px!important;
+   display:grid!important;place-items:center!important;color:#d8b56d!important;background:transparent!important;
+   border:0!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important;
+   -webkit-backdrop-filter:none!important;mix-blend-mode:normal!important;transform:none!important;outline:none!important;
+   -webkit-tap-highlight-color:transparent!important;transition:opacity .18s ease,transform .18s ease!important;
  }
- .side-nav.me-liquid-dock .nav-link svg{width:24px!important;height:24px!important;stroke:currentColor!important;fill:none!important;stroke-width:1.85!important;filter:drop-shadow(0 1px 2px rgba(0,0,0,.16))}
- .side-nav.me-liquid-dock .nav-link:active{transform:scale(.92)!important}
- .side-nav.me-liquid-dock .me-liquid-indicator{
-   position:absolute;z-index:1;left:7px;top:7px;width:52px;height:52px;border-radius:50%;pointer-events:none;
-   transform:translate3d(0,var(--me-indicator-y,0px),0) scale(1);transform-origin:center;
-   background:rgba(255,255,255,.008);
-   -webkit-backdrop-filter:blur(30px) saturate(165%);backdrop-filter:blur(30px) saturate(165%);
-   box-shadow:inset 0 1px 1px rgba(255,255,255,.16),inset 0 -1px 2px rgba(255,255,255,.018),0 2px 9px rgba(0,0,0,.055);
-   transition:transform .58s cubic-bezier(.18,1.35,.32,1),width .32s ease,height .32s ease;
- }
- .side-nav.me-liquid-dock .me-liquid-indicator:before{content:"";position:absolute;inset:1px;border-radius:inherit;background:radial-gradient(ellipse at 35% 0%,rgba(255,255,255,.13),transparent 65%),linear-gradient(180deg,rgba(255,255,255,.025),transparent 62%);pointer-events:none}
- .side-nav.me-liquid-dock .me-liquid-indicator:after{content:"";position:absolute;left:18%;right:18%;top:1px;height:1px;border-radius:50%;background:rgba(255,255,255,.22);filter:blur(.6px)}
- .side-nav.me-liquid-dock.me-liquid-moving .me-liquid-indicator{transform:translate3d(0,var(--me-indicator-y,0px),0) scale(1.12,.91);transition:transform .48s cubic-bezier(.2,.9,.25,1.18)}
- .side-nav.me-liquid-dock.me-liquid-dragging .me-liquid-indicator{transform:translate3d(0,var(--me-indicator-y,0px),0) scale(1.08,.96);transition:transform .16s cubic-bezier(.2,.8,.2,1)}
+ .side-nav.me-liquid-dock .nav-link svg{width:23px!important;height:23px!important;stroke:currentColor!important;fill:none!important;stroke-width:1.85!important;filter:none!important}
+ .side-nav.me-liquid-dock .nav-link:active{transform:scale(.94)!important;opacity:.75!important}
  .side-nav.me-liquid-dock{touch-action:pan-y}
  .side-nav.me-liquid-dock .nav-link{touch-action:pan-y}
  body{padding-bottom:0!important}
- @media(max-width:480px){.side-nav.me-liquid-dock{left:8px!important;width:58px!important;min-height:290px!important;padding:6px 3px!important}.side-nav.me-liquid-dock .nav-link{width:48px!important;height:48px!important}.side-nav.me-liquid-dock .nav-link svg{width:22px!important;height:22px!important}.side-nav.me-liquid-dock .me-liquid-indicator{width:48px;height:48px;left:5px;top:6px}}
- @media(prefers-reduced-motion:reduce){.side-nav.me-liquid-dock .me-liquid-indicator{transition:none!important}}
+ @media(max-width:480px){.side-nav.me-liquid-dock{left:7px!important;width:50px!important;min-height:280px!important;gap:10px!important}.side-nav.me-liquid-dock .nav-link{width:44px!important;height:44px!important;min-width:44px!important}.side-nav.me-liquid-dock .nav-link svg{width:21px!important;height:21px!important}}
  `;
  document.head.appendChild(dockStyle);
- const activeIndex=()=>{
-   const file=(location.pathname.split("/").pop()||"index.html").toLowerCase();
-   if(["tshirt.html","hoodies.html","joggers.html","full-frames.html","jean-short.html","armless.html"].includes(file))return 3;
-   if(file==="announcements.html")return 1;
-   if(file==="collection.html"||file==="all-products.html")return 2;
-   if(file==="cart.html")return 4;
-   return 0;
- };
- const itemY=index=>{
-   const item=links[index];if(!item)return 0;
-   const nr=nav.getBoundingClientRect(),ir=item.getBoundingClientRect();
-   return ir.top-nr.top+(ir.height-indicator.offsetHeight)/2;
- };
- const moveIndicator=(index,animate=true)=>{
-   if(!links[index])return;
-   if(!animate){indicator.style.transition="none";}
-   indicator.style.setProperty("--me-indicator-y",itemY(index)+"px");
-   if(!animate)requestAnimationFrame(()=>indicator.style.removeProperty("transition"));
- };
- let selected=activeIndex(),dragging=false,dragMoved=false,downX=0,downY=0,dragIndex=selected,suppressClick=false;
- const indexAt=(x,y)=>{
-   const el=document.elementFromPoint(x,y);
-   const link=el&&el.closest?el.closest(".nav-link"):null;
-   return link&&nav.contains(link)?links.indexOf(link):-1;
- };
- const goTo=index=>{
-   if(index<0||index>=links.length)return;
-   selected=index;nav.classList.add("me-liquid-moving");moveIndicator(index,true);
-   if(index===3){trigger.click();}
-   else{
-     const destination=links[index].getAttribute("href");
-     if(destination&&destination!=="#")window.location.assign(destination);
-   }
-   window.setTimeout(()=>nav.classList.remove("me-liquid-moving"),620);
- };
- requestAnimationFrame(()=>moveIndicator(selected,false));
- links.forEach((link,index)=>{
-   link.addEventListener("click",event=>{
-     if(suppressClick){event.preventDefault();event.stopImmediatePropagation();suppressClick=false;return;}
-     if(index===3)return;
-     selected=index;nav.classList.add("me-liquid-moving");moveIndicator(index,true);
-     const destination=link.getAttribute("href");
-     if(destination&&destination!=="#"&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey){
-       event.preventDefault();
-       window.setTimeout(()=>window.location.assign(destination),180);
-     }
-     window.setTimeout(()=>nav.classList.remove("me-liquid-moving"),560);
-   });
- });
- // Drag the active glass lens from one navigation icon to another.
- nav.addEventListener("pointerdown",event=>{
-   const hit=event.target.closest(".nav-link");
-   if(!hit||event.button!==0)return;
-   dragging=true;dragMoved=false;dragIndex=links.indexOf(hit);downX=event.clientX;downY=event.clientY;
-   try{nav.setPointerCapture(event.pointerId);}catch(e){}
- },{passive:true});
- nav.addEventListener("pointermove",event=>{
-   if(!dragging)return;
-   const dx=event.clientX-downX,dy=event.clientY-downY;
-   if(Math.hypot(dx,dy)>7)dragMoved=true;
-   if(!dragMoved)return;
-   const idx=indexAt(event.clientX,event.clientY);
-   if(idx>=0){dragIndex=idx;indicator.style.setProperty("--me-indicator-y",itemY(idx)+"px");nav.classList.add("me-liquid-moving","me-liquid-dragging");}
- },{passive:true});
- const finishDrag=event=>{
-   if(!dragging)return;dragging=false;
-   nav.classList.remove("me-liquid-dragging");
-   if(dragMoved){suppressClick=true;goTo(dragIndex);window.setTimeout(()=>{suppressClick=false;},450);}
-   else moveIndicator(selected,true);
- };
- nav.addEventListener("pointerup",finishDrag);
- nav.addEventListener("pointercancel",finishDrag);
- window.addEventListener("resize",()=>moveIndicator(selected,false));
  const trigger=links[3];
  trigger.removeAttribute("href");
  trigger.setAttribute("role","button");
