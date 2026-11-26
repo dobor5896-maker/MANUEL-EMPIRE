@@ -149,6 +149,26 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  @media(max-width:480px){.side-nav.me-liquid-dock{left:7px!important;width:50px!important;min-height:280px!important;gap:10px!important}.side-nav.me-liquid-dock .nav-link{width:44px!important;height:44px!important;min-width:44px!important}.side-nav.me-liquid-dock .nav-link svg{width:21px!important;height:21px!important}}
  `;
  document.head.appendChild(dockStyle);
+ // Permanently strip every bubble/glass treatment from the five navigation controls.
+ nav.querySelectorAll(".me-liquid-indicator,.nav-bubble,.nav-glass").forEach(el=>el.remove());
+ const cleanNavStyle=document.createElement("style");
+ cleanNavStyle.textContent=`
+ .side-nav.me-liquid-dock,.side-nav.me-liquid-dock *{
+   -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+ }
+ .side-nav.me-liquid-dock .nav-link,
+ .side-nav.me-liquid-dock .nav-link:hover,
+ .side-nav.me-liquid-dock .nav-link:focus,
+ .side-nav.me-liquid-dock .nav-link:active,
+ .side-nav.me-liquid-dock .nav-link[aria-current="page"]{
+   color:#d8b56d!important;background:transparent!important;background-image:none!important;
+   border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;
+ }
+ .side-nav.me-liquid-dock .nav-link:before,
+ .side-nav.me-liquid-dock .nav-link:after{display:none!important;content:none!important}
+ .side-nav.me-liquid-dock .nav-link svg{color:#d8b56d!important;stroke:#d8b56d!important;fill:none!important;filter:none!important}
+ `;
+ document.head.appendChild(cleanNavStyle);
  const trigger=links[3];
  trigger.removeAttribute("href");
  trigger.setAttribute("role","button");
