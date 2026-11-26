@@ -3,13 +3,13 @@
  
  const style=document.createElement("style");
  style.textContent=`
-.category-dim{position:fixed;inset:0;z-index:44;border:0;padding:0;background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s ease}
+.category-dim{position:fixed;inset:0;z-index:44;border:0;padding:0;background:rgba(0,0,0,.58);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
 body.categories-open .category-dim{opacity:1;visibility:visible}
-.category-popout{position:fixed;z-index:45;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;width:min(620px,calc(100vw - 88px));padding:clamp(24px,5vw,38px);background:rgba(0,0,0,.76);-webkit-backdrop-filter:blur(22px) saturate(125%);backdrop-filter:blur(22px) saturate(125%);border:1px solid rgba(216,181,109,.55);box-shadow:0 22px 60px rgba(0,0,0,.32);border-radius:4px;opacity:0;visibility:hidden;transform:translate(-50%,-46%);transition:opacity .28s ease,transform .28s ease,visibility .28s ease}
-.category-popout .category-choice{display:flex;align-items:center;justify-content:center;min-height:76px;padding:16px 12px;color:#fff;background:rgba(255,255,255,.055);border:1px solid rgba(216,181,109,.62);border-radius:3px;text-decoration:none;text-align:center;font-size:clamp(14px,2.4vw,18px);font-weight:800;letter-spacing:.14em;text-shadow:none;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
-.category-popout .category-choice:hover,.category-popout .category-choice:focus-visible{color:#171613;background:#d8b56d;border-color:#e9cf98;transform:translateY(-2px);outline:none}
+.category-popout{position:fixed;z-index:45;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;width:min(820px,calc(100vw - 112px));padding:30px;background:rgba(10,10,9,.88);-webkit-backdrop-filter:blur(28px) saturate(145%);backdrop-filter:blur(28px) saturate(145%);border:1px solid rgba(216,181,109,.42);box-shadow:0 28px 80px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.10);border-radius:8px;opacity:0;visibility:hidden;transform:translate(-50%,-46%);transition:opacity .3s ease,transform .3s ease,visibility .3s ease}
+.category-popout .category-choice{position:relative;display:flex;align-items:center;justify-content:center;min-height:68px;padding:16px 12px;color:rgba(255,255,255,.92);background:rgba(255,255,255,.035);border:1px solid rgba(216,181,109,.38);border-radius:4px;text-decoration:none;text-align:center;font-size:clamp(12px,1.3vw,15px);font-weight:700;letter-spacing:.16em;text-shadow:0 1px 8px rgba(0,0,0,.25);transition:background .24s ease,color .24s ease,border-color .24s ease,transform .24s ease,box-shadow .24s ease}
+.category-popout .category-choice:hover,.category-popout .category-choice:focus-visible{color:#171613;background:#d8b56d;border-color:#ead3a5;box-shadow:0 8px 24px rgba(216,181,109,.16);transform:translateY(-2px);outline:none}
 body.categories-open .category-popout{opacity:1;visibility:visible;transform:translate(-50%,-50%)}
-@media(max-width:700px){.category-popout{width:calc(100vw - 82px);gap:14px;padding:20px;background:rgba(0,0,0,.78)}.category-popout .category-choice{min-height:72px;padding:12px 8px;font-size:clamp(13px,3.8vw,16px);letter-spacing:.08em}}
+@media(max-width:700px){.category-popout{grid-template-columns:repeat(2,minmax(0,1fr));width:calc(100vw - 78px);gap:10px;padding:18px;background:rgba(10,10,9,.91);border-radius:7px}.category-popout .category-choice{min-height:58px;padding:12px 7px;font-size:clamp(10px,3vw,13px);letter-spacing:.09em}}
 `;
 
 
@@ -258,7 +258,7 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  const close=()=>{document.body.classList.remove("categories-open");trigger.setAttribute("aria-expanded","false");};
  const positionPanel=()=>{
   panel.style.top="50%";
-  panel.style.left="calc(50% + 24px)";
+  panel.style.left="50%";
  };
  const toggle=()=>{
   const open=!document.body.classList.contains("categories-open");
