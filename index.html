@@ -427,6 +427,10 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
 /* Hide the brand kicker only while the second hero image is showing */
 .hero-copy .kicker{transition:opacity .35s ease,visibility .35s ease}
 .hero-copy .kicker.is-hidden{opacity:0;visibility:hidden}
+
+/* Keep collection calls-to-action clean: no decorative arrows */
+.editorial-strip a::before,.editorial-strip a::after,.look-link::before,.look-link::after{content:none!important;display:none!important}
+.editorial-strip a,.look-card .look-link{background-image:none!important}
 </style>
 </head>
 <body>
