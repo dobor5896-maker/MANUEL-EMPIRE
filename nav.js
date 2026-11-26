@@ -174,8 +174,8 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
   const open=!document.body.classList.contains("categories-open");
   if(open){
    const r=trigger.getBoundingClientRect();
-   panel.style.top=Math.min(window.innerHeight-250,r.bottom+12)+"px";
-   panel.style.left=Math.max(82,nav.getBoundingClientRect().right+14)+"px";
+   panel.style.top=Math.max(18,nav.getBoundingClientRect().top-220)+"px";
+   panel.style.left=Math.max(16,(window.innerWidth-Math.min(480,window.innerWidth-32))/2)+"px";
    document.body.classList.add("categories-open");
    trigger.setAttribute("aria-expanded","true");
   }else close();
@@ -185,7 +185,7 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  overlay.addEventListener("click",close);
  document.addEventListener("keydown",event=>{if(event.key==="Escape")close();});
  panel.addEventListener("click",event=>{if(event.target.closest("a"))close();});
- window.addEventListener("resize",()=>{if(document.body.classList.contains("categories-open")){const r=trigger.getBoundingClientRect();panel.style.top=Math.min(window.innerHeight-250,r.bottom+12)+"px";panel.style.left=Math.max(82,nav.getBoundingClientRect().right+14)+"px";}});
+ window.addEventListener("resize",()=>{if(document.body.classList.contains("categories-open")){const r=trigger.getBoundingClientRect();panel.style.top=Math.max(18,nav.getBoundingClientRect().top-220)+"px";panel.style.left=Math.max(16,(window.innerWidth-Math.min(480,window.innerWidth-32))/2)+"px";}});
 
 
 
