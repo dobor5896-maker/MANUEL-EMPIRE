@@ -3,13 +3,15 @@
  
  const style=document.createElement("style");
  style.textContent=`
-.category-popout{position:fixed;z-index:45;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,3vw,30px) clamp(24px,5vw,54px);width:min(480px,calc(100vw - 112px));padding:0;background:transparent;border:0;box-shadow:none;opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .32s ease,transform .32s ease,visibility .32s ease}
-.category-popout .category-choice{display:flex;align-items:center;justify-content:flex-start;min-height:42px;padding:4px 0;color:#fff;background:transparent;text-decoration:none;font-size:clamp(15px,2vw,19px);font-weight:800;letter-spacing:.12em;text-shadow:0 2px 10px rgba(0,0,0,.9);transition:color .2s ease,transform .2s ease}
-.category-popout .category-choice:hover,.category-popout .category-choice:focus-visible{color:#e2c17f;transform:translateX(5px);outline:none}
-body.categories-open .category-popout{opacity:1;visibility:visible;transform:translateY(0)}
-@media(max-width:700px){.category-popout{width:calc(100vw - 104px);gap:14px 22px}.category-popout .category-choice{min-height:38px;font-size:clamp(13px,3.5vw,16px);letter-spacing:.09em}}
+.category-dim{position:fixed;inset:0;z-index:44;border:0;padding:0;background:rgba(8,8,8,.48);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s ease}
+body.categories-open .category-dim{opacity:1;visibility:visible}
+.category-popout{position:fixed;z-index:45;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;width:min(480px,calc(100vw - 112px));padding:clamp(18px,4vw,28px);background:rgba(15,15,14,.72);-webkit-backdrop-filter:blur(22px) saturate(125%);backdrop-filter:blur(22px) saturate(125%);border:1px solid rgba(216,181,109,.55);box-shadow:0 22px 60px rgba(0,0,0,.32);border-radius:4px;opacity:0;visibility:hidden;transform:translate(-50%,-46%);transition:opacity .28s ease,transform .28s ease,visibility .28s ease}
+.category-popout .category-choice{display:flex;align-items:center;justify-content:center;min-height:58px;padding:12px 10px;color:#fff;background:rgba(255,255,255,.055);border:1px solid rgba(216,181,109,.62);border-radius:3px;text-decoration:none;text-align:center;font-size:clamp(12px,2vw,15px);font-weight:800;letter-spacing:.13em;text-shadow:none;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
+.category-popout .category-choice:hover,.category-popout .category-choice:focus-visible{color:#171613;background:#d8b56d;border-color:#e9cf98;transform:translateY(-2px);outline:none}
+body.categories-open .category-popout{opacity:1;visibility:visible;transform:translate(-50%,-50%)}
+@media(max-width:700px){.category-popout{width:calc(100vw - 104px);gap:12px;padding:16px}.category-popout .category-choice{min-height:58px;padding:10px 6px;font-size:clamp(11px,3.3vw,14px);letter-spacing:.08em}}
 `;
- document.head.appendChild(style);
+
 
  /* Opening welcome / slide-to-enter experience */
  const navEntry = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
@@ -254,12 +256,14 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  panel.innerHTML='<a class="category-choice" href="tshirt.html">TSHIRT</a><a class="category-choice" href="hoodies.html">HOODIES</a><a class="category-choice" href="joggers.html">JOGGERS</a><a class="category-choice" href="full-frames.html">FULL FRAMES</a><a class="category-choice" href="jean-short.html">JEAN SHORT</a><a class="category-choice" href="armless.html">ARMLESS</a>';
  document.body.append(overlay,panel);
  const close=()=>{document.body.classList.remove("categories-open");trigger.setAttribute("aria-expanded","false");};
+ const positionPanel=()=>{
+  panel.style.top="50%";
+  panel.style.left="calc(50% + 24px)";
+ };
  const toggle=()=>{
   const open=!document.body.classList.contains("categories-open");
   if(open){
-   const r=trigger.getBoundingClientRect();
-   panel.style.top=Math.max(18,nav.getBoundingClientRect().top-220)+"px";
-   panel.style.left=Math.max(82,nav.getBoundingClientRect().right+14)+"px";
+   positionPanel();
    document.body.classList.add("categories-open");
    trigger.setAttribute("aria-expanded","true");
   }else close();
@@ -269,7 +273,7 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  overlay.addEventListener("click",close);
  document.addEventListener("keydown",event=>{if(event.key==="Escape")close();});
  panel.addEventListener("click",event=>{if(event.target.closest("a"))close();});
- window.addEventListener("resize",()=>{if(document.body.classList.contains("categories-open")){const r=trigger.getBoundingClientRect();panel.style.top=Math.max(18,nav.getBoundingClientRect().top-220)+"px";panel.style.left=Math.max(82,nav.getBoundingClientRect().right+14)+"px";}});
+ window.addEventListener("resize",()=>{if(document.body.classList.contains("categories-open"))positionPanel();});
 
 
 
