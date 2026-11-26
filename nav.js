@@ -78,6 +78,17 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
   }
   .me-slide-thumb svg{filter:drop-shadow(0 1px 2px rgba(0,0,0,.22))!important}
   .me-slide-label{text-shadow:0 1px 5px rgba(0,0,0,.35)!important}
+  /* Welcome slider handle: solid champagne gold, no glass bubble. */
+  .me-slide-thumb{
+    background:linear-gradient(145deg,#f0d49a 0%,#d8b56d 52%,#b88d45 100%)!important;
+    border:1px solid rgba(255,239,202,.85)!important;
+    -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+    box-shadow:0 3px 10px rgba(0,0,0,.28),inset 0 1px 1px rgba(255,255,255,.42)!important;
+    overflow:hidden!important;
+  }
+  .me-slide-thumb:before,.me-slide-thumb:after{display:none!important;content:none!important}
+  .me-slide-thumb svg{stroke:#fff!important;filter:none!important}
+  .me-slide-thumb:active{background:linear-gradient(145deg,#f4dca9,#cba45e)!important;box-shadow:0 2px 7px rgba(0,0,0,.24)!important}
   @media(prefers-reduced-motion:reduce){.me-welcome{transition:none}}
   `;
   document.head.appendChild(welcomeStyle);
