@@ -25,15 +25,17 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
   .me-welcome-title{max-width:720px;margin:0;text-align:center;color:#fff;font-size:clamp(30px,7vw,66px);font-weight:700;letter-spacing:.055em;line-height:1.12;text-transform:uppercase}
   .me-welcome-title span{display:block;color:#d7b574}
   .me-welcome-instruction{margin:42px 0 18px;color:#fff;font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
-  .me-slide-track{position:relative;width:min(290px,78vw);height:64px;border:1px solid rgba(226,193,127,.34);border-radius:999px;background:linear-gradient(110deg,rgba(255,255,255,.075),rgba(255,255,255,.018) 48%,rgba(226,193,127,.045));box-shadow:inset 0 1px 1px rgba(255,255,255,.24),inset 0 -8px 18px rgba(255,255,255,.018),0 10px 32px rgba(0,0,0,.3),0 0 22px rgba(226,193,127,.055);overflow:hidden;backdrop-filter:blur(22px) saturate(185%);-webkit-backdrop-filter:blur(22px) saturate(185%)}
-  .me-slide-track:before{content:"";position:absolute;inset:1px 2px auto;height:45%;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.19),rgba(255,255,255,.035) 55%,transparent);pointer-events:none}
-  .me-slide-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-left:34px;color:rgba(255,255,255,.7);font-size:9px;font-weight:650;letter-spacing:.2em;pointer-events:none;text-shadow:0 1px 5px rgba(0,0,0,.55)}
-  .me-slide-range{position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;margin:0;appearance:none;-webkit-appearance:none;background:transparent;outline:none;cursor:grab;touch-action:pan-y}
-  .me-slide-range:active{cursor:grabbing}
-  .me-slide-range::-webkit-slider-runnable-track{height:100%;background:transparent}
-  .me-slide-range::-moz-range-track{height:100%;background:transparent}
-  .me-slide-range::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:56px;height:56px;margin-top:3px;border-radius:50%;border:1px solid rgba(255,255,255,.58);background:linear-gradient(145deg,rgba(255,255,255,.38),rgba(255,255,255,.13) 42%,rgba(226,193,127,.2) 100%);-webkit-backdrop-filter:blur(18px) saturate(210%);backdrop-filter:blur(18px) saturate(210%);box-shadow:inset 0 1px 2px rgba(255,255,255,.72),inset 0 -5px 10px rgba(255,255,255,.08),0 3px 14px rgba(0,0,0,.48),0 0 18px rgba(226,193,127,.22);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f5e4c2' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E"),linear-gradient(145deg,rgba(255,255,255,.38),rgba(255,255,255,.13) 42%,rgba(226,193,127,.2) 100%);background-repeat:no-repeat;background-position:center;background-size:22px,cover}
-  .me-slide-range::-moz-range-thumb{width:54px;height:54px;border-radius:50%;border:1px solid rgba(255,255,255,.58);background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f5e4c2' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/22px no-repeat,linear-gradient(145deg,rgba(255,255,255,.38),rgba(255,255,255,.13) 42%,rgba(226,193,127,.2) 100%);backdrop-filter:blur(18px) saturate(210%);box-shadow:inset 0 1px 2px rgba(255,255,255,.72),inset 0 -5px 10px rgba(255,255,255,.08),0 3px 14px rgba(0,0,0,.48),0 0 18px rgba(226,193,127,.22)}
+  .me-slide-track{position:relative;width:min(310px,80vw);height:68px;border-radius:999px;isolation:isolate;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.105),rgba(255,255,255,.018) 38%,rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.34);box-shadow:inset 0 1px 1px rgba(255,255,255,.58),inset 0 -1px 2px rgba(226,193,127,.18),0 14px 38px rgba(0,0,0,.55),0 0 22px rgba(226,193,127,.09);-webkit-backdrop-filter:blur(28px) saturate(220%);backdrop-filter:blur(28px) saturate(220%)}
+  .me-slide-track:before{content:"";position:absolute;inset:1px;border-radius:inherit;z-index:0;background:linear-gradient(112deg,rgba(255,255,255,.14),transparent 25%,transparent 68%,rgba(226,193,127,.08));pointer-events:none}
+  .me-slide-track:after{content:"";position:absolute;left:12%;right:12%;top:1px;height:1px;z-index:1;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),rgba(255,255,255,.3),transparent);filter:blur(.4px);pointer-events:none}
+  .me-slide-label{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;padding-left:44px;color:rgba(255,255,255,.7);font-size:9px;font-weight:650;letter-spacing:.22em;pointer-events:none;text-shadow:0 1px 8px rgba(0,0,0,.8);transition:opacity .2s}
+  .me-slide-track.is-moving .me-slide-label{opacity:.22}
+  .me-slide-thumb{position:absolute;z-index:3;left:5px;top:5px;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;transform:translateX(var(--slide-x,0px));transition:transform .16s cubic-bezier(.2,.8,.2,1),box-shadow .2s;overflow:hidden;border:1px solid rgba(255,255,255,.76);background:linear-gradient(145deg,rgba(255,255,255,.36),rgba(255,255,255,.13) 38%,rgba(226,193,127,.2) 72%,rgba(255,255,255,.1));-webkit-backdrop-filter:blur(24px) saturate(240%);backdrop-filter:blur(24px) saturate(240%);box-shadow:inset 0 1.5px 2px rgba(255,255,255,.9),inset 0 -7px 12px rgba(255,255,255,.09),inset 0 0 0 1px rgba(226,193,127,.18),0 4px 15px rgba(0,0,0,.56),0 0 18px rgba(226,193,127,.2)}
+  .me-slide-thumb:before{content:"";position:absolute;inset:2px 3px 48% 3px;border-radius:50%;background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.12) 72%,transparent);filter:blur(.5px);pointer-events:none}
+  .me-slide-thumb:after{content:"";position:absolute;inset:5px;border-radius:50%;border:1px solid rgba(255,255,255,.22);box-shadow:0 0 8px rgba(255,255,255,.12);pointer-events:none}
+  .me-slide-thumb svg{position:relative;z-index:2;width:21px;height:21px;fill:none;stroke:#f3dfb8;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 1px 3px rgba(0,0,0,.65))}
+  .me-slide-thumb:active{cursor:grabbing;box-shadow:inset 0 1.5px 2px rgba(255,255,255,.95),inset 0 -7px 12px rgba(255,255,255,.12),0 5px 20px rgba(0,0,0,.6),0 0 24px rgba(226,193,127,.3)}
+  .me-slide-thumb:focus-visible{outline:2px solid rgba(226,193,127,.9);outline-offset:4px}
   .me-welcome-foot{margin-top:22px;color:rgba(255,255,255,.34);font-size:8px;letter-spacing:.24em;text-transform:uppercase}
   @media(prefers-reduced-motion:reduce){.me-welcome{transition:none}}
   `;
@@ -42,10 +44,13 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
   welcome.className="me-welcome";
   welcome.setAttribute("role","dialog");
   welcome.setAttribute("aria-label","Welcome to MANUEL EMPIRE");
-  welcome.innerHTML='<p class="me-welcome-brand">MANUEL EMPIRE</p><h1 class="me-welcome-title">WELCOME TO<span>MANUEL EMPIRE</span></h1><p class="me-welcome-instruction">SLIDE RIGHT TO ENTER</p><div class="me-slide-track"><span class="me-slide-label">SLIDE TO ENTER</span><input class="me-slide-range" type="range" min="0" max="100" value="0" aria-label="Slide right to enter the website"></div><p class="me-welcome-foot">WEAR YOUR IDENTITY</p>';
+  welcome.innerHTML='<p class="me-welcome-brand">MANUEL EMPIRE</p><h1 class="me-welcome-title">WELCOME TO<span>MANUEL EMPIRE</span></h1><p class="me-welcome-instruction">SLIDE RIGHT TO ENTER</p><div class="me-slide-track"><span class="me-slide-label">SLIDE TO ENTER</span><div class="me-slide-thumb" role="slider" tabindex="0" aria-label="Slide right to enter the website" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div><p class="me-welcome-foot">WEAR YOUR IDENTITY</p>';
   document.body.appendChild(welcome);
-  const slider=welcome.querySelector(".me-slide-range");
-  let entered=false;
+  const track=welcome.querySelector(".me-slide-track");
+  const slider=welcome.querySelector(".me-slide-thumb");
+  let entered=false,dragging=false,startX=0,startOffset=0,offset=0;
+  const maxOffset=()=>Math.max(0,track.clientWidth-slider.offsetWidth-10);
+  const paint=next=>{offset=Math.max(0,Math.min(maxOffset(),next));slider.style.setProperty("--slide-x",offset+"px");slider.setAttribute("aria-valuenow",String(Math.round(maxOffset()?offset/maxOffset()*100:0)));};
   const enter=()=>{
    if(entered)return;
    entered=true;
@@ -53,9 +58,14 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
    welcome.classList.add("is-leaving");
    window.setTimeout(()=>welcome.remove(),900);
   };
-  slider.addEventListener("input",()=>{if(Number(slider.value)>=92)enter();});
-  slider.addEventListener("change",()=>{if(Number(slider.value)>=80)enter();else slider.value=0;});
-  slider.addEventListener("keydown",event=>{if(event.key==="Enter"&&Number(slider.value)>=80)enter();});
+  slider.addEventListener("pointerdown",event=>{if(entered)return;dragging=true;startX=event.clientX;startOffset=offset;slider.setPointerCapture(event.pointerId);slider.style.transition="none";track.classList.add("is-moving");});
+  slider.addEventListener("pointermove",event=>{if(!dragging)return;paint(startOffset+event.clientX-startX);if(maxOffset()&&offset/maxOffset()>=.94)enter();});
+  const release=()=>{if(!dragging)return;dragging=false;track.classList.remove("is-moving");slider.style.transition="";if(!entered)paint(0);};
+  slider.addEventListener("pointerup",release);
+  slider.addEventListener("pointercancel",release);
+  slider.addEventListener("lostpointercapture",release);
+  slider.addEventListener("keydown",event=>{if(entered)return;if(event.key==="ArrowRight"){event.preventDefault();paint(offset+maxOffset()*.12);if(maxOffset()&&offset/maxOffset()>=.94)enter();}else if(event.key==="ArrowLeft"){event.preventDefault();paint(offset-maxOffset()*.12);}else if(event.key==="Home"){event.preventDefault();paint(0);}else if(event.key==="End"){event.preventDefault();paint(maxOffset());if(maxOffset())enter();}});
+  window.addEventListener("resize",()=>paint(0));
  }
 
  const nav=document.querySelector(".side-nav");
