@@ -41,6 +41,43 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
   .me-slide-thumb svg{position:relative;z-index:2;width:21px;height:21px;fill:none;stroke:rgba(255,255,255,.92);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
   .me-slide-thumb:active{cursor:grabbing;box-shadow:inset 0 1.5px 2px rgba(255,255,255,.82),inset 0 -7px 12px rgba(255,255,255,.06),0 5px 20px rgba(0,0,0,.55)}
   .me-welcome-foot{margin-top:22px;color:rgba(255,255,255,.34);font-size:8px;letter-spacing:.24em;text-transform:uppercase}
+  /* Clear, colourless wet-glass treatment: transparent body, bright optical rims. */
+  .me-slide-track{
+    background:rgba(255,255,255,.012)!important;
+    border:1px solid rgba(255,255,255,.34)!important;
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.42),inset 0 -1px 1px rgba(255,255,255,.12),0 8px 24px rgba(0,0,0,.18)!important;
+    -webkit-backdrop-filter:blur(18px) saturate(180%) contrast(108%)!important;
+    backdrop-filter:blur(18px) saturate(180%) contrast(108%)!important;
+  }
+  .me-slide-track:before{
+    inset:1px!important;
+    background:linear-gradient(180deg,rgba(255,255,255,.19),rgba(255,255,255,.035) 13%,transparent 43%,rgba(255,255,255,.025) 82%,rgba(255,255,255,.12))!important;
+    filter:none!important;
+  }
+  .me-slide-track:after{
+    top:1px!important;bottom:1px!important;left:-42%!important;width:30%!important;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.34),rgba(255,255,255,.08),transparent)!important;
+    filter:blur(5px)!important;
+  }
+  .me-slide-thumb{
+    background:linear-gradient(145deg,rgba(255,255,255,.29),rgba(255,255,255,.075) 38%,rgba(255,255,255,.025) 66%,rgba(255,255,255,.16))!important;
+    border:1px solid rgba(255,255,255,.52)!important;
+    -webkit-backdrop-filter:blur(12px) saturate(190%) contrast(112%)!important;
+    backdrop-filter:blur(12px) saturate(190%) contrast(112%)!important;
+    box-shadow:inset 0 1px 2px rgba(255,255,255,.82),inset 0 -1px 2px rgba(255,255,255,.2),0 3px 12px rgba(0,0,0,.2),0 0 12px rgba(255,255,255,.08)!important;
+  }
+  .me-slide-thumb:before{
+    inset:1px 2px 42% 2px!important;
+    background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.96),rgba(255,255,255,.28) 34%,rgba(255,255,255,.035) 74%,transparent)!important;
+    filter:blur(.7px)!important;
+  }
+  .me-slide-thumb:after{
+    content:""!important;position:absolute!important;inset:2px!important;border-radius:50%!important;
+    background:linear-gradient(115deg,transparent 28%,rgba(255,255,255,.16) 48%,transparent 66%)!important;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)!important;pointer-events:none!important;
+  }
+  .me-slide-thumb svg{filter:drop-shadow(0 1px 2px rgba(0,0,0,.22))!important}
+  .me-slide-label{text-shadow:0 1px 5px rgba(0,0,0,.35)!important}
   @media(prefers-reduced-motion:reduce){.me-welcome{transition:none}}
   `;
   document.head.appendChild(welcomeStyle);
