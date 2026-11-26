@@ -105,10 +105,10 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  .side-nav.me-liquid-dock:before{content:"";position:absolute;inset:1px;border-radius:inherit;pointer-events:none;z-index:0;background:linear-gradient(110deg,rgba(255,255,255,.045),transparent 42%,rgba(255,255,255,.018));}
  .side-nav.me-liquid-dock .nav-link{
    position:relative!important;z-index:2!important;width:52px!important;height:52px!important;display:grid!important;place-items:center!important;
-   color:#fff!important;background:transparent!important;border:0!important;border-radius:50%!important;mix-blend-mode:difference!important;
+   color:#d8b56d!important;background:transparent!important;border:0!important;border-radius:50%!important;mix-blend-mode:normal!important;
    transform:none!important;outline:none!important;-webkit-tap-highlight-color:transparent!important;
  }
- .side-nav.me-liquid-dock .nav-link svg{width:24px!important;height:24px!important;stroke:currentColor!important;fill:none!important;stroke-width:1.75!important}
+ .side-nav.me-liquid-dock .nav-link svg{width:24px!important;height:24px!important;stroke:currentColor!important;fill:none!important;stroke-width:1.85!important;filter:drop-shadow(0 1px 2px rgba(0,0,0,.16))}
  .side-nav.me-liquid-dock .nav-link:active{transform:scale(.92)!important}
  .side-nav.me-liquid-dock .me-liquid-indicator{
    position:absolute;z-index:1;left:7px;top:7px;width:52px;height:52px;border-radius:50%;pointer-events:none;
