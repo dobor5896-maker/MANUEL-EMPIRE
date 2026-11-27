@@ -5,11 +5,11 @@ const ME_PRODUCTS = [
  {id:"joggers-03",name:"JOGGERS 03",category:"Unisex",type:"Joggers",section:"joggers",images:["14.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
  {id:"joggers-04",name:"JOGGERS 04",category:"Unisex",type:"Joggers",section:"joggers",images:["16.JPG","18.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
  {id:"joggers-05",name:"JOGGERS 05",category:"Unisex",type:"Joggers",section:"joggers",images:["17.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
- {id:"jeans-01",name:"JEANS 01",category:"Men",type:"Jeans",section:"jeans",images:["5.JPG","6.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
- {id:"jeans-02",name:"JEANS 02",category:"Men",type:"Jeans",section:"jeans",images:["7.JPG","8.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
- {id:"jeans-03",name:"JEANS 03",category:"Men",type:"Jeans",section:"jeans",images:["9.JPG","11.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
- {id:"jeans-04",name:"JEANS 04",category:"Men",type:"Jeans",section:"jeans",images:["10.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
- {id:"jeans-05",name:"JEANS 05",category:"Men",type:"Jeans",section:"jeans",images:["12.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]}
+ {id:"jeans-01",name:"JEANS 01",category:"Men",type:"Jeans",section:"jeans",images:["5.JPG","6.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"jeans-02",name:"JEANS 02",category:"Men",type:"Jeans",section:"jeans",images:["7.JPG","8.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"jeans-03",name:"JEANS 03",category:"Men",type:"Jeans",section:"jeans",images:["9.JPG","11.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"jeans-04",name:"JEANS 04",category:"Men",type:"Jeans",section:"jeans",images:["10.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"jeans-05",name:"JEANS 05",category:"Men",type:"Jeans",section:"jeans",images:["12.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]}
 ];
 const ME_CART_KEY = "manuel-empire-cart-v1";
 const meMoney = value => new Intl.NumberFormat("en-NG",{style:"currency",currency:"NGN",maximumFractionDigits:0}).format(value);
