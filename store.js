@@ -1,4 +1,4 @@
-/* MANUEL EMPIRE storefront. Product names/images are editorial starter entries; confirm actual stock and pricing before launch. */
+/* MANUEL EMPIRE storefront. Live catalogue stays empty until real product listings and stock are supplied. */
 const ME_PRODUCTS = [];
 const ME_CART_KEY = "manuel-empire-cart-v1";
 const meMoney = value => new Intl.NumberFormat("en-NG",{style:"currency",currency:"NGN",maximumFractionDigits:0}).format(value);
