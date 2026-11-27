@@ -497,6 +497,7 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  const second=document.querySelector('.hero-image-b');
  const kicker=document.querySelector('.hero-copy .kicker');
  if(!first||!second||!kicker)return;
+ if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
  let showingSecond=false;
  window.setInterval(()=>{
    showingSecond=!showingSecond;
