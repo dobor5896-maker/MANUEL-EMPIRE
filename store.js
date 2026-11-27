@@ -1,10 +1,10 @@
 /* MANUEL EMPIRE storefront. Live catalogue stays empty until real product listings and stock are supplied. */
 const ME_PRODUCTS = [
- {id:"joggers-01",name:"JOGGERS 01",category:"Men",type:"Joggers",section:"joggers",images:["1.JPG","2.JPG","3.JPG","4.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"joggers-02",name:"JOGGERS 02",category:"Men",type:"Joggers",section:"joggers",images:["13.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"joggers-03",name:"JOGGERS 03",category:"Men",type:"Joggers",section:"joggers",images:["14.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"joggers-04",name:"JOGGERS 04",category:"Men",type:"Joggers",section:"joggers",images:["16.JPG","18.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"joggers-05",name:"JOGGERS 05",category:"Men",type:"Joggers",section:"joggers",images:["17.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"joggers-01",name:"JOGGERS 01",category:"Unisex",type:"Joggers",section:"joggers",images:["1.JPG","2.JPG","3.JPG","4.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"joggers-02",name:"JOGGERS 02",category:"Unisex",type:"Joggers",section:"joggers",images:["13.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"joggers-03",name:"JOGGERS 03",category:"Unisex",type:"Joggers",section:"joggers",images:["14.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"joggers-04",name:"JOGGERS 04",category:"Unisex",type:"Joggers",section:"joggers",images:["16.JPG","18.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"joggers-05",name:"JOGGERS 05",category:"Unisex",type:"Joggers",section:"joggers",images:["17.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
  {id:"jeans-01",name:"JEANS 01",category:"Men",type:"Jeans",section:"jeans",images:["5.JPG","6.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
  {id:"jeans-02",name:"JEANS 02",category:"Men",type:"Jeans",section:"jeans",images:["7.JPG","8.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
  {id:"jeans-03",name:"JEANS 03",category:"Men",type:"Jeans",section:"jeans",images:["9.JPG","11.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
