@@ -273,7 +273,7 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  const panel=document.createElement("div");
  panel.className="category-popout";
  panel.setAttribute("aria-label","Choose a collection");
- panel.innerHTML='<a class="category-choice" href="tshirt.html">TSHIRT</a><a class="category-choice" href="hoodies.html">HOODIES</a><a class="category-choice" href="joggers.html">JOGGERS</a><a class="category-choice" href="full-frames.html">FULL FRAMES</a><a class="category-choice" href="jean-short.html">JEAN SHORT</a><a class="category-choice" href="armless.html">ARMLESS</a>';
+ panel.innerHTML='<a class="category-choice" href="tshirt.html">TSHIRT</a><a class="category-choice" href="hoodies.html">HOODIES</a><a class="category-choice" href="joggers.html">JOGGERS</a><a class="category-choice" href="full-frames.html">FULL FRAMES</a><a class="category-choice" href="jean-short.html">JEANS</a><a class="category-choice" href="armless.html">ARMLESS</a>';
  document.body.append(overlay,panel);
 
  let activeTrigger=trigger;
