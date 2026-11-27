@@ -1,5 +1,16 @@
 /* MANUEL EMPIRE storefront. Live catalogue stays empty until real product listings and stock are supplied. */
-const ME_PRODUCTS = [];
+const ME_PRODUCTS = [
+ {id:"joggers-01",name:"JOGGERS 01",category:"Men",type:"Joggers",section:"joggers",images:["1.JPG","2.JPG","3.JPG","4.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"joggers-02",name:"JOGGERS 02",category:"Men",type:"Joggers",section:"joggers",images:["13.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"joggers-03",name:"JOGGERS 03",category:"Men",type:"Joggers",section:"joggers",images:["14.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"joggers-04",name:"JOGGERS 04",category:"Men",type:"Joggers",section:"joggers",images:["16.JPG","18.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"joggers-05",name:"JOGGERS 05",category:"Men",type:"Joggers",section:"joggers",images:["17.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"jeans-01",name:"JEANS 01",category:"Men",type:"Jeans",section:"jeans",images:["5.JPG","6.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"jeans-02",name:"JEANS 02",category:"Men",type:"Jeans",section:"jeans",images:["7.JPG","8.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"jeans-03",name:"JEANS 03",category:"Men",type:"Jeans",section:"jeans",images:["9.JPG","11.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"jeans-04",name:"JEANS 04",category:"Men",type:"Jeans",section:"jeans",images:["10.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
+ {id:"jeans-05",name:"JEANS 05",category:"Men",type:"Jeans",section:"jeans",images:["12.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]}
+];
 const ME_CART_KEY = "manuel-empire-cart-v1";
 const meMoney = value => new Intl.NumberFormat("en-NG",{style:"currency",currency:"NGN",maximumFractionDigits:0}).format(value);
 let meMemoryCart = [];
@@ -18,9 +29,10 @@ const meAddToCart = (productId,size,color) => {
   if(notice){notice.textContent=product.name+" added to your bag.";notice.classList.add("is-visible");window.setTimeout(()=>notice.classList.remove("is-visible"),2600);}
 };
 const meProductCard = product => `
-<article class="shop-card" data-category="${product.category.toLowerCase()}" data-name="${product.name.toLowerCase()}">
+<article class="shop-card" data-category="${product.category.toLowerCase()}" data-name="${product.name.toLowerCase()}" data-gallery-images="${product.images.join("|")}">
   <div class="shop-image">
-    <img src="${product.image}" alt="${product.name}" loading="lazy">
+    <img src="${product.images[0]}" alt="${product.name}" loading="lazy" data-gallery-image data-gallery-index="0">
+    ${product.images.length>1?'<button class="gallery-arrow gallery-prev" type="button" data-gallery-step="-1" aria-label="Previous product image">‹</button><button class="gallery-arrow gallery-next" type="button" data-gallery-step="1" aria-label="Next product image">›</button><span class="gallery-count" data-gallery-count>1 / '+product.images.length+'</span>':''}
     <span class="image-tag">MANUEL EMPIRE</span>
     <button class="wishlist-button" type="button" data-wishlist="${product.id}" aria-label="Add ${product.name} to wishlist" aria-pressed="false">♡</button>
   </div>
