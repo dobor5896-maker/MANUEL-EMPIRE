@@ -1,15 +1,15 @@
 /* MANUEL EMPIRE storefront. Live catalogue stays empty until real product listings and stock are supplied. */
 const ME_PRODUCTS = [
- {id:"joggers-01",name:"JOGGERS 01",category:"Unisex",type:"Joggers",section:"joggers",images:["1.JPG","2.JPG","3.JPG","4.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"joggers-02",name:"JOGGERS 02",category:"Unisex",type:"Joggers",section:"joggers",images:["13.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"joggers-03",name:"JOGGERS 03",category:"Unisex",type:"Joggers",section:"joggers",images:["14.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"joggers-04",name:"JOGGERS 04",category:"Unisex",type:"Joggers",section:"joggers",images:["16.JPG","18.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"joggers-05",name:"JOGGERS 05",category:"Unisex",type:"Joggers",section:"joggers",images:["17.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"jeans-01",name:"JEANS 01",category:"Men",type:"Jeans",section:"jeans",images:["5.JPG","6.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"jeans-02",name:"JEANS 02",category:"Men",type:"Jeans",section:"jeans",images:["7.JPG","8.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"jeans-03",name:"JEANS 03",category:"Men",type:"Jeans",section:"jeans",images:["9.JPG","11.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"jeans-04",name:"JEANS 04",category:"Men",type:"Jeans",section:"jeans",images:["10.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]},
- {id:"jeans-05",name:"JEANS 05",category:"Men",type:"Jeans",section:"jeans",images:["12.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["Confirm size"],colors:["As pictured"]}
+ {id:"joggers-01",name:"JOGGERS 01",category:"Unisex",type:"Joggers",section:"joggers",images:["1.JPG","2.JPG","3.JPG","4.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
+ {id:"joggers-02",name:"JOGGERS 02",category:"Unisex",type:"Joggers",section:"joggers",images:["13.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
+ {id:"joggers-03",name:"JOGGERS 03",category:"Unisex",type:"Joggers",section:"joggers",images:["14.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
+ {id:"joggers-04",name:"JOGGERS 04",category:"Unisex",type:"Joggers",section:"joggers",images:["16.JPG","18.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
+ {id:"joggers-05",name:"JOGGERS 05",category:"Unisex",type:"Joggers",section:"joggers",images:["17.JPG"],description:"A closer look at this MANUEL EMPIRE joggers piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
+ {id:"jeans-01",name:"JEANS 01",category:"Men",type:"Jeans",section:"jeans",images:["5.JPG","6.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
+ {id:"jeans-02",name:"JEANS 02",category:"Men",type:"Jeans",section:"jeans",images:["7.JPG","8.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
+ {id:"jeans-03",name:"JEANS 03",category:"Men",type:"Jeans",section:"jeans",images:["9.JPG","11.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
+ {id:"jeans-04",name:"JEANS 04",category:"Men",type:"Jeans",section:"jeans",images:["10.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]},
+ {id:"jeans-05",name:"JEANS 05",category:"Men",type:"Jeans",section:"jeans",images:["12.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]}
 ];
 const ME_CART_KEY = "manuel-empire-cart-v1";
 const meMoney = value => new Intl.NumberFormat("en-NG",{style:"currency",currency:"NGN",maximumFractionDigits:0}).format(value);
@@ -45,7 +45,7 @@ const meProductCard = product => `
     <p class="shop-description">${product.description}</p>
     <div class="product-options">
       <label>Size<select class="option-size">${product.sizes.map(size=>`<option>${size}</option>`).join("")}</select></label>
-      <label>Colour<select class="option-color">${product.colors.map(color=>`<option>${color}</option>`).join("")}</select></label>
+      <div class="colour-picker"><span class="colour-label">Colour</span><div class="colour-swatches" role="group" aria-label="Choose a colour">${product.colors.map((color,index)=>`<button type="button" class="colour-swatch${index===0?" is-selected":""}" data-color="${color}" aria-label="${color}" aria-pressed="${index===0}" title="${color}"><span class="swatch-dot swatch-${color.toLowerCase()}"></span><span class="swatch-name">${color}</span></button>`).join("")}</div><select class="option-color" aria-label="Selected colour" tabindex="-1">${product.colors.map(color=>`<option>${color}</option>`).join("")}</select></div>
     </div>
     <button type="button" class="gold-button add-to-bag" data-id="${product.id}">Add to bag <span aria-hidden="true">＋</span></button>
   </div>
@@ -90,6 +90,8 @@ document.addEventListener("click",event=>{
  const house=event.target.closest("[data-house-filter]");
  if(house){const filter=document.querySelector("[data-shop-filter]");if(filter){filter.value=house.dataset.houseFilter;meRenderShop();}}
 
+ const swatch=event.target.closest(".colour-swatch");
+ if(swatch){const picker=swatch.closest(".colour-picker");const select=picker?.querySelector(".option-color");if(select){select.value=swatch.dataset.color;picker.querySelectorAll(".colour-swatch").forEach(button=>{const active=button===swatch;button.classList.toggle("is-selected",active);button.setAttribute("aria-pressed",String(active));});}return;}
  const add=event.target.closest(".add-to-bag");
  if(add){const card=add.closest(".shop-card");meAddToCart(add.dataset.id,card.querySelector(".option-size").value,card.querySelector(".option-color").value);}
  const qty=event.target.closest("[data-qty]");
