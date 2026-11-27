@@ -245,11 +245,26 @@ document.addEventListener("DOMContentLoaded",()=>{
  document.querySelector("[data-shop-search]")?.addEventListener("input",meRenderShop);
  document.querySelectorAll("[data-wishlist]").forEach(button=>{const saved=meReadWishlist().includes(button.dataset.wishlist);button.classList.toggle("is-saved",saved);button.setAttribute("aria-pressed",String(saved));button.textContent=saved?"♥":"♡";});
  const form=document.querySelector("[data-order-form]");
- form?.addEventListener("submit",async event=>{
-   event.preventDefault();if(!meReadCart().length)return;
-   const data=new FormData(form);const text=meOrderText({name:data.get("name"),phone:data.get("phone"),address:data.get("address"),note:data.get("note")});
+ form?.addEventListener("submit",event=>{
+   event.preventDefault();
+   if(!meReadCart().length)return;
+   if(!form.reportValidity())return;
+   const data=new FormData(form);
+   const orderText=meOrderText({name:data.get("name"),phone:data.get("phone"),address:data.get("address"),note:data.get("note")});
    const status=document.querySelector("[data-order-status]");
-   try{await navigator.clipboard.writeText(text);status.textContent="Your order request has been copied. Paste it into your preferred messaging app to send it to MANUEL EMPIRE.";status.classList.add("is-visible");}
-   catch{const area=document.querySelector("[data-order-copy]");area.hidden=false;area.value=text;area.focus();area.select();status.textContent="Copy the order details below and send them to MANUEL EMPIRE.";status.classList.add("is-visible");}
+   const whatsappUrl="https://wa.me/2349042833912?text="+encodeURIComponent(orderText);
+   const opened=window.open(whatsappUrl,"_blank","noopener,noreferrer");
+   if(opened){
+     status.textContent="Your order is ready in WhatsApp. Review the message and tap Send to place your request.";
+     status.classList.add("is-visible");
+   }else{
+     const area=document.querySelector("[data-order-copy]");
+     area.hidden=false;
+     area.value=orderText;
+     area.focus();
+     area.select();
+     status.textContent="WhatsApp could not open automatically. Copy this order message and send it to 09042833912.";
+     status.classList.add("is-visible");
+   }
  });
 });
