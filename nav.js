@@ -12,6 +12,9 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
 @media(max-width:480px){.category-popout{min-width:142px;padding:17px 18px;gap:25px;max-width:calc(100vw - 94px)}.category-popout .category-choice{font-size:10px;letter-spacing:.15em}}
 `;
 
+ // Apply category menu styling before creating its overlay and panel.
+ document.head.appendChild(style);
+
 
  /* Opening welcome / slide-to-enter experience */
  const navEntry = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
