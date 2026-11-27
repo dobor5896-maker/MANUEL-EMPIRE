@@ -246,6 +246,7 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  trigger.title="Categories";
  trigger.setAttribute("aria-expanded","false");
  trigger.dataset.categoryToggle="true";
+
  const overlay=document.createElement("button");
  overlay.className="category-dim";
  overlay.type="button";
@@ -255,27 +256,63 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
  panel.setAttribute("aria-label","Choose a collection");
  panel.innerHTML='<a class="category-choice" href="tshirt.html">TSHIRT</a><a class="category-choice" href="hoodies.html">HOODIES</a><a class="category-choice" href="joggers.html">JOGGERS</a><a class="category-choice" href="full-frames.html">FULL FRAMES</a><a class="category-choice" href="jean-short.html">JEAN SHORT</a><a class="category-choice" href="armless.html">ARMLESS</a>';
  document.body.append(overlay,panel);
- const close=()=>{document.body.classList.remove("categories-open");trigger.setAttribute("aria-expanded","false");};
- const positionPanel=()=>{
-  const rect=trigger.getBoundingClientRect();
-  panel.style.left=Math.max(70,rect.right+12)+"px";
+
+ let activeTrigger=trigger;
+ const allTriggers=()=>Array.from(document.querySelectorAll('[data-me-category-toggle],.me-category-trigger,[data-category-toggle="true"]'));
+ const close=()=>{
+  document.body.classList.remove("categories-open");
+  allTriggers().forEach(item=>item.setAttribute("aria-expanded","false"));
+ };
+ const positionPanel=(anchor)=>{
+  if(!anchor)return;
+  const rect=anchor.getBoundingClientRect();
+  panel.style.left=Math.max(70,Math.min(window.innerWidth-panel.offsetWidth-10,rect.right+12))+"px";
   panel.style.top=Math.min(window.innerHeight-panel.offsetHeight-12,Math.max(12,rect.top-8))+"px";
  };
- const toggle=()=>{
-  const open=!document.body.classList.contains("categories-open");
-  if(open){
-   positionPanel();
-   document.body.classList.add("categories-open");
-   trigger.setAttribute("aria-expanded","true");
-  }else close();
+ const open=(anchor)=>{
+  activeTrigger=anchor||trigger;
+  close();
+  positionPanel(activeTrigger);
+  document.body.classList.add("categories-open");
+  activeTrigger.setAttribute("aria-expanded","true");
  };
- trigger.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();toggle();});
- trigger.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();toggle();}});
+ const toggle=(anchor)=>{
+  const target=anchor||trigger;
+  if(document.body.classList.contains("categories-open")&&activeTrigger===target){close();return;}
+  open(target);
+ };
+
+ // Any page can open this same shared menu by adding data-me-category-toggle
+ // or the me-category-trigger class to a button or link.
+ allTriggers().forEach(item=>{
+  if(item===trigger)return;
+  item.setAttribute("aria-haspopup","true");
+  item.setAttribute("aria-expanded","false");
+  item.addEventListener("click",event=>{
+   event.preventDefault();
+   event.stopPropagation();
+   toggle(item);
+  });
+  item.addEventListener("keydown",event=>{
+   if(event.key==="Enter"||event.key===" "){event.preventDefault();toggle(item);}
+  });
+ });
+ trigger.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();toggle(trigger);});
+ trigger.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();toggle(trigger);}});
  overlay.addEventListener("click",close);
  document.addEventListener("keydown",event=>{if(event.key==="Escape")close();});
  panel.addEventListener("click",event=>{if(event.target.closest("a"))close();});
- document.addEventListener("click",event=>{if(!panel.contains(event.target)&&!trigger.contains(event.target))close();});
- window.addEventListener("resize",()=>{if(document.body.classList.contains("categories-open"))positionPanel();});
+ document.addEventListener("click",event=>{
+  if(!panel.contains(event.target)&&!allTriggers().some(item=>item.contains(event.target)))close();
+ });
+ window.addEventListener("resize",()=>{if(document.body.classList.contains("categories-open"))positionPanel(activeTrigger);});
+
+ window.MECategoryMenu={
+  open:(button)=>open(typeof button==="string"?document.querySelector(button):button||trigger),
+  close,
+  toggle:(button)=>toggle(typeof button==="string"?document.querySelector(button):button||trigger),
+  panel
+ };
 
 
 
