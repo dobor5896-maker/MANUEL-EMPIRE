@@ -6,7 +6,7 @@ let meMemoryCart = [];
 const meReadCart = () => { try { const saved=localStorage.getItem(ME_CART_KEY); return saved ? JSON.parse(saved) : meMemoryCart; } catch { return meMemoryCart; } };
 const meWriteCart = cart => { meMemoryCart=cart; try { localStorage.setItem(ME_CART_KEY,JSON.stringify(cart)); } catch {} meUpdateCartCount(); };
 const meUpdateCartCount = () => {
-  const count = meReadCart().reduce((sum,item)=>sum+item.qty,0);
+  const count = meReadCart().filter(item=>ME_PRODUCTS.some(product=>product.id===item.id)).reduce((sum,item)=>sum+item.qty,0);
   document.querySelectorAll("[data-cart-count]").forEach(el=>{el.textContent=count;el.hidden=count===0;});
 };
 const meAddToCart = (productId,size,color) => {
