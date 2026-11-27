@@ -211,7 +211,7 @@ const meRenderCart = () => {
 const meOrderText = (details) => {
  const cart=meReadCart();
  const lines=cart.map(item=>{const p=ME_PRODUCTS.find(product=>product.id===item.id);return p?`${p.name} | Size ${item.size} | ${item.color} | Qty ${item.qty}`:"";}).filter(Boolean);
- return ["MANUEL EMPIRE — ORDER REQUEST","",...lines,"","Customer: "+details.name,"Phone: "+details.phone,"Delivery address: "+details.address,details.note?"Note: "+details.note:"","Please confirm availability, final prices and delivery details."].filter(Boolean).join("\n");
+ return ["MANUEL EMPIRE — ORDER REQUEST","",...lines,"","Customer: "+details.name,"Phone: "+details.phone,"Delivery address: "+details.address,"Payment method: BANK TRANSFER",details.note?"Note: "+details.note:"","Please confirm availability, final prices and delivery charges, then send verified bank transfer details. I will transfer only after receiving the confirmed total and payment instructions."].filter(Boolean).join("\n");
 };
 const ME_WISHLIST_KEY = "manuel-empire-wishlist-v1";
 const meReadWishlist = () => { try{return JSON.parse(localStorage.getItem(ME_WISHLIST_KEY)||"[]");}catch{return [];} };
