@@ -145,6 +145,22 @@ body.categories-open .category-popout{opacity:1;visibility:visible;transform:tra
 
  const nav=document.querySelector(".side-nav");
  if(!nav)return;
+ const brand=document.querySelector(".brand");
+ if(brand&&!brand.querySelector(".brand-mark")){
+  const mark=document.createElement("img");
+  mark.className="brand-mark";
+  mark.src="IMG_6461.png";
+  mark.alt="";
+  mark.setAttribute("aria-hidden","true");
+  brand.prepend(mark);
+ }
+ const brandPolish=document.createElement("style");
+ brandPolish.textContent=`
+  .brand-mark{display:block;width:30px;height:40px;flex:0 0 auto;object-fit:contain;mix-blend-mode:screen}
+  .brand{display:inline-flex;align-items:center;justify-content:center;gap:10px}
+  @media(max-width:700px){.brand-mark{width:24px;height:32px}.brand{gap:8px}}
+ `;
+ document.head.appendChild(brandPolish);
  const links=[...nav.querySelectorAll(".nav-link")];
  if(links.length<4)return;
  links[0].href="index.html";
