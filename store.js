@@ -92,6 +92,22 @@ const meToggleWishlist = (id,button) => {
  button.textContent=!exists?"♥":"♡";
 };
 document.addEventListener("click",event=>{
+ const galleryButton=event.target.closest("[data-gallery-step]");
+ if(galleryButton){
+   const card=galleryButton.closest(".shop-card");
+   const image=card?.querySelector("[data-gallery-image]");
+   const images=(card?.dataset.galleryImages||"").split("|").filter(Boolean);
+   if(image && images.length>1){
+     const current=Number(image.dataset.galleryIndex||0);
+     const step=Number(galleryButton.dataset.galleryStep||0);
+     const next=(current+step+images.length)%images.length;
+     image.src=images[next];
+     image.dataset.galleryIndex=String(next);
+     const count=card.querySelector("[data-gallery-count]");
+     if(count)count.textContent=(next+1)+" / "+images.length;
+   }
+   return;
+ }
  const heart=event.target.closest("[data-wishlist]");
  if(heart){meToggleWishlist(heart.dataset.wishlist,heart);return;}
  const house=event.target.closest("[data-house-filter]");
