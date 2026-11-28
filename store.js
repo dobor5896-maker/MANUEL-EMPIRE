@@ -12,6 +12,7 @@ const ME_PRODUCTS = [
  {id:"jeans-05",name:"JEANS 05",category:"Men",type:"Jeans",section:"jeans",images:["12.JPG"],description:"A closer look at this MANUEL EMPIRE denim piece.",sizes:["M","L","XL"],colors:["Gray","Black","White","Pink"]}
 ];
 const ME_CART_KEY = "manuel-empire-cart-v1";
+const ME_PRODUCT_PRICE = 25000;
 const meMoney = value => new Intl.NumberFormat("en-NG",{style:"currency",currency:"NGN",maximumFractionDigits:0}).format(value);
 let meMemoryCart = [];
 const meReadCart = () => { try { const saved=localStorage.getItem(ME_CART_KEY); return saved ? JSON.parse(saved) : meMemoryCart; } catch { return meMemoryCart; } };
@@ -46,7 +47,7 @@ const meProductCard = product => {
     <div class="shop-card-heading">
       <p class="shop-category">${product.category} / ${product.type}</p>
       <h3>${product.name}</h3>
-      <p class="shop-price">Price on request</p>
+      <p class="shop-price">${meMoney(ME_PRODUCT_PRICE)}</p>
     </div>
     <p class="shop-description">${product.description}</p>
     <div class="product-options">
@@ -73,12 +74,12 @@ const meRenderCart = () => {
   if(!cart.length){host.innerHTML='<div class="empty-bag"><p class="eyebrow">YOUR BAG</p><h2>Your bag is waiting.</h2><p>Find the pieces that feel like you.</p><a class="gold-button" href="collection.html">Discover the collection</a></div>';document.querySelector("[data-cart-summary]")?.setAttribute("hidden","");return;}
   document.querySelector("[data-cart-summary]")?.removeAttribute("hidden");
   host.innerHTML=cart.map((item,index)=>{const p=ME_PRODUCTS.find(product=>product.id===item.id);if(!p)return "";return `
-  <article class="bag-item"><img src="${p.images[0]}" alt="${p.name}"><div class="bag-info"><p class="shop-category">${p.category} · ${p.type}</p><h3>${p.name}</h3><p>Size: ${item.size} <span>·</span> Colour: ${item.color}</p><strong>Price to be confirmed</strong><div class="quantity-control"><button type="button" data-qty="-1" data-index="${index}" aria-label="Decrease quantity">−</button><span>${item.qty}</span><button type="button" data-qty="1" data-index="${index}" aria-label="Increase quantity">+</button><button type="button" class="remove-item" data-remove="${index}">Remove</button></div></div></article>`;}).join("");
+  <article class="bag-item"><img src="${p.images[0]}" alt="${p.name}"><div class="bag-info"><p class="shop-category">${p.category} · ${p.type}</p><h3>${p.name}</h3><p>Size: ${item.size} <span>·</span> Colour: ${item.color}</p><strong>${meMoney(ME_PRODUCT_PRICE)} each</strong><div class="quantity-control"><button type="button" data-qty="-1" data-index="${index}" aria-label="Decrease quantity">−</button><span>${item.qty}</span><button type="button" data-qty="1" data-index="${index}" aria-label="Increase quantity">+</button><button type="button" class="remove-item" data-remove="${index}">Remove</button></div></div></article>`;}).join("");
 };
 const meOrderText = (details) => {
  const cart=meReadCart();
  const lines=cart.map(item=>{const p=ME_PRODUCTS.find(product=>product.id===item.id);return p?`${p.name} | Size ${item.size} | ${item.color} | Qty ${item.qty}`:"";}).filter(Boolean);
- return ["MANUEL EMPIRE — ORDER REQUEST","",...lines,"","Customer: "+details.name,"Phone: "+details.phone,"Delivery address: "+details.address,"Payment method: BANK TRANSFER",details.note?"Note: "+details.note:"","Please confirm availability, final prices and delivery charges, then send verified bank transfer details. I will transfer only after receiving the confirmed total and payment instructions."].filter(Boolean).join("\n");
+ return ["MANUEL EMPIRE — ORDER REQUEST","",...lines.map(line=>line+" | ₦25,000 each"),"","Subtotal: "+meMoney(cart.reduce((sum,item)=>sum+item.qty*ME_PRODUCT_PRICE,0)),"","Customer: "+details.name,"Phone: "+details.phone,"Delivery address: "+details.address,"Payment method: BANK TRANSFER",details.note?"Note: "+details.note:"","Product prices are ₦25,000 each. Please confirm availability and delivery charges, then send verified bank transfer details. I will transfer only after receiving the confirmed total and payment instructions."].filter(Boolean).join("\n");
 };
 const ME_WISHLIST_KEY = "manuel-empire-wishlist-v1";
 let meMemoryWishlist = [];
