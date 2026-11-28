@@ -4,6 +4,15 @@
 .brand-mark{display:block;width:31px;height:42px;flex:0 0 auto;object-fit:contain;mix-blend-mode:screen;filter:drop-shadow(0 1px 2px rgba(184,148,82,.16))}
 .brand span{display:inline-block}
 @media(max-width:700px){.brand{gap:8px!important}.brand-mark{width:25px;height:34px}}
+
+/* me-luxury-polish: restrained motion, image reveal and consistent focus */
+.shop-card{transition:transform .35s ease,box-shadow .35s ease}
+.shop-image img{transition:transform .65s cubic-bezier(.2,.7,.2,1),opacity .35s ease}
+.shop-card:hover{transform:translateY(-3px)}
+.shop-card:hover .shop-image img{transform:scale(1.025)}
+.gold-button,.gallery-arrow,.colour-swatch,.nav-link{transition:background-color .25s ease,color .25s ease,border-color .25s ease,opacity .25s ease,transform .25s ease}
+:where(a,button,input,select,textarea):focus-visible{outline:2px solid #b89452!important;outline-offset:3px!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style><meta name="description" content="Explore the MANUEL EMPIRE hoodie edit.">
 <meta property="og:title" content="HOODIES | MANUEL EMPIRE">
 <meta property="og:description" content="Explore the MANUEL EMPIRE hoodie edit.">
