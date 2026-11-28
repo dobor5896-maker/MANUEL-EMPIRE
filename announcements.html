@@ -3,54 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#090909">
+<meta name="theme-color" content="#050505">
 <title>Announcements | MANUEL EMPIRE</title>
-<link rel="stylesheet" href="store.css?v=empire-experience-2026">
+<link rel="stylesheet" href="store.css?v=empire-experience-2026-fullbleed">
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#090909;color:#f8f6f0;font-family:Arial,sans-serif}
-.site-header{height:76px;display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:30;background:rgba(12,12,12,.84);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(190,151,75,.22)}
-.brand{margin:0;font:600 18px Georgia,serif;letter-spacing:.16em;color:#f8f6f0}
-.brand{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important}
+html{background:#050505}
+body{margin:0;background:#050505;color:#fff;font-family:Arial,sans-serif}
+.site-header{height:76px;display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:30;background:rgba(8,8,8,.84);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(190,151,75,.2)}
+.brand{margin:0;font:600 18px Georgia,serif;letter-spacing:.16em;color:#f8f6f0;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important}
 .brand-mark{display:block;width:31px;height:42px;flex:0 0 auto;object-fit:contain;mix-blend-mode:screen}
 .brand span{display:inline-block}
 .side-nav{position:fixed;left:12px;top:50%;transform:translateY(-50%);z-index:35;display:flex;flex-direction:column;gap:12px}
 .nav-link{display:grid;place-items:center;width:38px;height:38px;color:#c5a264;text-decoration:none}
 .nav-link svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.announcement-shell{max-width:1120px;margin:0 auto;padding:66px 42px 90px 92px}
-.announcement-heading{text-align:center;margin:0 auto 36px}
-.eyebrow{margin:0 0 14px;color:#c7a568;font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase}
-.announcement-heading h1{margin:0;color:#f8f6f0;font:500 clamp(32px,5vw,56px)/1.05 Georgia,serif;letter-spacing:.04em}
-.heading-rule{width:74px;height:1px;margin:22px auto 0;background:#b89452}
-.event-layout{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(270px,.88fr);align-items:center;gap:44px}
-.poster-frame{margin:0;padding:9px;border:1px solid rgba(197,162,101,.55);background:#111;box-shadow:0 22px 60px rgba(0,0,0,.4)}
-.poster-frame img{display:block;width:100%;height:auto;max-height:760px;object-fit:contain}
-.event-copy{padding:10px 0}
-.event-label{color:#c7a568;font-size:9px;letter-spacing:.28em;font-weight:700;text-transform:uppercase}
-.event-copy h2{margin:17px 0 8px;color:#e0b65d;font:600 clamp(32px,4vw,52px)/.98 Georgia,serif;letter-spacing:-.03em;text-transform:uppercase}
-.event-copy .year{color:#f8f6f0;font-size:17px;letter-spacing:.24em}
-.event-date{margin:28px 0 0;padding:18px 0;border-top:1px solid rgba(197,162,101,.55);border-bottom:1px solid rgba(197,162,101,.55);color:#fff;font-size:clamp(20px,2.4vw,28px);font-weight:700;letter-spacing:.03em}
-.event-themes{margin:24px 0 0;color:#d2cec5;font-size:11px;line-height:2.1;letter-spacing:.11em;text-transform:uppercase}
-.event-themes span{color:#d6ad55;padding:0 5px}
-.event-note{margin:25px 0 0;color:#a9a39a;font-size:12px;line-height:1.9}
-.event-signoff{margin-top:34px;color:#c7a568;font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
-.collection-footer{padding:30px 8vw 24px 10vw;background:#050505;border-top:1px solid rgba(197,162,101,.25);color:#928c82;font-size:10px}
+.event-hero{position:relative;width:100%;overflow:hidden;background:#050505;isolation:isolate}
+.event-poster{display:block;width:100%;height:auto;margin:0;object-fit:contain}
+.hero-shade{position:absolute;z-index:1;inset:48% 0 0;background:linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,.22) 19%,rgba(5,5,5,.82) 59%,#050505 100%);pointer-events:none}
+.hero-copy{position:absolute;z-index:2;left:max(7vw,88px);right:7vw;bottom:clamp(25px,5vw,68px);max-width:850px;text-align:left}
+.event-kicker{margin:0 0 12px;color:#d4b16d;font-size:10px;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
+.hero-copy h1{margin:0;color:#f5e7c9;font:600 clamp(36px,6vw,76px)/.96 Georgia,serif;letter-spacing:.015em;text-transform:uppercase;text-shadow:0 3px 24px rgba(0,0,0,.55)}
+.hero-date{display:inline-block;margin:19px 0 0;padding:12px 0 10px;border-top:1px solid #b89452;border-bottom:1px solid #b89452;color:#fff;font-size:clamp(17px,2.2vw,25px);font-weight:800;letter-spacing:.08em}
+.hero-themes{margin:16px 0 0;color:#f3eee5;font-size:clamp(10px,1.2vw,13px);font-weight:700;line-height:1.9;letter-spacing:.13em;text-transform:uppercase}
+.hero-themes span{color:#e0b65d;padding:0 5px}
+.hero-note{margin:12px 0 0;max-width:560px;color:#c7c0b4;font-size:12px;line-height:1.75}
+.hero-signoff{margin:20px 0 0;color:#d4b16d;font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase}
+.collection-footer{padding:28px 8vw 24px 10vw;background:#050505;border-top:1px solid rgba(197,162,101,.25);color:#928c82;font-size:10px}
 .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .footer-row strong{color:#e8dfcf;letter-spacing:.15em}
 .footer-row p{margin:8px 0 0}
 .footer-row a{color:#c7a568;text-decoration:none}
 .collection-footer>small{display:block;margin-top:25px;color:#706b63}
+@media(min-width:1000px){
+.event-hero{min-height:calc(100svh - 76px);display:flex;justify-content:center;background:#050505}
+.event-poster{width:auto;height:calc(100svh - 76px);max-width:100%;object-fit:contain}
+.hero-shade{inset:40% 0 0;background:linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,.24) 22%,rgba(5,5,5,.9) 68%,#050505 100%)}
+.hero-copy{left:max(calc((100vw - 1040px)/2),9vw);right:max(calc((100vw - 1040px)/2),9vw);bottom:36px}
+}
 @media(max-width:700px){
 .site-header{height:64px}.brand{font-size:15px!important;gap:8px!important}.brand-mark{width:25px;height:34px}
-.announcement-shell{padding:48px 17px 62px 68px}
-.announcement-heading{margin-bottom:28px}
-.announcement-heading h1{font-size:35px}
-.event-layout{grid-template-columns:1fr;gap:25px}
-.poster-frame{max-width:440px;margin:0 auto;width:100%;padding:6px}
-.poster-frame img{max-height:none}
-.event-copy{padding:4px 2px 0}
-.event-copy h2{font-size:39px}
-.event-date{font-size:23px}
+.event-poster{width:100%;height:auto}
+.hero-shade{inset:54% 0 0;background:linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,.18) 15%,rgba(5,5,5,.86) 52%,#050505 100%)}
+.hero-copy{left:68px;right:17px;bottom:20px}
+.event-kicker{font-size:8px;letter-spacing:.22em;margin-bottom:8px}
+.hero-copy h1{font-size:clamp(29px,8vw,42px)}
+.hero-date{margin-top:12px;padding:9px 0 8px;font-size:18px}
+.hero-themes{margin-top:10px;font-size:9px;line-height:1.8;letter-spacing:.08em}
+.hero-note{font-size:10px;line-height:1.6;margin-top:7px}
+.hero-signoff{font-size:8px;margin-top:12px}
 .collection-footer{padding:24px 18px 22px 68px}
 }
 </style>
@@ -64,18 +64,17 @@ body{margin:0;background:#090909;color:#f8f6f0;font-family:Arial,sans-serif}
 <a class="nav-link" href="collection.html" aria-label="Browse categories"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></a>
 <a class="nav-link" href="cart.html" aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.1 11.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></a>
 </nav>
-<main class="announcement-shell">
-<header class="announcement-heading"><p class="eyebrow">MANUEL EMPIRE · THE ANNOUNCEMENT</p><h1>Something extraordinary is coming.</h1><div class="heading-rule"></div></header>
-<section class="event-layout" aria-labelledby="event-title">
-<figure class="poster-frame"><img src="empire-experience-2026.jpg" alt="Empire Experience 2026 event poster. Fashion, music, dance, creativity, culture and networking. December 19, 2026."></figure>
-<div class="event-copy">
-<p class="event-label">The upcoming event</p>
-<h2 id="event-title">Empire<br>Experience</h2>
-<p class="year">2026</p>
-<p class="event-date">DECEMBER 19, 2026</p>
-<p class="event-themes">Fashion <span>•</span> Music <span>•</span> Dance <span>•</span> Creativity <span>•</span> Culture <span>•</span> Networking</p>
-<p class="event-note">One experience. Many expressions. A celebration of fashion, music, dance, creativity, culture and connection.</p>
-<p class="event-signoff">MANUEL EMPIRE · Wear your identity</p>
+<main>
+<section class="event-hero" aria-labelledby="event-title">
+<img class="event-poster" src="0732fcd2-e52f-4147-bfa7-6488b5c86a42.jpeg" alt="Empire Experience 2026 event poster featuring fashion, music, dance, creativity, culture and networking on December 19, 2026.">
+<div class="hero-shade" aria-hidden="true"></div>
+<div class="hero-copy">
+<p class="event-kicker">MANUEL EMPIRE PRESENTS</p>
+<h1 id="event-title">Empire Experience 2026</h1>
+<p class="hero-date">DECEMBER 19, 2026</p>
+<p class="hero-themes">Fashion <span>•</span> Music <span>•</span> Dance <span>•</span> Creativity <span>•</span> Culture <span>•</span> Networking</p>
+<p class="hero-note">One experience. Many expressions. A celebration of style, sound, movement, creativity and culture.</p>
+<p class="hero-signoff">MANUEL EMPIRE · Wear your identity</p>
 </div>
 </section>
 </main>
