@@ -206,3 +206,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .swatch-name{font-size:8px;letter-spacing:.02em;text-transform:capitalize}
 .colour-picker .option-color{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 @media(max-width:700px){.colour-swatches{gap:7px}.swatch-dot{width:20px;height:20px}.swatch-name{font-size:7px}}
+
+/* Category product grids share the storefront card layout. */
+.shop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}
+@media(max-width:900px){.shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 14px}}
+@media(max-width:700px){.shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 12px}}
