@@ -28,7 +28,13 @@ const meAddToCart = (productId,size,color) => {
   const notice=document.querySelector("[data-store-notice]");
   if(notice){notice.textContent=product.name+" added to your bag.";notice.classList.add("is-visible");window.setTimeout(()=>notice.classList.remove("is-visible"),2600);}
 };
-const meProductCard = product => `
+const meProductCard = product => {
+  const sizeOptions=product.sizes.map(size=>"<option>"+size+"</option>").join("");
+  const colorOptions=product.colors.map(color=>"<option>"+color+"</option>").join("");
+  const colorControl=product.section==="joggers"
+    ? '<div class="colour-picker"><span class="colour-label">Colour</span><div class="colour-swatches" role="group" aria-label="Choose a colour">'+product.colors.map((color,index)=>'<button type="button" class="colour-swatch'+(index===0?" is-selected":"")+'" data-color="'+color+'" aria-label="'+color+'" aria-pressed="'+(index===0)+'" title="'+color+'"><span class="swatch-dot swatch-'+color.toLowerCase()+'"></span><span class="swatch-name">'+color+'</span></button>').join("")+'</div><select class="option-color" aria-label="Selected colour" tabindex="-1">'+colorOptions+'</select></div>'
+    : '<label>Colour<select class="option-color">'+colorOptions+'</select></label>';
+  return `
 <article class="shop-card" data-category="${product.category.toLowerCase()}" data-name="${product.name.toLowerCase()}" data-gallery-images="${product.images.join("|")}">
   <div class="shop-image">
     <img src="${product.images[0]}" alt="${product.name}" loading="lazy" data-gallery-image data-gallery-index="0">
@@ -44,12 +50,13 @@ const meProductCard = product => `
     </div>
     <p class="shop-description">${product.description}</p>
     <div class="product-options">
-      <label>Size<select class="option-size">${product.sizes.map(size=>`<option>${size}</option>`).join("")}</select></label>
-      ${product.section==="joggers" ? `<div class="colour-picker"><span class="colour-label">Colour</span><div class="colour-swatches" role="group" aria-label="Choose a colour">${product.colors.map((color,index)=>`<button type="button" class="colour-swatch${index===0?" is-selected":""}" data-color="${color}" aria-label="${color}" aria-pressed="${index===0}" title="${color}"><span class="swatch-dot swatch-${color.toLowerCase()}"></span><span class="swatch-name">${color}</span></button>`).join("")}</div><select class="option-color" aria-label="Selected colour" tabindex="-1">${product.colors.map(color=>`<option>${color}</option>`).join("")}</select></div>` : `<label>Colour<select class="option-color">${product.colors.map(color=>`<option>${color}</option>`).join("")}</select></label>`}`
+      <label>Size<select class="option-size">${sizeOptions}</select></label>
+      ${colorControl}
     </div>
     <button type="button" class="gold-button add-to-bag" data-id="${product.id}">Add to bag <span aria-hidden="true">＋</span></button>
   </div>
 </article>`;
+};
 const meRenderShop = () => {
   const grid=document.querySelector("[data-shop-grid]"); if(!grid)return;
   const filter=document.querySelector("[data-shop-filter]")?.value||"all";
